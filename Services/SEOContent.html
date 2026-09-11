@@ -19,6 +19,7 @@
 
 
     <!-- CSS -->
+
     <link
         rel="stylesheet"
         href="/Style/ServiceDetails.css"
@@ -36,6 +37,7 @@
 
 
     <!-- Google Fonts -->
+
     <link
         rel="preconnect"
         href="https://fonts.googleapis.com"
@@ -51,6 +53,699 @@
         href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Work+Sans:wght@400;500;600&display=swap"
         rel="stylesheet"
     >
+
+
+    <!-- =========================
+         PAGE-SPECIFIC CSS
+         ========================= -->
+
+    <style>
+
+        /* =====================================================
+           THE HOPESUP — SEO CONTENT PAGE
+           Editorial / Creative Studio Design
+           ===================================================== */
+
+        :root {
+            --page-cream: #faf8f3;
+            --page-soft: #f6f1eb;
+            --page-white: #fffdf9;
+            --page-ink: #241f19;
+            --page-text: #4d463f;
+            --page-muted: #8b8178;
+            --page-amber: #c8791f;
+            --page-orange: #e45b35;
+            --page-line: rgba(36, 31, 25, 0.12);
+        }
+
+
+        /* =====================================================
+           PAGE BACKGROUND
+           ===================================================== */
+
+        body {
+            background: var(--page-cream);
+            color: var(--page-ink);
+        }
+
+        main {
+            background: var(--page-cream);
+        }
+
+
+        /* =====================================================
+           SEO CONTENT PROCESS SECTION
+           ===================================================== */
+
+       /* =====================================================
+   SEO CONTENT PROCESS SECTION
+   ===================================================== */
+
+.content-process {
+    padding: 25px 0 120px;
+    background: var(--page-cream);
+    overflow: hidden;
+}
+
+
+/* Remove excessive gap after article section */
+
+main > .section {
+    padding-bottom: 25px !important;
+}
+
+
+/* =====================================================
+   SECTION HEADING
+   ===================================================== */
+
+.process-heading {
+    max-width: 900px;
+    margin: 0 auto 75px;
+    text-align: center;
+}
+
+.process-heading h1 {
+    margin: 0 0 24px;
+
+    font-family: "Fraunces", Georgia, serif;
+    font-size: clamp(42px, 5vw, 68px);
+    font-weight: 600;
+    line-height: 1.08;
+    letter-spacing: -2px;
+
+    color: var(--page-ink);
+}
+
+.process-heading p {
+    max-width: 780px;
+    margin: 0 auto;
+
+    font-family: "Work Sans", sans-serif;
+    font-size: 18px;
+    line-height: 1.8;
+    letter-spacing: 0.1px;
+
+    color: var(--page-text);
+}
+
+        /* =====================================================
+           SECTION HEADING
+           ===================================================== */
+
+        .process-heading {
+            max-width: 900px;
+            margin: 0 auto 75px;
+            text-align: center;
+        }
+
+        .process-heading h1 {
+            margin: 0 0 24px;
+
+            font-family: "Fraunces", Georgia, serif;
+            font-size: clamp(42px, 5vw, 68px);
+            font-weight: 600;
+            line-height: 1.08;
+            letter-spacing: -2px;
+
+            color: var(--page-ink);
+        }
+
+        .process-heading p {
+            max-width: 780px;
+            margin: 0 auto;
+
+            font-family: "Work Sans", sans-serif;
+            font-size: 18px;
+            line-height: 1.8;
+            letter-spacing: 0.1px;
+
+            color: var(--page-text);
+        }
+
+
+        /* =====================================================
+           HORIZONTAL PROCESS LAYOUT
+           LEFT = TIMELINE
+           RIGHT = IMAGE
+           ===================================================== */
+
+        .process-layout {
+            display: grid;
+            grid-template-columns: minmax(0, 1.15fr) minmax(350px, 0.85fr);
+
+            gap: 85px;
+            align-items: center;
+
+            max-width: 1180px;
+            margin: 0 auto;
+        }
+
+
+        /* =====================================================
+           LEFT PROCESS TIMELINE
+           ===================================================== */
+
+        .process-timeline {
+            position: relative;
+            padding-left: 92px;
+        }
+
+        .process-timeline::before {
+            content: "";
+
+            position: absolute;
+            left: 28px;
+            top: 30px;
+            bottom: 30px;
+
+            width: 2px;
+            background: #e5ddd4;
+        }
+
+
+        /* =====================================================
+           PROCESS ITEM
+           ===================================================== */
+
+        .process-item {
+            position: relative;
+            margin-bottom: 48px;
+        }
+
+        .process-item:last-child {
+            margin-bottom: 0;
+        }
+
+
+        /* =====================================================
+           PROCESS ICON
+           ===================================================== */
+
+        .process-icon {
+            position: absolute;
+
+            left: -92px;
+            top: 50%;
+            transform: translateY(-50%);
+
+            width: 58px;
+            height: 58px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 50%;
+            background: var(--page-amber);
+
+            z-index: 2;
+
+            box-shadow:
+                0 8px 20px rgba(200, 121, 31, 0.16);
+        }
+
+        .process-icon::after {
+            content: "";
+
+            position: absolute;
+            inset: 7px;
+
+            border: 1px solid rgba(255, 255, 255, 0.75);
+            border-radius: 50%;
+        }
+
+        .process-icon svg {
+            position: relative;
+            z-index: 2;
+
+            width: 24px;
+            height: 24px;
+
+            stroke: #ffffff;
+        }
+
+
+        /* =====================================================
+           PROCESS TITLE
+           ===================================================== */
+
+        .process-item h3 {
+            margin: 0 0 12px;
+
+            font-family: "Fraunces", Georgia, serif;
+            font-size: 25px;
+            font-weight: 600;
+            line-height: 1.25;
+            letter-spacing: -0.5px;
+
+            color: var(--page-ink);
+        }
+
+
+        /* =====================================================
+           PROCESS DESCRIPTION
+           ===================================================== */
+
+        .process-item p {
+            max-width: 590px;
+            margin: 0;
+
+            font-family: "Work Sans", sans-serif;
+            font-size: 16px;
+            line-height: 1.75;
+
+            color: var(--page-text);
+        }
+
+
+        /* =====================================================
+           RIGHT-SIDE IMAGE
+           ===================================================== */
+
+        .process-visual {
+            position: relative;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            width: 100%;
+        }
+
+        .process-visual::before {
+            content: "";
+
+            position: absolute;
+
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+
+            width: 85%;
+            height: 85%;
+
+            border-radius: 50%;
+            background: #f1e8dc;
+
+            z-index: 0;
+        }
+
+        .process-visual img {
+            position: relative;
+            z-index: 1;
+
+            display: block;
+
+            width: 100%;
+            max-width: 510px;
+            height: auto;
+
+            object-fit: contain;
+            border-radius: 4px;
+
+            box-shadow:
+                0 22px 55px rgba(36, 31, 25, 0.13);
+        }
+
+
+        /* =====================================================
+           WHY CHOOSE US
+           ===================================================== */
+
+        .why-us {
+            padding: 110px 0;
+            background: var(--page-white);
+        }
+
+        .why-us-head {
+            max-width: 720px;
+            margin: 0 auto 55px;
+            text-align: center;
+        }
+
+        .why-us-head h2 {
+            margin: 0;
+
+            font-family: "Fraunces", Georgia, serif;
+            font-size: clamp(34px, 4vw, 48px);
+            font-weight: 600;
+            line-height: 1.15;
+            letter-spacing: -1px;
+
+            color: var(--page-ink);
+        }
+
+        .why-us-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .why-us-card {
+            padding: 38px 30px;
+
+            background: var(--page-cream);
+            border: 1px solid #eee5dc;
+            border-radius: 5px;
+
+            text-align: center;
+
+            transition:
+                transform 0.3s ease,
+                box-shadow 0.3s ease;
+        }
+
+        .why-us-card:hover {
+            transform: translateY(-5px);
+
+            box-shadow:
+                0 18px 40px rgba(36, 31, 25, 0.07);
+        }
+
+        .why-us-icon {
+            width: 62px;
+            height: 62px;
+
+            margin: 0 auto 23px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 50%;
+            background: var(--page-amber);
+        }
+
+        .why-us-icon svg {
+            width: 29px;
+            height: 29px;
+        }
+
+        .why-us-card h3 {
+            margin: 0 0 14px;
+
+            font-family: "Fraunces", Georgia, serif;
+            font-size: 22px;
+            font-weight: 600;
+            line-height: 1.3;
+
+            color: var(--page-ink);
+        }
+
+        .why-us-card p {
+            margin: 0;
+
+            font-family: "Work Sans", sans-serif;
+            font-size: 15px;
+            line-height: 1.7;
+
+            color: var(--page-text);
+        }
+
+
+        /* =====================================================
+           RELATED SERVICES
+           ===================================================== */
+
+        .related {
+            padding: 100px 0;
+            background: var(--page-soft);
+        }
+
+        .related-head {
+            margin-bottom: 42px;
+
+            font-family: "Fraunces", Georgia, serif;
+            font-size: clamp(34px, 4vw, 48px);
+            font-weight: 600;
+            line-height: 1.2;
+            letter-spacing: -1px;
+
+            text-align: center;
+            color: var(--page-ink);
+        }
+
+        .related-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 22px;
+        }
+
+        .related-card {
+            display: block;
+
+            padding: 32px;
+
+            background: var(--page-white);
+            border: 1px solid #e9ded2;
+            border-radius: 5px;
+
+            text-decoration: none;
+
+            transition:
+                transform 0.3s ease,
+                border-color 0.3s ease,
+                box-shadow 0.3s ease;
+        }
+
+        .related-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--page-amber);
+
+            box-shadow:
+                0 15px 35px rgba(36, 31, 25, 0.07);
+        }
+
+        .related-card span {
+            display: block;
+            margin-bottom: 13px;
+
+            font-family: "Work Sans", sans-serif;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+
+            color: var(--page-amber);
+        }
+
+        .related-card h4 {
+            margin: 0;
+
+            font-family: "Fraunces", Georgia, serif;
+            font-size: 24px;
+            font-weight: 600;
+            line-height: 1.25;
+
+            color: var(--page-ink);
+        }
+
+
+        /* =====================================================
+           TABLET
+           ===================================================== */
+
+        @media (max-width: 1050px) {
+
+            .process-layout {
+                grid-template-columns: minmax(0, 1fr) minmax(300px, 0.8fr);
+                gap: 50px;
+            }
+
+            .process-heading {
+                margin-bottom: 60px;
+            }
+
+            .process-heading p {
+                font-size: 17px;
+            }
+
+            .process-item h3 {
+                font-size: 23px;
+            }
+
+            .process-item p {
+                font-size: 15px;
+            }
+
+            .process-visual img {
+                max-width: 430px;
+            }
+
+        }
+
+
+        /* =====================================================
+           MOBILE / SMALL TABLET
+           ===================================================== */
+
+        @media (max-width: 800px) {
+
+            .content-process {
+                padding: 75px 0 85px;
+            }
+
+            .process-heading {
+                margin-bottom: 50px;
+            }
+
+            .process-heading h1 {
+                font-size: 43px;
+                letter-spacing: -1.2px;
+            }
+
+            .process-heading p {
+                font-size: 16px;
+                line-height: 1.7;
+            }
+
+            .process-layout {
+                grid-template-columns: 1fr;
+                gap: 65px;
+            }
+
+            .process-visual {
+                order: -1;
+            }
+
+            .process-visual img {
+                width: 90%;
+                max-width: 480px;
+            }
+
+            .process-timeline {
+                padding-left: 78px;
+            }
+
+            .process-timeline::before {
+                left: 24px;
+            }
+
+            .process-icon {
+                left: -78px;
+
+                width: 54px;
+                height: 54px;
+            }
+
+            .process-icon svg {
+                width: 23px;
+                height: 23px;
+            }
+
+            .process-item {
+                margin-bottom: 42px;
+            }
+
+            .process-item h3 {
+                font-size: 23px;
+            }
+
+            .process-item p {
+                font-size: 16px;
+            }
+
+            .why-us {
+                padding: 80px 0;
+            }
+
+            .why-us-grid {
+                grid-template-columns: 1fr;
+                gap: 18px;
+            }
+
+            .related {
+                padding: 75px 0;
+            }
+
+            .related-grid {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+
+        }
+
+
+        /* =====================================================
+           SMALL MOBILE
+           ===================================================== */
+
+        @media (max-width: 500px) {
+
+            .content-process {
+                padding: 60px 0 70px;
+            }
+
+            .process-heading {
+                margin-bottom: 42px;
+            }
+
+            .process-heading h1 {
+                font-size: 36px;
+                letter-spacing: -0.8px;
+            }
+
+            .process-heading p {
+                font-size: 15px;
+            }
+
+            .process-layout {
+                gap: 48px;
+            }
+
+            .process-visual img {
+                width: 100%;
+            }
+
+            .process-timeline {
+                padding-left: 66px;
+            }
+
+            .process-timeline::before {
+                left: 20px;
+            }
+
+            .process-icon {
+                left: -66px;
+
+                width: 48px;
+                height: 48px;
+            }
+
+            .process-icon::after {
+                inset: 6px;
+            }
+
+            .process-icon svg {
+                width: 20px;
+                height: 20px;
+            }
+
+            .process-item {
+                margin-bottom: 38px;
+            }
+
+            .process-item h3 {
+                font-size: 21px;
+            }
+
+            .process-item p {
+                font-size: 15px;
+                line-height: 1.7;
+            }
+
+            .why-us-head h2 {
+                font-size: 34px;
+            }
+
+            .related-head {
+                font-size: 34px;
+            }
+
+        }
+
+    </style>
 
 </head>
 
@@ -155,12 +850,12 @@
 
 
         <!-- =========================
-             CONTENT
+             CONTENT SECTION
              ========================= -->
 
         <section
             class="section"
-            style="padding-top:0;"
+            style="padding-top: 0;"
         >
 
             <div class="container detail-layout">
@@ -215,6 +910,7 @@
                         </p>
 
                     </div>
+
 
                 </article>
 
@@ -277,15 +973,416 @@
 
                 </aside>
 
+
             </div>
 
         </section>
 
 
 
-        <!-- =========================
+        <!-- =====================================================
+             SEO CONTENT PROCESS
+             ===================================================== -->
+
+        <section class="content-process">
+
+            <div class="container">
+
+
+                <!-- SECTION HEADING -->
+
+                <div class="process-heading">
+
+                    <h1>
+                        Our Process
+                    </h1>
+
+                    <p>
+                        Effective SEO content is more than adding
+                        keywords to a page. We combine search intent,
+                        strategic research, valuable writing, and
+                        continuous improvement to create content
+                        that attracts the right audience over time.
+                    </p>
+
+                </div>
+
+
+
+                <!-- CONTENT + IMAGE -->
+
+                <div class="process-layout">
+
+
+                    <!-- LEFT — PROCESS TIMELINE -->
+
+                    <div class="process-timeline">
+
+
+                        <!-- PROCESS 01 -->
+
+                        <div class="process-item">
+
+                            <div class="process-icon">
+
+                                <svg
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    stroke-width="2.5"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                >
+
+                                    <path d="M5 12l4 4L19 6"></path>
+
+                                </svg>
+
+                            </div>
+
+
+                            <h3>
+                                Understanding Search Intent
+                            </h3>
+
+
+                            <p>
+                                We identify what your audience is
+                                searching for and understand the
+                                questions, needs, and goals behind
+                                each search.
+                            </p>
+
+                        </div>
+
+
+
+                        <!-- PROCESS 02 -->
+
+                        <div class="process-item">
+
+                            <div class="process-icon">
+
+                                <svg
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    stroke-width="2.5"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                >
+
+                                    <path d="M5 12l4 4L19 6"></path>
+
+                                </svg>
+
+                            </div>
+
+
+                            <h3>
+                                Building a Keyword Strategy
+                            </h3>
+
+
+                            <p>
+                                We research relevant keywords and
+                                organize them into topics that align
+                                with your audience and business goals.
+                            </p>
+
+                        </div>
+
+
+
+                        <!-- PROCESS 03 -->
+
+                        <div class="process-item">
+
+                            <div class="process-icon">
+
+                                <svg
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    stroke-width="2.5"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                >
+
+                                    <path d="M5 12l4 4L19 6"></path>
+
+                                </svg>
+
+                            </div>
+
+
+                            <h3>
+                                Researching &amp; Creating
+                            </h3>
+
+
+                            <p>
+                                We create well-researched, engaging,
+                                and useful content that answers real
+                                questions clearly and provides genuine
+                                value to readers.
+                            </p>
+
+                        </div>
+
+
+
+                        <!-- PROCESS 04 -->
+
+                        <div class="process-item">
+
+                            <div class="process-icon">
+
+                                <svg
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    stroke-width="2.5"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                >
+
+                                    <path d="M5 12l4 4L19 6"></path>
+
+                                </svg>
+
+                            </div>
+
+
+                            <h3>
+                                Optimizing On-page Elements
+                            </h3>
+
+
+                            <p>
+                                We improve titles, headings, internal
+                                links, metadata, and page structure
+                                to make content clear and search-friendly.
+                            </p>
+
+                        </div>
+
+
+
+                        <!-- PROCESS 05 -->
+
+                        <div class="process-item">
+
+                            <div class="process-icon">
+
+                                <svg
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    stroke-width="2.5"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                >
+
+                                    <path d="M5 12l4 4L19 6"></path>
+
+                                </svg>
+
+                            </div>
+
+
+                            <h3>
+                                Measuring &amp; Improving
+                            </h3>
+
+
+                            <p>
+                                We monitor performance, identify
+                                opportunities, and refine content
+                                to improve visibility and long-term
+                                organic growth.
+                            </p>
+
+                        </div>
+
+
+                    </div>
+
+
+
+                    <!-- RIGHT — IMAGE -->
+
+                    <div class="process-visual">
+
+                        <img
+                            src="/Image/HELLO.png"
+                            alt="SEO content planning and optimization process"
+                        >
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =====================================================
+             WHY CHOOSE US
+             ===================================================== -->
+
+        <section class="why-us">
+
+            <div class="container">
+
+
+                <div class="why-us-head">
+
+                    <h2>
+                        Why choose thehopesup for SEO content
+                    </h2>
+
+                </div>
+
+
+
+                <div class="why-us-grid">
+
+
+                    <!-- CARD 1 -->
+
+                    <div class="why-us-card">
+
+                        <div class="why-us-icon">
+
+                            <svg
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="#ffffff"
+                                stroke-width="1.8"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                            >
+
+                                <path d="M4 5H20V19H4V5Z"></path>
+
+                                <path d="M8 9H16"></path>
+
+                                <path d="M8 13H14"></path>
+
+                            </svg>
+
+                        </div>
+
+
+                        <h3>
+                            Search intent first
+                        </h3>
+
+
+                        <p>
+                            We create content around what your
+                            audience genuinely wants to know,
+                            not just around high-volume keywords.
+                        </p>
+
+                    </div>
+
+
+
+                    <!-- CARD 2 -->
+
+                    <div class="why-us-card">
+
+                        <div class="why-us-icon">
+
+                            <svg
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="#ffffff"
+                                stroke-width="1.8"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                            >
+
+                                <path
+                                    d="M12 3L20 7V12C20 16.5 16.8 20.2 12 21C7.2 20.2 4 16.5 4 12V7L12 3Z"
+                                ></path>
+
+                                <path d="M8 12L11 15L16 9"></path>
+
+                            </svg>
+
+                        </div>
+
+
+                        <h3>
+                            Quality over quantity
+                        </h3>
+
+
+                        <p>
+                            Deeply researched and genuinely useful
+                            content creates more lasting value than
+                            publishing large volumes of thin pages.
+                        </p>
+
+                    </div>
+
+
+
+                    <!-- CARD 3 -->
+
+                    <div class="why-us-card">
+
+                        <div class="why-us-icon">
+
+                            <svg
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="#ffffff"
+                                stroke-width="1.8"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                            >
+
+                                <path d="M3 3v18h18"></path>
+
+                                <path d="M7 15l4-4 3 3 5-6"></path>
+
+                            </svg>
+
+                        </div>
+
+
+                        <h3>
+                            Growth that compounds
+                        </h3>
+
+
+                        <p>
+                            Valuable SEO content continues attracting
+                            visitors, building trust, and supporting
+                            organic growth long after publication.
+                        </p>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =====================================================
              RELATED SERVICES
-             ========================= -->
+             ===================================================== -->
 
         <section class="related">
 

@@ -124,7 +124,10 @@ a {
 }
 
 .hero-eyebrow {
-    margin-bottom: 20px;
+    position: relative;
+    top: 32px;
+
+    margin-bottom: 40px;
     font-size: 12px;
     font-weight: 600;
     letter-spacing: 2.5px;
@@ -1730,3 +1733,4 @@ a {
     }
 
 }
+
