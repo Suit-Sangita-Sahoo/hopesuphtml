@@ -35,6 +35,149 @@
         href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Work+Sans:wght@400;500;600;700&display=swap"
         rel="stylesheet">
 
+
+    <!-- =========================================================
+         PAGE-SPECIFIC CSS — MANIFESTO IMAGE LAYOUT
+    ========================================================== -->
+
+    <style>
+
+        /* =====================================================
+           MANIFESTO — TWO COLUMN (TEXT + IMAGE)
+           Overrides the default single-column manifesto layout
+           only when an image is present, keeping the original
+           label/heading/paragraph alignment intact on the left.
+           ===================================================== */
+
+        .manifesto-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) minmax(320px, 0.85fr);
+
+            gap: 70px;
+            align-items: center;
+        }
+
+
+        /* Text column keeps the exact same internal alignment
+           as the original .manifesto-body (label, h2, paragraphs,
+           sign-off link) — nothing shifts inside it. */
+
+        .manifesto-grid .manifesto-body {
+            max-width: 640px;
+        }
+
+
+        /* =====================================================
+           MANIFESTO IMAGE
+           ===================================================== */
+
+        .manifesto-figure {
+            position: relative;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+
+        .manifesto-photo {
+            position: relative;
+
+            width: 100%;
+
+            border-radius: 6px;
+
+            overflow: hidden;
+
+            box-shadow:
+                0 22px 55px rgba(36, 31, 25, 0.14);
+        }
+
+
+        .manifesto-photo img {
+            display: block;
+
+            width: 100%;
+            height: 460px;
+
+            object-fit: cover;
+        }
+
+
+        /* Small decorative accent, consistent with the site's
+           amber/orange accent color used elsewhere (focus-mark,
+           hero-stamp center circle, etc.) */
+
+        .manifesto-figure::before {
+            content: "";
+
+            position: absolute;
+
+            top: -18px;
+            left: -18px;
+
+            width: 90px;
+            height: 90px;
+
+            border: 1px solid rgba(200, 121, 31, 0.35);
+            border-radius: 6px;
+
+            z-index: -1;
+        }
+
+
+        /* =====================================================
+           TABLET
+           ===================================================== */
+
+        @media (max-width: 1000px) {
+
+            .manifesto-grid {
+                grid-template-columns: minmax(0, 1fr) minmax(280px, 0.8fr);
+                gap: 45px;
+            }
+
+            .manifesto-photo img {
+                height: 400px;
+            }
+
+        }
+
+
+        /* =====================================================
+           MOBILE — STACK, IMAGE FIRST STAYS OPTIONAL
+           Text keeps its original reading order (label → heading
+           → body) by placing the image below on small screens,
+           so nothing about the existing text alignment changes.
+           ===================================================== */
+
+        @media (max-width: 760px) {
+
+            .manifesto-grid {
+                grid-template-columns: 1fr;
+                gap: 36px;
+            }
+
+            .manifesto-figure {
+                order: 2;
+            }
+
+            .manifesto-body {
+                order: 1;
+            }
+
+            .manifesto-photo img {
+                height: 320px;
+            }
+
+            .manifesto-figure::before {
+                display: none;
+            }
+
+        }
+
+    </style>
+
 </head>
 
 
@@ -255,20 +398,25 @@
 
 
 <!-- =========================================================
-     MANIFESTO
+     MANIFESTO — NOW WITH IMAGE
 ========================================================= -->
 
 <section class="section">
 
-    <div class="container manifesto">
+    <div class="container manifesto-grid">
 
 
-        <div class="manifesto-label">
-            What we believe
-        </div>
-
+        <!-- =====================================================
+             TEXT COLUMN — same content and internal alignment
+             as before (label, heading, paragraphs, sign-off link)
+        ====================================================== -->
 
         <div class="manifesto-body">
+
+
+            <div class="manifesto-label">
+                What we believe
+            </div>
 
 
             <h2>
@@ -326,6 +474,25 @@
 
 
         </div>
+
+
+
+        <!-- =====================================================
+             IMAGE COLUMN
+        ====================================================== -->
+
+        <div class="manifesto-figure">
+
+            <div class="manifesto-photo">
+
+                <img
+                    src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=900&q=85"
+                    alt="A person writing and reviewing notes, representing thoughtful content strategy">
+
+            </div>
+
+        </div>
+
 
     </div>
 
@@ -752,9 +919,9 @@
         </blockquote>
 
 
-        <cite>
+        
             — our approach, in one sentence
-        </cite>
+        
 
 
     </div>
@@ -802,7 +969,7 @@
             <div class="finale-actions">
 
 
-                <a
+                
                     href="Contact.html"
                     class="btn btn-light">
 
@@ -811,7 +978,7 @@
                 </a>
 
 
-                <a
+                
                     href="#approach"
                     class="btn btn-outline finale-outline">
 
@@ -841,7 +1008,7 @@
      FOOTER
 ========================================================= -->
 
-
+<div id="footer-placeholder"></div>
 
 
 
@@ -979,38 +1146,40 @@
 
 </script>
 
-        </section>
-
-    </main>
 
 
-    <!-- FOOTER -->
-    <div id="footer-placeholder"></div>
+<!-- =========================================================
+     FOOTER LOADER
+========================================================= -->
 
+<script>
 
-    <!-- FOOTER LOADER -->
-    <script>
-        fetch("/Footer.html")
-            .then(function(response) {
+    fetch("/Footer.html")
 
-                if (!response.ok) {
-                    throw new Error("Footer.html could not be loaded.");
-                }
+        .then(function (response) {
 
-                return response.text();
+            if (!response.ok) {
+                throw new Error("Footer.html could not be loaded.");
+            }
 
-            })
-            .then(function(data) {
+            return response.text();
 
-                document.getElementById("footer-placeholder").innerHTML = data;
+        })
 
-            })
-            .catch(function(error) {
+        .then(function (data) {
 
-                console.error("Footer loading error:", error);
+            document.getElementById("footer-placeholder").innerHTML = data;
 
-            });
-    </script>
+        })
+
+        .catch(function (error) {
+
+            console.error("Footer loading error:", error);
+
+        });
+
+</script>
+
 
 </body>
 </html>

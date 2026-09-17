@@ -13,10 +13,10 @@
 
     <!-- Google Fonts -->
     <link rel="preconnect"
-          href="https://fonts.googleapis.com">
+          href="suitsangitasahoo@gmail.com">
 
     <link rel="preconnect"
-          href="https://fonts.gstatic.com"
+          href="suitsangitasahoo76@gmail.com"
           crossorigin>
 
     <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Work+Sans:wght@400;500;600;700&display=swap"
@@ -40,6 +40,10 @@
 
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
+
+
+    <!-- EmailJS -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 
 </head>
 
@@ -566,7 +570,9 @@
                         class="btn btn-dark submit-button"
                         type="submit">
 
-                        Send message
+                        <span class="submit-button-text">
+                            Send message
+                        </span>
 
                         <i data-lucide="send"
                            width="18">
@@ -614,7 +620,7 @@
 
 
 
-            <a
+            
                 class="btn btn-dark"
                 href="mailto:hello@thehopesup.com">
 
@@ -653,6 +659,22 @@
 <script>
 
 document.addEventListener("DOMContentLoaded", function () {
+
+
+    /* =====================================================
+       EMAILJS INIT
+       Replace "YOUR_PUBLIC_KEY" with your actual EmailJS
+       public key from https://dashboard.emailjs.com
+    ===================================================== */
+
+    if (typeof emailjs !== "undefined") {
+
+        emailjs.init({
+            publicKey: "zTvdJjFC9DinRPVd5"
+        });
+
+    }
+
 
 
     /* =====================================================
@@ -853,7 +875,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     /* =====================================================
-       CONTACT FORM
+       CONTACT FORM — SENDS ALL FIELDS IN ONE EMAIL
+       via EmailJS (no backend server required)
     ===================================================== */
 
     const contactForm =
@@ -878,23 +901,120 @@ document.addEventListener("DOMContentLoaded", function () {
                         "form-status"
                     );
 
-
-                if (status) {
-
-
-                    status.textContent =
-                        "Thank you! Your message has been received.";
-
-
-                    status.classList.add(
-                        "show"
+                const submitButton =
+                    contactForm.querySelector(
+                        ".submit-button"
                     );
 
+                const submitButtonText =
+                    contactForm.querySelector(
+                        ".submit-button-text"
+                    );
+
+
+                /* Collect all form field values into one object.
+                   These variable names ({{firstName}}, {{lastName}},
+                   etc.) must match exactly what you set up inside
+                   your EmailJS email template. */
+
+                const formData = {
+                    firstName: contactForm.firstName.value,
+                    lastName: contactForm.lastName.value,
+                    email: contactForm.email.value,
+                    subject: contactForm.subject.value,
+                    message: contactForm.message.value
+                };
+
+
+                if (submitButton) {
+                    submitButton.disabled = true;
+                }
+
+                if (submitButtonText) {
+                    submitButtonText.textContent = "Sending...";
+                }
+
+                if (status) {
+                    status.classList.remove("show", "error");
+                }
+
+
+                /* =============================================
+                   SEND VIA EMAILJS
+                   Replace "YOUR_SERVICE_ID" and "YOUR_TEMPLATE_ID"
+                   with the values from your EmailJS dashboard.
+                ============================================== */
+
+                if (typeof emailjs === "undefined") {
+
+                    if (status) {
+                        status.textContent =
+                            "Something went wrong. Please email us directly instead.";
+                        status.classList.add("show", "error");
+                    }
+
+                    if (submitButton) {
+                        submitButton.disabled = false;
+                    }
+
+                    if (submitButtonText) {
+                        submitButtonText.textContent = "Send message";
+                    }
+
+                    return;
 
                 }
 
 
-                contactForm.reset();
+                emailjs
+                    .send(
+                        "service_ifnmx3y",
+                        "template_wk7lkxu",
+                        formData
+                    )
+                    .then(function () {
+
+                        if (status) {
+
+                            status.textContent =
+                                "Thank you! Your message has been received.";
+
+                            status.classList.remove("error");
+                            status.classList.add("show");
+
+                        }
+
+                        contactForm.reset();
+
+                    })
+                    .catch(function (error) {
+
+                        console.error(
+                            "EmailJS send error:",
+                            error
+                        );
+
+                        if (status) {
+
+                            status.textContent =
+                                "Sorry, something went wrong. Please try again or email us directly.";
+
+                            status.classList.add("show", "error");
+
+                        }
+
+                    })
+                    .finally(function () {
+
+                        if (submitButton) {
+                            submitButton.disabled = false;
+                        }
+
+                        if (submitButtonText) {
+                            submitButtonText.textContent = "Send message";
+                        }
+
+                    });
 
 
             }
