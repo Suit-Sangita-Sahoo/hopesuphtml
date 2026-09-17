@@ -122,6 +122,9 @@ a {
     z-index: 3;
     padding-right: 10px;
 }
+/* =========================================
+   HERO EYEBROW
+========================================= */
 
 .hero-eyebrow {
     position: relative;
@@ -138,8 +141,15 @@ a {
     animation: fadeUp 0.7s var(--ease) 0.05s both;
 }
 
+
+/* =========================================
+   HERO HEADING
+========================================= */
+
 .hero h1 {
     max-width: 680px;
+    margin: 0;
+
     font-family: var(--serif);
     font-size: clamp(52px, 5.5vw, 82px);
     font-weight: 500;
@@ -149,6 +159,75 @@ a {
 
     opacity: 0;
     animation: fadeUp 0.8s var(--ease) 0.15s both;
+}
+
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 900px) {
+
+    .hero-eyebrow {
+        top: 20px;
+        margin-bottom: 30px;
+        font-size: 11px;
+        letter-spacing: 2px;
+    }
+
+    .hero h1 {
+        max-width: 620px;
+        font-size: clamp(44px, 7vw, 68px);
+        line-height: 1.02;
+        letter-spacing: -2.5px;
+    }
+
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 600px) {
+
+    .hero-eyebrow {
+        top: 0;
+        margin-bottom: 20px;
+        font-size: 10px;
+        letter-spacing: 1.8px;
+        line-height: 1.5;
+    }
+
+    .hero h1 {
+        width: 100%;
+        max-width: 100%;
+        font-size: clamp(38px, 10vw, 52px);
+        line-height: 1.08;
+        letter-spacing: -1.5px;
+    }
+
+}
+
+
+/* =========================================
+   SMALL MOBILE
+========================================= */
+
+@media (max-width: 380px) {
+
+    .hero-eyebrow {
+        margin-bottom: 16px;
+        font-size: 9px;
+        letter-spacing: 1.5px;
+    }
+
+    .hero h1 {
+        font-size: 36px;
+        line-height: 1.1;
+        letter-spacing: -1px;
+    }
+
 }
 
 .hero h1 span {
