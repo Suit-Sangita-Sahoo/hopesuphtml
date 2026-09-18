@@ -1,28 +1,147 @@
+
+
+
 <header class="site-header">
 
     <div class="container nav">
+
+        
+        <link rel="stylesheet" href="/Style/common.css">
+        <style>
+    /* =====================================================
+       START A CONVERSATION — INTERNAL HEADER BUTTON
+       ===================================================== */
+
+    .site-header .header-cta {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+
+        min-width: 172px;
+        height: 40px;
+
+        padding: 0 16px;
+
+        color: #000000;
+        background: #fff5f5;
+
+        border: 1px solid #ead4d4;
+        border-radius: 9px;
+
+        font-family: "Work Sans", Arial, sans-serif;
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 0.1px;
+
+        text-decoration: none;
+        white-space: nowrap;
+
+        box-shadow:
+            0 5px 16px rgba(90, 40, 40, 0.08);
+
+        transition:
+            color 0.3s ease,
+            background 0.3s ease,
+            border-color 0.3s ease,
+            transform 0.3s ease,
+            box-shadow 0.3s ease;
+    }
+
+
+    /* =====================================================
+       HOVER
+       ===================================================== */
+
+    .site-header .header-cta:hover {
+        color: #000000;
+
+        background: #ffe8e8;
+
+        border-color: #dfbcbc;
+
+        transform: translateY(-2px);
+
+        box-shadow:
+            0 9px 24px rgba(90, 40, 40, 0.14);
+    }
+
+
+    /* =====================================================
+       ICON
+       ===================================================== */
+
+    .site-header .header-cta svg {
+        width: 16px;
+        height: 16px;
+
+        color: #000000;
+
+        transition:
+            transform 0.3s ease;
+    }
+
+
+    /* Arrow movement */
+
+    .site-header .header-cta:hover svg {
+        transform: translate(3px, -3px);
+    }
+
+
+    /* =====================================================
+       CLICK / ACTIVE
+       ===================================================== */
+
+    .site-header .header-cta:active {
+        transform: translateY(0);
+
+        box-shadow:
+            0 4px 10px rgba(90, 40, 40, 0.10);
+    }
+
+
+    /* =====================================================
+       TABLET
+       ===================================================== */
+
+    @media (max-width: 1000px) {
+
+        .site-header .header-cta {
+            min-width: 155px;
+            height: 38px;
+
+            padding: 0 13px;
+
+            font-size: 11px;
+        }
+
+        .site-header .header-cta svg {
+            width: 15px;
+            height: 15px;
+        }
+    }
+
+
+    /* =====================================================
+       MOBILE
+       ===================================================== */
+
+    @media (max-width: 760px) {
+
+        .site-header .header-cta {
+            display: none;
+        }
+    }
+</style>
 
         <!-- LOGO -->
         <a href="/index.html" class="brand-logo">
 
             <div class="logo-symbol">
-
-                <svg
-                    viewBox="0 0 64 64"
-                    xmlns="http://www.w3.org/2000/svg"
-                    aria-hidden="true">
-
-                    <circle
-                        cx="32"
-                        cy="32"
-                        r="25"
-                        class="logo-orbit" />
-
-                    <circle
-                        cx="32"
-                        cy="32"
-                        r="9"
-                        class="logo-sun" />
+                <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <circle cx="32" cy="32" r="25" class="logo-orbit" />
+                    <circle cx="32" cy="32" r="9" class="logo-sun" />
 
                     <path
                         d="M32 4V11
@@ -34,14 +153,10 @@
                            M51.8 12.2L46.8 17.2
                            M17.2 46.8L12.2 51.8"
                         class="logo-rays" />
-
                 </svg>
-
             </div>
 
-
             <div class="brand-text">
-
                 <div class="brand-name">
                     the<span>hope</span><strong>sup</strong>
                 </div>
@@ -49,37 +164,24 @@
                 <div class="brand-tagline">
                     Creative Studio
                 </div>
-
             </div>
 
         </a>
 
-
         <!-- DESKTOP NAVIGATION -->
         <nav class="desktop-nav">
 
-            <a href="/index.html">
-                Home
-            </a>
-
+            <a href="/index.html">Home</a>
 
             <!-- APPROACH -->
             <div class="nav-mega">
 
-                <a
-                    href="/Service.html"
-                    class="mega-trigger">
-
+                <a href="/service.html" class="mega-trigger">
                     Approach
-
-                    <span class="mega-arrow">
-                        ↓
-                    </span>
-
+                    <span class="mega-arrow">↓</span>
                 </a>
 
-
-                <!-- DESKTOP MEGA MENU -->
+                <!-- MEGA MENU -->
                 <div class="mega-menu">
 
                     <div class="mega-container">
@@ -91,8 +193,7 @@
 
                                 <img
                                     src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?auto=format&fit=crop&w=900&q=85"
-                                    alt="Creative workspace"
-                                    loading="lazy">
+                                    alt="Creative workspace">
 
                                 <div class="promo-image-overlay"></div>
 
@@ -101,7 +202,6 @@
                                 </span>
 
                             </div>
-
 
                             <div class="promo-content">
 
@@ -121,10 +221,14 @@
                                     connects.
                                 </p>
 
+                                <!-- <a href="/Service.html" class="promo-link">
+                                    Explore our services
+                                    <span>→</span>
+                                </a> -->
+
                             </div>
 
                         </div>
-
 
                         <!-- SERVICES -->
                         <div class="mega-services">
@@ -136,48 +240,46 @@
                                     CONTENT
                                 </span>
 
-                                <a href="/Services/ContentCreation.html">
+                                <a href="/services/contentcreation.html">
                                     <span>01</span>
                                     Content Creation
                                 </a>
 
-                                <a href="/Services/ContentMarketing.html">
+                                <a href="/services/contentmarketing.html">
                                     <span>02</span>
                                     Content Marketing
                                 </a>
 
-                                <a href="/Services/Blogging.html">
+                                <a href="/services/blogging.html">
                                     <span>03</span>
                                     Blogging
                                 </a>
 
                             </div>
 
-
                             <!-- COLUMN 2 -->
                             <div class="mega-column">
 
                                 <span class="mega-heading">
-                                    DESIGN &amp; SEARCH
+                                    DESIGN & SEARCH
                                 </span>
 
-                                <a href="/Services/GraphicDesign.html">
+                                <a href="/services/graphicdesign.html">
                                     <span>04</span>
                                     Graphic Design
                                 </a>
 
-                                <a href="/Services/SEOContent.html">
+                                <a href="/services/seocontent.html">
                                     <span>05</span>
                                     SEO Content
                                 </a>
 
-                                <a href="/Services/InfographicCopy.html">
+                                <a href="/services/infographiccopy.html">
                                     <span>06</span>
                                     Infographic Copy
                                 </a>
 
                             </div>
-
 
                             <!-- COLUMN 3 -->
                             <div class="mega-column">
@@ -186,12 +288,12 @@
                                     LONG-FORM
                                 </span>
 
-                                <a href="/Services/EbookWhitePaper.html">
+                                <a href="/services/ebookwhitepaper.html">
                                     <span>07</span>
-                                    Ebook &amp; White Paper
+                                    Ebook & White Paper
                                 </a>
 
-                                <a href="/Services/Newsletter.html">
+                                <a href="/services/newsletter.html">
                                     <span>08</span>
                                     Newsletter
                                 </a>
@@ -206,34 +308,20 @@
 
             </div>
 
+            
 
-            <!-- OTHER DESKTOP NAV ITEMS -->
-            <a href="/about.html">
-                About
-            </a>
+            <!-- OTHER NAV ITEMS -->
 
-            <a href="/testimonial.html">
-                Testimonials
-            </a>
-
-            <a href="/Blog.html">
-                Journal
-            </a>
-
-            <a href="/Contact.html">
-                Contact
-            </a>
-
+            <a href="/about.html">About</a>
+<a href="/testimonial.html">Testimonials</a>
+<a href="/Blog.html">Journal</a>
+<a href="/Contact.html">Contact</a>
         </nav>
-
 
         <!-- RIGHT SIDE -->
         <div class="nav-right">
 
-            <!-- DESKTOP CTA -->
-            <a
-                href="/Contact.html"
-                class="header-cta">
+            <a href="/Contact.html" class="header-cta">
 
                 <span>
                     Start a conversation
@@ -243,8 +331,7 @@
                     width="16"
                     height="16"
                     viewBox="0 0 24 24"
-                    fill="none"
-                    aria-hidden="true">
+                    fill="none">
 
                     <path
                         d="M7 17L17 7"
@@ -262,15 +349,13 @@
 
             </a>
 
-
-            <!-- MOBILE MENU BUTTON -->
+            <!-- MOBILE BUTTON -->
             <button
                 class="menu-button"
                 id="menuButton"
                 type="button"
                 aria-label="Open menu"
-                aria-expanded="false"
-                aria-controls="mobileMenu">
+                aria-expanded="false">
 
                 <span></span>
                 <span></span>
@@ -282,16 +367,12 @@
 
     </div>
 
-
     <!-- MOBILE MENU -->
-    <div
-        class="mobile-menu"
-        id="mobileMenu">
+    <div class="mobile-menu" id="mobileMenu">
 
         <a href="/index.html">
             Home
         </a>
-
 
         <!-- MOBILE APPROACH -->
         <div class="mobile-approach">
@@ -299,29 +380,19 @@
             <button
                 type="button"
                 class="mobile-approach-btn"
-                id="mobileApproachButton"
-                aria-expanded="false"
-                aria-controls="mobileServices">
+                id="mobileApproachButton">
 
                 <span>
                     Approach
                 </span>
 
-                <span
-                    class="mobile-plus"
-                    id="mobilePlus">
-
+                <span class="mobile-plus" id="mobilePlus">
                     +
-
                 </span>
 
             </button>
 
-
-            <!-- MOBILE SERVICES -->
-            <div
-                class="mobile-services"
-                id="mobileServices">
+            <div class="mobile-services" id="mobileServices">
 
                 <a href="/Service.html">
                     All Services
@@ -344,7 +415,7 @@
                 </a>
 
                 <a href="/Services/EbookWhitePaper.html">
-                    Ebook &amp; White Paper
+                    Ebook & White Paper
                 </a>
 
                 <a href="/Services/Blogging.html">
@@ -363,15 +434,6 @@
 
         </div>
 
-
-        <a href="/about.html">
-            About
-        </a>
-
-        <a href="/testimonial.html">
-            Testimonials
-        </a>
-
         <a href="/Blog.html">
             Journal
         </a>
@@ -380,11 +442,7 @@
             Contact
         </a>
 
-
-        <!-- MOBILE CTA -->
-        <a
-            href="/Contact.html"
-            class="mobile-cta">
+        <a href="/Contact.html" class="mobile-cta">
 
             Start a conversation
 
