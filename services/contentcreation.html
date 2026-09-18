@@ -1393,109 +1393,140 @@
 
     <!-- HEADER LOADER -->
     <script>
+    fetch("/Header.html")
+        .then(function (response) {
 
-        fetch("/Header.html")
-            .then(function (response) {
+            if (!response.ok) {
+                throw new Error("Header.html could not be loaded.");
 
-                if (!response.ok) {
-                    throw new Error("Header.html could not be loaded.");
-                }
+            }
 
-                return response.text();
+            return response.text();
 
-            })
-            .then(function (data) {
+        })
+        .then(function (data) {
 
-                const headerPlaceholder =
-                    document.getElementById("header-placeholder");
+            const headerPlaceholder =
+                document.getElementById("header-placeholder");
 
-                if (!headerPlaceholder) {
-                    return;
-                }
+            if (!headerPlaceholder) {
+                return;
+            }
 
-                headerPlaceholder.innerHTML = data;
+            headerPlaceholder.innerHTML = data;
 
-                const menuButton =
-                    document.getElementById("menuButton");
 
-                const mobileMenu =
-                    document.getElementById("mobileMenu");
+            const menuButton =
+                document.getElementById("menuButton");
 
-                if (menuButton && mobileMenu) {
+            const mobileMenu =
+                document.getElementById("mobileMenu");
 
-                    menuButton.addEventListener(
-                        "click",
-                        function () {
 
-                            const isOpen =
-                                mobileMenu.classList.toggle("show");
+            /* MOBILE MAIN MENU */
+            if (menuButton && mobileMenu) {
 
-                            menuButton.setAttribute(
-                                "aria-expanded",
-                                String(isOpen)
-                            );
+                menuButton.addEventListener(
+                    "click",
+                    function () {
 
-                        }
-                    );
+                        const isOpen =
+                            mobileMenu.classList.toggle("show");
 
-                    document
-                        .querySelectorAll(".mobile-menu > a")
-                        .forEach(function (link) {
+                        menuButton.setAttribute(
+                            "aria-expanded",
+                            String(isOpen)
+                        );
 
-                            link.addEventListener(
-                                "click",
-                                function () {
+                        menuButton.setAttribute(
+                            "aria-label",
+                            isOpen
+                                ? "Close menu"
+                                : "Open menu"
+                        );
 
-                                    mobileMenu.classList.remove("show");
-
-                                    menuButton.setAttribute(
-                                        "aria-expanded",
-                                        "false"
-                                    );
-
-                                }
-                            );
-
-                        });
-
-                }
-
-                const mobileApproachButton =
-                    document.getElementById("mobileApproachButton");
-
-                const mobileServices =
-                    document.getElementById("mobileServices");
-
-                if (mobileApproachButton && mobileServices) {
-
-                    mobileApproachButton.addEventListener(
-                        "click",
-                        function () {
-
-                            mobileServices.classList.toggle("show");
-
-                            mobileApproachButton
-                                .parentElement
-                                .classList.toggle("open");
-
-                        }
-                    );
-
-                }
-
-            })
-            .catch(function (error) {
-
-                console.error(
-                    "Header loading error:",
-                    error
+                    }
                 );
 
-            });
 
-    </script>
+                /* CLOSE MENU AFTER CLICKING A LINK */
+                mobileMenu
+                    .querySelectorAll("a")
+                    .forEach(function (link) {
+
+                        link.addEventListener(
+                            "click",
+                            function () {
+
+                                mobileMenu.classList.remove("show");
+
+                                menuButton.setAttribute(
+                                    "aria-expanded",
+                                    "false"
+                                );
+
+                                menuButton.setAttribute(
+                                    "aria-label",
+                                    "Open menu"
+                                );
+
+                            }
+                        );
+
+                    });
+
+            }
 
 
+            /* MOBILE APPROACH DROPDOWN */
+            const mobileApproachButton =
+                document.getElementById("mobileApproachButton");
+
+            const mobileServices =
+                document.getElementById("mobileServices");
+
+            const mobileApproach =
+                document.querySelector(".mobile-approach");
+
+
+            if (
+                mobileApproachButton &&
+                mobileServices &&
+                mobileApproach
+            ) {
+
+                mobileApproachButton.addEventListener(
+                    "click",
+                    function () {
+
+                        const isOpen =
+                            mobileServices.classList.toggle("show");
+
+                        mobileApproach.classList.toggle(
+                            "open",
+                            isOpen
+                        );
+
+                        mobileApproachButton.setAttribute(
+                            "aria-expanded",
+                            String(isOpen)
+                        );
+
+                    }
+                );
+
+            }
+
+        })
+        .catch(function (error) {
+
+            console.error(
+                "Header loading error:",
+                error
+            );
+
+        });
+</script>
     <!-- FOOTER LOADER -->
     <script>
 
