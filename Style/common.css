@@ -1,6 +1,6 @@
 /* =========================================================
-   THE HOPESUP — COMMON CSS
-   Header + Hero Stamp + Responsive Navigation
+   THE HOPESUP — COMMON HEADER
+   Compact Editorial / Creative Studio Navigation
    ========================================================= */
 
 
@@ -9,7 +9,7 @@
    ========================================================= */
 
 :root {
-    --header-bg: rgba(250, 248, 243, 0.98);
+    --header-bg: rgba(250, 248, 243, 0.97);
     --header-white: #fffdf9;
     --header-ink: #241f19;
     --header-text: #4d463f;
@@ -18,8 +18,11 @@
     --header-orange: #e45b35;
     --header-teal: #124d50;
     --header-teal-dark: #07595d;
+    --header-mega-bg: #e7f4f3;
     --header-border: rgba(36, 31, 25, 0.09);
-    --header-shadow: 0 18px 50px rgba(36, 31, 25, 0.14);
+
+    --header-shadow:
+        0 18px 50px rgba(36, 31, 25, 0.14);
 
     --header-font:
         "Work Sans",
@@ -37,7 +40,243 @@
 
 
 /* =========================================================
-   GLOBAL HEADER RESET
+   HERO STAMP
+   ========================================================= */
+
+.hero-figure {
+    position: relative;
+}
+
+/* =========================================================
+   HERO STAMP — TOP RIGHT CORNER OF IMAGE
+========================================================= */
+
+.hero-stamp {
+    position: absolute;
+
+    /* Top-right of the image */
+    top: -32px;
+    right: -32px;
+
+    width: 135px;
+    height: 135px;
+
+    z-index: 10;
+
+    pointer-events: none;
+
+    opacity: 0;
+
+    animation: stampFadeUp 0.8s var(--ease) 0.6s both;
+
+    /* Premium soft shadow */
+    filter:
+        drop-shadow(
+            0 12px 20px rgba(36, 31, 25, 0.12)
+        );
+}
+
+
+/* =========================================================
+   SVG
+========================================================= */
+
+.hero-stamp svg {
+    width: 100%;
+    height: 100%;
+
+    display: block;
+
+    overflow: visible;
+
+    /* Slow continuous rotation */
+    animation: stampRotate 28s linear infinite;
+}
+
+
+/* =========================================================
+   TEXT
+========================================================= */
+
+.hero-stamp text {
+    transform-origin: 64px 64px;
+}
+
+
+/* =========================================================
+   CENTER ORANGE CIRCLE
+========================================================= */
+
+.hero-stamp circle:last-child {
+    transform-origin: 64px 64px;
+
+    animation: stampPulse 3s ease-in-out infinite;
+}
+
+
+/* =========================================================
+   STAMP APPEAR
+========================================================= */
+
+@keyframes stampFadeUp {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(18px)
+            scale(0.82);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            scale(1);
+    }
+
+}
+
+
+/* =========================================================
+   ROTATION
+========================================================= */
+
+@keyframes stampRotate {
+
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+
+}
+
+
+/* =========================================================
+   CENTER PULSE
+========================================================= */
+
+@keyframes stampPulse {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.10);
+    }
+
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 900px) {
+
+    .hero-stamp {
+        top: -28px;
+        right: -28px;
+
+        width: 128px;
+        height: 128px;
+    }
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 700px) {
+
+    .hero-stamp {
+        /* Top-right corner */
+        top: -25px;
+        right: -20px;
+
+        /* Larger and more visible on phone */
+        width: 145px;
+        height: 145px;
+
+        filter:
+            drop-shadow(
+                0 14px 24px rgba(36, 31, 25, 0.16)
+            );
+    }
+
+}
+
+
+/* =========================================================
+   SMALL PHONES
+========================================================= */
+
+@media (max-width: 420px) {
+
+    .hero-stamp {
+        top: -20px;
+        right: -14px;
+
+        width: 135px;
+        height: 135px;
+    }
+
+}
+
+/* =========================================================
+   SERVICES TEXT
+   ========================================================= */
+
+.mega-column > a {
+    font-size: 16px;
+}
+
+.mobile-services a {
+    font-size: 16px;
+}
+
+@media (max-width: 760px) {
+
+    .desktop-nav {
+        display: none !important;
+    }
+
+    .menu-button {
+        display: flex !important;
+    }
+
+    .mobile-menu {
+        display: block !important;
+        position: fixed;
+        top: 60px;
+        left: 0;
+        right: 0;
+        width: 100%;
+        max-height: 0;
+        overflow: hidden;
+        background: #ffffff;
+        z-index: 9999;
+        transition: max-height 0.35s ease;
+    }
+
+    .mobile-menu.show {
+        max-height: calc(100dvh - 60px);
+        overflow-y: auto;
+    }
+
+}
+
+
+/* =========================================================
+   RESET
    ========================================================= */
 
 .site-header *,
@@ -57,58 +296,69 @@
 
 
 /* =========================================================
-   HEADER BASE
+   HEADER
+   ========================================================= */
+
+/* =========================================================
+   HEADER
    ========================================================= */
 
 .site-header {
-    position: relative;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
     z-index: 9999;
-    width: 100%;
-    min-height: 82px;
+
+    height: 64px;
+
     background: var(--header-bg);
     border-bottom: 1px solid var(--header-border);
+
     backdrop-filter: blur(14px);
     -webkit-backdrop-filter: blur(14px);
+
     font-family: var(--header-font);
 }
 
-
 /* =========================================================
-   HEADER CONTAINER
+   CONTAINER
    ========================================================= */
 
 .site-header .container {
-    width: min(1180px, calc(100% - 40px));
-    min-height: 82px;
+    width: min(1160px, calc(100% - 36px));
+    height: 64px;
+
     margin: 0 auto;
-    padding: 0;
+
+    display: flex;
+    align-items: center;
 }
 
 
 /* =========================================================
-   NAVIGATION ROW
+   NAV
    ========================================================= */
 
 .site-header .nav {
-    min-height: 82px;
-    display: flex;
-    align-items: center;
     justify-content: space-between;
-    gap: 25px;
+    gap: 20px;
 }
 
 
 /* =========================================================
-   BRAND LOGO
+   LOGO
    ========================================================= */
 
 .brand-logo {
     display: inline-flex;
     align-items: center;
-    gap: 10px;
+    gap: 8px;
+
     flex-shrink: 0;
+
     color: var(--header-ink);
-    text-decoration: none;
+
     transition: transform 0.2s ease;
 }
 
@@ -122,18 +372,21 @@
    ========================================================= */
 
 .logo-symbol {
-    width: 42px;
-    height: 42px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    width: 34px;
+    height: 34px;
+
+    display: grid;
+    place-items: center;
+
     flex-shrink: 0;
 }
 
 .logo-symbol svg {
-    width: 100%;
-    height: 100%;
+    width: 34px;
+    height: 34px;
+
     overflow: visible;
+
     transition: transform 0.45s ease;
 }
 
@@ -141,12 +394,18 @@
     transform: rotate(15deg) scale(1.05);
 }
 
+
+/* Orbit */
+
 .logo-orbit {
     fill: none;
-    stroke: var(--header-amber);
-    stroke-width: 1.5;
-    opacity: 0.75;
+    stroke: var(--header-ink);
+    stroke-width: 1.4;
+    opacity: 0.55;
 }
+
+
+/* Sun */
 
 .logo-sun {
     fill: var(--header-amber);
@@ -154,10 +413,13 @@
     stroke-width: 1.2;
 }
 
+
+/* Rays */
+
 .logo-rays {
     fill: none;
     stroke: var(--header-amber);
-    stroke-width: 1.5;
+    stroke-width: 1.6;
     stroke-linecap: round;
 }
 
@@ -175,11 +437,9 @@
 
 .brand-name {
     font-family: var(--header-display);
-    font-size: 23px;
+    font-size: 19px;
     font-weight: 600;
-    line-height: 1;
-    letter-spacing: -0.8px;
-    color: var(--header-ink);
+    letter-spacing: -0.7px;
     white-space: nowrap;
 }
 
@@ -193,14 +453,19 @@
     font-weight: 700;
 }
 
+
+/* Tagline */
+
 .brand-tagline {
-    margin-top: 5px;
+    margin-top: 3px;
+
     color: var(--header-muted);
+
     font-family: var(--header-font);
-    font-size: 8px;
+    font-size: 6px;
     font-weight: 700;
-    letter-spacing: 2px;
-    line-height: 1;
+    letter-spacing: 1.8px;
+
     text-transform: uppercase;
 }
 
@@ -212,10 +477,1253 @@
 .desktop-nav {
     display: flex;
     align-items: center;
-    justify-content: center;
-    gap: 24px;
+
+    gap: 3px;
     margin-left: auto;
-    height: 82px;
+
+    height: 64px;
+}
+
+
+/* Main navigation links */
+
+.desktop-nav > a,
+.mega-trigger {
+    position: relative;
+
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+
+    height: 36px;
+    padding: 0 12px;
+
+    border-radius: 7px;
+
+    color: var(--header-text);
+
+    font-size: 13px;
+    font-weight: 500;
+
+    white-space: nowrap;
+
+    transition:
+        color 0.2s ease,
+        background 0.2s ease;
+}
+
+
+/* Hover */
+
+.desktop-nav > a:hover,
+.mega-trigger:hover {
+    color: var(--header-amber);
+
+    background: rgba(200, 121, 31, 0.07);
+}
+
+
+/* =========================================================
+   APPROACH WRAPPER
+   ========================================================= */
+
+.nav-mega {
+    position: relative;
+
+    height: 64px;
+
+    display: flex;
+    align-items: center;
+}
+
+
+/* Approach arrow */
+
+.mega-arrow {
+    display: inline-block;
+
+    color: #a58c72;
+
+    font-size: 11px;
+    line-height: 1;
+
+    transition:
+        transform 0.25s ease,
+        color 0.2s ease;
+}
+
+.nav-mega:hover .mega-arrow {
+    color: var(--header-amber);
+    transform: rotate(180deg);
+}
+
+
+/* =========================================================
+   MEGA MENU
+   ========================================================= */
+
+.mega-menu {
+    position: absolute;
+
+    top: 58px;
+    left: 50%;
+
+    width: min(880px, calc(100vw - 32px));
+
+    transform:
+        translateX(-50%)
+        translateY(8px);
+
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+
+    background: var(--header-white);
+
+    border: 1px solid var(--header-border);
+    border-radius: 16px;
+
+    box-shadow: var(--header-shadow);
+
+    overflow: hidden;
+
+    transition:
+        opacity 0.2s ease,
+        transform 0.2s ease,
+        visibility 0.2s ease;
+}
+
+
+/* Invisible bridge */
+
+.mega-menu::before {
+    content: "";
+
+    position: absolute;
+
+    top: -14px;
+    left: 0;
+
+    width: 100%;
+    height: 15px;
+}
+
+
+/* Show popup */
+
+.nav-mega:hover .mega-menu,
+.nav-mega:focus-within .mega-menu {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+
+    transform:
+        translateX(-50%)
+        translateY(0);
+}
+
+
+/* =========================================================
+   MEGA CONTAINER
+   ========================================================= */
+
+.mega-container {
+    display: grid;
+
+    grid-template-columns: 260px 1fr;
+
+    min-height: 245px;
+}
+
+
+/* =========================================================
+   PROMOTIONAL PANEL
+   ========================================================= */
+
+.mega-promo {
+    position: relative;
+
+    display: grid;
+
+    grid-template-columns: 42% 58%;
+
+    align-items: center;
+
+    gap: 13px;
+
+    padding: 20px;
+
+    overflow: hidden;
+
+    background:
+        linear-gradient(
+            135deg,
+            #dff1f0,
+            #cfe9e8
+        );
+}
+
+
+/* Decorative circle */
+
+.mega-promo::before {
+    content: "";
+
+    position: absolute;
+
+    width: 160px;
+    height: 160px;
+
+    left: -85px;
+    bottom: -95px;
+
+    border:
+        1px solid
+        rgba(18, 77, 80, 0.08);
+
+    border-radius: 50%;
+}
+
+
+/* =========================================================
+   PROMO IMAGE — SMALLER
+   ========================================================= */
+
+.promo-image {
+    position: relative;
+
+    z-index: 1;
+
+    width: 92%;
+    max-width: 125px;
+
+    justify-self: center;
+}
+
+.promo-image img {
+    display: block;
+
+    width: 100%;
+    height: 105px;
+
+    object-fit: cover;
+
+    border-radius: 6px;
+
+    transform: rotate(-4deg);
+
+    box-shadow:
+        0 10px 22px
+        rgba(36, 31, 25, 0.14);
+
+    transition:
+        transform 0.45s ease;
+}
+
+.nav-mega:hover .promo-image img {
+    transform:
+        rotate(-2deg)
+        scale(1.03);
+}
+
+
+/* Overlay */
+
+.promo-image-overlay {
+    position: absolute;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    background:
+        linear-gradient(
+            to bottom,
+            transparent,
+            rgba(36, 31, 25, 0.18)
+        );
+
+    border-radius: 6px;
+}
+
+
+/* Badge */
+
+.promo-badge {
+    position: absolute;
+
+    top: 6px;
+    left: 6px;
+
+    padding: 4px 6px;
+
+    color: white;
+
+    background:
+        rgba(36, 31, 25, 0.75);
+
+    border-radius: 20px;
+
+    font-size: 6px;
+    font-weight: 700;
+    letter-spacing: 1.1px;
+}
+
+
+/* =========================================================
+   PROMO CONTENT
+   ========================================================= */
+
+.promo-content {
+    position: relative;
+    z-index: 2;
+}
+
+.promo-small {
+    display: block;
+
+    margin-bottom: 6px;
+
+    color: var(--header-teal-dark);
+
+    font-size: 8px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+}
+
+.promo-content h3 {
+    margin: 0 0 8px;
+
+    color: var(--header-ink);
+
+    font-family: var(--header-display);
+
+    font-size: 20px;
+    line-height: 1.05;
+
+    letter-spacing: -0.5px;
+}
+
+.promo-content p {
+    max-width: 22ch;
+
+    margin: 0 0 12px;
+
+    color: #526b6b;
+
+    font-size: 9px;
+    line-height: 1.5;
+}
+
+
+/* Promo link */
+
+.promo-link {
+    display: inline-flex;
+    align-items: center;
+
+    gap: 5px;
+
+    color: var(--header-teal);
+
+    font-size: 8px;
+    font-weight: 700;
+
+    letter-spacing: 0.9px;
+
+    text-transform: uppercase;
+}
+
+.promo-link span {
+    color: var(--header-orange);
+
+    font-size: 15px;
+
+    transition:
+        transform 0.2s ease;
+}
+
+.promo-link:hover span {
+    transform: translateX(4px);
+}
+
+
+/* =========================================================
+   SERVICES AREA
+   ========================================================= */
+
+.mega-services {
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 18px;
+
+    padding: 26px 24px;
+}
+
+
+/* =========================================================
+   SERVICE COLUMN
+   ========================================================= */
+
+.mega-column {
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: flex-start;
+}
+
+
+/* Column heading */
+
+.mega-heading {
+    display: block;
+
+    margin-bottom: 8px;
+
+    color: var(--header-teal-dark);
+
+    font-size: 9px;
+    font-weight: 700;
+
+    letter-spacing: 1.5px;
+}
+
+
+/* Service links */
+
+.mega-column a {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+
+    gap: 7px;
+
+    width: 100%;
+
+    padding: 7px 5px;
+
+    margin-left: -5px;
+
+    border-radius: 6px;
+
+    color: var(--header-teal);
+
+    font-size: 14px;
+    line-height: 1.35;
+
+    transition:
+        color 0.2s ease,
+        background 0.2s ease,
+        transform 0.2s ease;
+}
+
+
+/* Number */
+
+.mega-column a span {
+    min-width: 19px;
+
+    color: #a99b8e;
+
+    font-size: 9px;
+    font-weight: 600;
+}
+
+
+/* Hover */
+
+.mega-column a:hover {
+    color: var(--header-orange);
+
+    background:
+        rgba(200, 121, 31, 0.06);
+
+    transform:
+        translateX(3px);
+}
+
+
+/* =========================================================
+   RIGHT SIDE
+   ========================================================= */
+
+.nav-right {
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    margin-left: 8px;
+
+    flex-shrink: 0;
+}
+
+
+/* =========================================================
+   HEADER CTA
+   ========================================================= */
+
+.header-cta {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 7px;
+
+    height: 34px;
+
+    padding: 0 13px;
+
+    color: white;
+
+    background: var(--header-ink);
+
+    border-radius: 7px;
+
+    font-size: 10px;
+    font-weight: 600;
+
+    white-space: nowrap;
+
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.header-cta:hover {
+    background: var(--header-amber);
+
+    transform:
+        translateY(-1px);
+
+    box-shadow:
+        0 6px 18px
+        rgba(200, 121, 31, 0.22);
+}
+
+.header-cta svg {
+    flex-shrink: 0;
+}
+
+
+/* =========================================================
+   MOBILE MENU BUTTON
+   ========================================================= */
+
+.menu-button {
+    display: none;
+
+    width: 38px;
+    height: 38px;
+
+    padding: 7px;
+
+    border:
+        1px solid
+        rgba(36, 31, 25, 0.12);
+
+    border-radius: 9px;
+
+    background: rgba(255, 255, 255, 0.65);
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        border-color 0.2s ease,
+        transform 0.2s ease;
+}
+
+.menu-button:hover {
+    background: #fffdf9;
+
+    border-color:
+        rgba(200, 121, 31, 0.25);
+
+    transform: translateY(-1px);
+}
+
+
+/* Hamburger */
+
+.menu-button span {
+    display: block;
+
+    width: 18px;
+    height: 1.5px;
+
+    margin: 4px auto;
+
+    background: var(--header-ink);
+
+    transition:
+        transform 0.2s ease;
+}
+
+
+/* =========================================================
+   MOBILE MENU
+   ========================================================= */
+
+.mobile-menu {
+    display: none;
+
+    position: absolute;
+
+    top: 64px;
+    left: 0;
+    right: 0;
+
+    max-height: 0;
+
+    overflow: hidden;
+
+    padding: 0 18px;
+
+    background:
+        rgba(255, 253, 249, 0.98);
+
+    border-top:
+        1px solid transparent;
+
+    box-shadow:
+        0 18px 35px
+        rgba(36, 31, 25, 0.12);
+
+    transition:
+        max-height 0.35s ease,
+        border-color 0.25s ease,
+        padding 0.25s ease;
+}
+
+
+/* Open */
+
+.mobile-menu.show {
+    max-height: 850px;
+
+    padding-top: 12px;
+    padding-bottom: 20px;
+
+    border-top-color:
+        var(--header-border);
+}
+
+
+/* =========================================================
+   MOBILE MAIN LINKS
+   ========================================================= */
+
+.mobile-menu > a {
+    display: block;
+
+    padding: 13px 6px;
+
+    color: var(--header-text);
+
+    font-size: 15px;
+    font-weight: 500;
+
+    border-bottom:
+        1px solid
+        rgba(36, 31, 25, 0.07);
+
+    transition:
+        color 0.2s ease,
+        padding-left 0.2s ease;
+}
+
+.mobile-menu > a:hover {
+    color: var(--header-amber);
+
+    padding-left: 10px;
+}
+
+
+/* =========================================================
+   MOBILE APPROACH
+   ========================================================= */
+
+.mobile-approach {
+    border-bottom:
+        1px solid
+        rgba(36, 31, 25, 0.07);
+}
+
+
+/* Approach button */
+
+.mobile-approach-btn {
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 13px 6px;
+
+    border: 0;
+
+    background: transparent;
+
+    color: var(--header-text);
+
+    font-family: inherit;
+
+    font-size: 15px;
+    font-weight: 500;
+
+    text-align: left;
+
+    cursor: pointer;
+
+    transition:
+        color 0.2s ease;
+}
+
+.mobile-approach-btn:hover {
+    color: var(--header-amber);
+}
+
+
+/* Plus */
+
+.mobile-plus {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 26px;
+    height: 26px;
+
+    color: var(--header-amber);
+
+    font-size: 19px;
+    line-height: 1;
+
+    border-radius: 50%;
+
+    transition:
+        transform 0.25s ease,
+        background 0.25s ease;
+}
+
+
+/* Rotate */
+
+.mobile-approach.open .mobile-plus {
+    transform: rotate(45deg);
+
+    background:
+        rgba(200, 121, 31, 0.08);
+}
+
+
+/* =========================================================
+   MOBILE SERVICES
+   ========================================================= */
+
+.mobile-services {
+    display: flex;
+
+    flex-direction: column;
+
+    max-height: 0;
+
+    overflow: hidden;
+
+    background:
+        #edf6f5;
+
+    border-radius: 9px;
+
+    transition:
+        max-height 0.3s ease,
+        margin 0.3s ease;
+}
+
+
+/* Show services */
+
+.mobile-services.show {
+    max-height: 700px;
+
+    margin-bottom: 7px;
+}
+
+
+/* Service links */
+
+.mobile-services a {
+    display: flex;
+    align-items: center;
+
+    padding: 10px 14px;
+
+    color: var(--header-teal);
+
+    font-size: 14px;
+
+    border-bottom:
+        1px solid
+        rgba(18, 77, 80, 0.07);
+
+    transition:
+        background 0.2s ease,
+        color 0.2s ease,
+        padding-left 0.2s ease;
+}
+
+.mobile-services a:last-child {
+    border-bottom: none;
+}
+
+.mobile-services a:hover {
+    color: var(--header-orange);
+
+    background:
+        rgba(255, 255, 255, 0.55);
+
+    padding-left: 18px;
+}
+
+
+/* =========================================================
+   MOBILE CTA
+   ========================================================= */
+
+.mobile-menu .mobile-cta {
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    margin-top: 18px;
+
+    padding: 14px 16px;
+
+    color: #000000;
+
+    background:
+        #fff5f5;
+
+    border:
+        1px solid
+        #f0dada;
+
+    border-radius: 11px;
+
+    font-size: 14px;
+    font-weight: 700;
+
+    letter-spacing: 0.2px;
+
+    box-shadow:
+        0 8px 20px
+        rgba(120, 40, 40, 0.08);
+
+    transition:
+        background 0.3s ease,
+        color 0.3s ease,
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+
+/* CTA Hover */
+
+.mobile-menu .mobile-cta:hover {
+    color: #000000;
+
+    background:
+        #ffecec;
+
+    transform:
+        translateY(-2px);
+
+    box-shadow:
+        0 12px 28px
+        rgba(120, 40, 40, 0.15);
+}
+
+
+/* CTA Arrow */
+
+.mobile-cta span {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    width: 30px;
+    height: 30px;
+
+    color: #000000;
+
+    background:
+        #ffffff;
+
+    border-radius: 50%;
+
+    font-size: 18px;
+    font-weight: 500;
+
+    transition:
+        transform 0.3s ease,
+        background 0.3s ease;
+}
+
+
+/* CTA Arrow Hover */
+
+.mobile-menu .mobile-cta:hover span {
+    transform:
+        translateX(4px);
+
+    background:
+        #ffffff;
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 1000px) {
+
+    .site-header .container {
+        width:
+            min(
+                calc(100% - 30px),
+                1160px
+            );
+    }
+
+    .desktop-nav {
+        gap: 0;
+    }
+
+    .desktop-nav > a,
+    .mega-trigger {
+        padding: 0 9px;
+        font-size: 12px;
+    }
+
+    .header-cta {
+        padding: 0 10px;
+        font-size: 9px;
+    }
+
+    .mega-menu {
+        width:
+            min(
+                850px,
+                calc(100vw - 30px)
+            );
+    }
+
+    .mega-container {
+        grid-template-columns:
+            245px 1fr;
+    }
+
+    .mega-services {
+        gap: 14px;
+        padding:
+            26px 20px;
+    }
+
+    .mega-column a {
+        font-size: 13px;
+    }
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 760px) {
+
+    .site-header {
+        height: 60px;
+    }
+
+    .site-header .container {
+        width:
+            calc(100% - 24px);
+
+        height: 60px;
+    }
+
+
+    /* Hide desktop navigation */
+
+    .desktop-nav {
+        display: none;
+    }
+
+
+    /* Hide desktop CTA */
+
+    .header-cta {
+        display: none;
+    }
+
+
+    /* Show hamburger */
+
+    .menu-button {
+        display: block;
+    }
+
+
+    /* IMPORTANT:
+       Mobile menu must be display:block
+       so .show can actually work.
+    */
+
+    .mobile-menu {
+        display: block;
+
+        top: 60px;
+    }
+
+
+    /* Smaller logo */
+
+    .logo-symbol,
+    .logo-symbol svg {
+        width: 31px;
+        height: 31px;
+    }
+
+    .brand-name {
+        font-size: 18px;
+    }
+
+    .brand-tagline {
+        font-size: 5.5px;
+        letter-spacing: 1.5px;
+    }
+
+
+    /* Better mobile menu */
+
+    .mobile-menu {
+        border-radius: 0 0 14px 14px;
+    }
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 420px) {
+
+    .site-header .container {
+        width:
+            calc(100% - 18px);
+    }
+
+    .brand-logo {
+        gap: 6px;
+    }
+
+    .logo-symbol,
+    .logo-symbol svg {
+        width: 29px;
+        height: 29px;
+    }
+
+    .brand-name {
+        font-size: 17px;
+    }
+
+    .brand-tagline {
+        font-size: 5px;
+        letter-spacing: 1.2px;
+    }
+
+    .menu-button {
+        width: 35px;
+        height: 35px;
+    }
+
+    .mobile-menu {
+        padding-left: 14px;
+        padding-right: 14px;
+    }
+
+    .mobile-menu > a,
+    .mobile-approach-btn {
+        font-size: 14px;
+    }
+
+    .mobile-services a {
+        font-size: 13px;
+    }
+
+    .mobile-menu .mobile-cta {
+        padding: 13px 15px;
+        font-size: 13px;
+    }
+}
+
+
+/* =========================================================
+   ACCESSIBILITY
+   ========================================================= */
+
+.site-header a:focus-visible,
+.site-header button:focus-visible {
+    outline:
+        2px solid
+        var(--header-amber);
+
+    outline-offset: 3px;
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .site-header *,
+    .site-header *::before,
+    .site-header *::after {
+        transition: none !important;
+    }
+}
+
+/* =====================================================
+   HEADER BASE
+   ===================================================== */
+
+.site-header {
+    position: relative;
+    z-index: 1000;
+    width: 100%;
+    background: #faf8f3;
+    border-bottom: 1px solid rgba(36, 31, 25, 0.08);
+}
+
+.site-header .container {
+    width: 100%;
+    max-width: 1180px;
+    margin: 0 auto;
+    padding-left: 32px;
+    padding-right: 32px;
+}
+
+.nav {
+    min-height: 82px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 25px;
+}
+
+
+/* =====================================================
+   LOGO
+   ===================================================== */
+
+.brand-logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+    text-decoration: none;
+    color: #241f19;
+}
+
+.logo-symbol {
+    width: 42px;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo-symbol svg {
+    width: 100%;
+    height: 100%;
+}
+
+.logo-orbit {
+    fill: none;
+    stroke: #c8791f;
+    stroke-width: 1.5;
+}
+
+.logo-sun {
+    fill: #c8791f;
+}
+
+.logo-rays {
+    fill: none;
+    stroke: #c8791f;
+    stroke-width: 1.5;
+    stroke-linecap: round;
+}
+
+.brand-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.brand-name {
+    font-family: "Fraunces", Georgia, serif;
+    font-size: 23px;
+    font-weight: 600;
+    line-height: 1;
+    letter-spacing: -0.8px;
+    color: #241f19;
+    white-space: nowrap;
+}
+
+.brand-name span {
+    font-weight: 500;
+}
+
+.brand-name strong {
+    font-weight: 700;
+}
+
+.brand-tagline {
+    margin-top: 5px;
+    font-family: "Work Sans", Arial, sans-serif;
+    font-size: 8px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    line-height: 1;
+    text-transform: uppercase;
+    color: #8b8178;
+}
+
+
+/* =====================================================
+   DESKTOP NAVIGATION
+   ===================================================== */
+
+.desktop-nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 27px;
+    margin-left: auto;
 }
 
 .desktop-nav > a,
@@ -225,64 +1733,47 @@
     align-items: center;
     gap: 6px;
     padding: 10px 0;
-    color: var(--header-text);
-    font-family: var(--header-font);
+    color: #4d463f;
+    font-family: "Work Sans", Arial, sans-serif;
     font-size: 13px;
     font-weight: 600;
-    line-height: 1;
+    text-decoration: none;
     white-space: nowrap;
-    transition:
-        color 0.25s ease,
-        background 0.25s ease;
+    transition: color 0.25s ease;
 }
 
 .desktop-nav > a:hover,
 .mega-trigger:hover {
-    color: var(--header-amber);
-}
-
-
-/* =========================================================
-   APPROACH / MEGA MENU WRAPPER
-   ========================================================= */
-
-.nav-mega {
-    position: static;
-    height: 82px;
-    display: flex;
-    align-items: center;
+    color: #c8791f;
 }
 
 .mega-arrow {
-    display: inline-block;
-    color: #a58c72;
-    font-size: 12px;
-    line-height: 1;
-    transition:
-        transform 0.25s ease,
-        color 0.25s ease;
+    font-size: 13px;
+    transition: transform 0.25s ease;
 }
 
-.nav-mega:hover .mega-arrow,
-.nav-mega:focus-within .mega-arrow {
-    color: var(--header-amber);
+.nav-mega:hover .mega-arrow {
     transform: rotate(180deg);
 }
 
 
-/* =========================================================
+/* =====================================================
    DESKTOP MEGA MENU
-   ========================================================= */
+   ===================================================== */
+
+.nav-mega {
+    position: static;
+}
 
 .mega-menu {
     position: absolute;
     top: 100%;
     left: 0;
     width: 100%;
-    padding: 28px 32px 35px;
-    background: var(--header-white);
-    border-top: 1px solid var(--header-border);
-    box-shadow: var(--header-shadow);
+    padding: 25px 32px 35px;
+    background: #fffdf9;
+    border-top: 1px solid rgba(36, 31, 25, 0.08);
+    box-shadow: 0 25px 50px rgba(36, 31, 25, 0.12);
 
     opacity: 0;
     visibility: hidden;
@@ -303,11 +1794,6 @@
     transform: translateY(0);
 }
 
-
-/* =========================================================
-   MEGA MENU CONTAINER
-   ========================================================= */
-
 .mega-container {
     width: min(1180px, 100%);
     margin: 0 auto;
@@ -316,18 +1802,12 @@
     gap: 55px;
 }
 
-
-/* =========================================================
-   MEGA PROMO SECTION
-   ========================================================= */
-
 .mega-promo {
     min-width: 0;
 }
 
 .promo-image {
     position: relative;
-    width: 100%;
     height: 165px;
     overflow: hidden;
     border-radius: 8px;
@@ -343,7 +1823,6 @@
 .promo-image-overlay {
     position: absolute;
     inset: 0;
-    pointer-events: none;
     background: linear-gradient(
         to top,
         rgba(36, 31, 25, 0.45),
@@ -356,7 +1835,7 @@
     left: 15px;
     bottom: 13px;
     color: #ffffff;
-    font-family: var(--header-font);
+    font-family: "Work Sans", Arial, sans-serif;
     font-size: 9px;
     font-weight: 700;
     letter-spacing: 1.5px;
@@ -367,36 +1846,30 @@
 }
 
 .promo-small {
-    display: block;
-    color: var(--header-amber);
-    font-family: var(--header-font);
+    font-family: "Work Sans", Arial, sans-serif;
     font-size: 10px;
     font-weight: 700;
     letter-spacing: 1.5px;
+    color: #c8791f;
 }
 
 .promo-content h3 {
     margin: 8px 0 10px;
-    color: var(--header-ink);
-    font-family: var(--header-display);
+    font-family: "Fraunces", Georgia, serif;
     font-size: 27px;
     line-height: 1.15;
     letter-spacing: -0.8px;
+    color: #241f19;
 }
 
 .promo-content p {
     max-width: 270px;
     margin: 0;
     color: #6e655d;
-    font-family: var(--header-font);
+    font-family: "Work Sans", Arial, sans-serif;
     font-size: 13px;
     line-height: 1.65;
 }
-
-
-/* =========================================================
-   MEGA SERVICES
-   ========================================================= */
 
 .mega-services {
     display: grid;
@@ -417,7 +1890,7 @@
     padding-bottom: 10px;
     border-bottom: 1px solid #e8ded2;
     color: #9a8d80;
-    font-family: var(--header-font);
+    font-family: "Work Sans", Arial, sans-serif;
     font-size: 10px;
     font-weight: 700;
     letter-spacing: 1.5px;
@@ -427,18 +1900,16 @@
     display: flex;
     align-items: center;
     gap: 10px;
-    width: 100%;
     padding: 9px 0;
-    color: var(--header-text);
-    font-family: var(--header-font);
-    font-size: 14px;
+    color: #4d463f;
+    font-family: "Work Sans", Arial, sans-serif;
+    font-size: 13px;
     font-weight: 500;
     line-height: 1.4;
     text-decoration: none;
     transition:
         color 0.2s ease,
-        padding-left 0.2s ease,
-        background 0.2s ease;
+        padding-left 0.2s ease;
 }
 
 .mega-column > a span {
@@ -450,53 +1921,20 @@
 
 .mega-column > a:hover {
     padding-left: 5px;
-    color: var(--header-amber);
+    color: #c8791f;
 }
 
 
-/* =========================================================
-   PROMO LINK
-   ========================================================= */
-
-.promo-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    margin-top: 15px;
-    color: var(--header-teal);
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.8px;
-    text-transform: uppercase;
-}
-
-.promo-link span {
-    font-size: 17px;
-    color: var(--header-orange);
-    transition: transform 0.2s ease;
-}
-
-.promo-link:hover span {
-    transform: translateX(4px);
-}
-
-
-/* =========================================================
-   RIGHT NAVIGATION AREA
-   ========================================================= */
+/* =====================================================
+   RIGHT NAV AREA
+   ===================================================== */
 
 .nav-right {
     display: flex;
     align-items: center;
     gap: 14px;
-    margin-left: 8px;
     flex-shrink: 0;
 }
-
-
-/* =========================================================
-   DESKTOP CTA
-   ========================================================= */
 
 .header-cta {
     display: inline-flex;
@@ -512,7 +1950,7 @@
     border: 1px solid #ead4d4;
     border-radius: 9px;
 
-    font-family: var(--header-font);
+    font-family: "Work Sans", Arial, sans-serif;
     font-size: 12px;
     font-weight: 700;
     text-decoration: none;
@@ -552,36 +1990,24 @@
 }
 
 
-/* =========================================================
+/* =====================================================
    MOBILE MENU BUTTON
-   ========================================================= */
+   ===================================================== */
 
 .menu-button {
     display: none;
     width: 42px;
     height: 42px;
     padding: 0;
+    border: 1px solid rgba(36, 31, 25, 0.15);
+    border-radius: 8px;
+    background: #fffdf9;
+    cursor: pointer;
 
     align-items: center;
     justify-content: center;
     flex-direction: column;
     gap: 5px;
-
-    border: 1px solid rgba(36, 31, 25, 0.15);
-    border-radius: 8px;
-    background: var(--header-white);
-    cursor: pointer;
-
-    transition:
-        background 0.25s ease,
-        border-color 0.25s ease,
-        transform 0.25s ease;
-}
-
-.menu-button:hover {
-    background: #fff5f5;
-    border-color: rgba(200, 121, 31, 0.3);
-    transform: translateY(-1px);
 }
 
 .menu-button span {
@@ -589,80 +2015,49 @@
     width: 19px;
     height: 2px;
     border-radius: 5px;
-    background: var(--header-ink);
+    background: #241f19;
     transition: transform 0.25s ease;
 }
 
 
-/* =========================================================
-   MOBILE MENU BASE
-   ========================================================= */
+/* =====================================================
+   MOBILE MENU
+   ===================================================== */
 
 .mobile-menu {
     display: none;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
-
     width: 100%;
-    max-height: 0;
-    overflow: hidden;
-
-    padding: 0 20px;
-    background: var(--header-white);
-    border-top: 1px solid transparent;
-    box-shadow: 0 18px 35px rgba(36, 31, 25, 0.12);
-
-    transition:
-        max-height 0.35s ease,
-        padding 0.3s ease,
-        border-color 0.3s ease;
+    padding: 15px 20px 25px;
+    background: #fffdf9;
+    border-top: 1px solid rgba(36, 31, 25, 0.08);
 }
 
 .mobile-menu.show {
-    max-height: calc(100vh - 70px);
-    overflow-y: auto;
-    padding-top: 15px;
-    padding-bottom: 25px;
-    border-top-color: var(--header-border);
+    display: block;
 }
-
-
-/* =========================================================
-   MOBILE MAIN LINKS
-   ========================================================= */
 
 .mobile-menu > a {
     display: flex;
     align-items: center;
     justify-content: space-between;
-
     width: 100%;
     padding: 15px 0;
-
     border-bottom: 1px solid rgba(36, 31, 25, 0.08);
-    color: var(--header-ink);
-
-    font-family: var(--header-font);
+    color: #241f19;
+    font-family: "Work Sans", Arial, sans-serif;
     font-size: 15px;
     font-weight: 600;
     text-decoration: none;
-
-    transition:
-        color 0.2s ease,
-        padding-left 0.2s ease;
 }
 
 .mobile-menu > a:hover {
-    color: var(--header-amber);
-    padding-left: 5px;
+    color: #c8791f;
 }
 
 
-/* =========================================================
-   MOBILE APPROACH
-   ========================================================= */
+/* =====================================================
+   MOBILE APPROACH DROPDOWN
+   ===================================================== */
 
 .mobile-approach {
     width: 100%;
@@ -673,60 +2068,34 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-
     width: 100%;
     padding: 15px 0;
 
     border: 0;
     background: transparent;
-    color: var(--header-ink);
+    color: #241f19;
 
-    font-family: var(--header-font);
+    font-family: "Work Sans", Arial, sans-serif;
     font-size: 15px;
     font-weight: 600;
     text-align: left;
     cursor: pointer;
 }
 
-.mobile-approach-btn:hover {
-    color: var(--header-amber);
-}
-
 .mobile-plus {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-
-    width: 25px;
-    height: 25px;
-
-    color: var(--header-amber);
-    font-size: 22px;
+    font-size: 23px;
     font-weight: 400;
     line-height: 1;
-
-    transition:
-        transform 0.25s ease,
-        background 0.25s ease;
+    transition: transform 0.25s ease;
 }
 
 .mobile-approach.open .mobile-plus {
     transform: rotate(45deg);
-    background: rgba(200, 121, 31, 0.08);
-    border-radius: 50%;
 }
-
-
-/* =========================================================
-   MOBILE SERVICES DROPDOWN
-   ========================================================= */
 
 .mobile-services {
     display: none;
-    width: 100%;
     padding: 0 0 10px 15px;
-    background: #edf6f5;
-    border-radius: 9px;
 }
 
 .mobile-services.show {
@@ -734,109 +2103,41 @@
 }
 
 .mobile-services a {
-    display: flex;
-    align-items: center;
-
-    width: 100%;
-    padding: 11px 12px;
-
-    color: var(--header-teal);
-    font-family: var(--header-font);
-    font-size: 14px;
+    display: block;
+    padding: 10px 0;
+    color: #6e655d;
+    font-family: "Work Sans", Arial, sans-serif;
+    font-size: 13px;
     font-weight: 500;
     text-decoration: none;
-
-    border-bottom: 1px solid rgba(18, 77, 80, 0.08);
-
-    transition:
-        color 0.2s ease,
-        background 0.2s ease,
-        padding-left 0.2s ease;
-}
-
-.mobile-services a:last-child {
-    border-bottom: none;
 }
 
 .mobile-services a:hover {
-    color: var(--header-orange);
-    background: rgba(255, 255, 255, 0.55);
-    padding-left: 17px;
+    color: #c8791f;
 }
 
-
-/* =========================================================
-   MOBILE CTA
-   ========================================================= */
-
-.mobile-menu .mobile-cta {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    width: 100%;
+.mobile-cta {
     margin-top: 18px;
     padding: 14px 16px !important;
-
-    color: #000000 !important;
-    background: #fff5f5;
     border: 1px solid #ead4d4 !important;
-    border-radius: 9px;
-
-    font-family: var(--header-font);
-    font-size: 14px;
-    font-weight: 700;
-
-    box-shadow: 0 8px 20px rgba(120, 40, 40, 0.08);
-
-    transition:
-        background 0.3s ease,
-        transform 0.3s ease,
-        box-shadow 0.3s ease;
-}
-
-.mobile-menu .mobile-cta:hover {
+    border-radius: 8px;
+    background: #fff5f5;
     color: #000000 !important;
-    background: #ffecec;
-    transform: translateY(-2px);
-    box-shadow: 0 12px 28px rgba(120, 40, 40, 0.15);
 }
 
 .mobile-cta span {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    width: 30px;
-    height: 30px;
-
-    color: #000000;
-    background: #ffffff;
-    border-radius: 50%;
-    font-size: 18px;
-
-    transition:
-        transform 0.3s ease,
-        background 0.3s ease;
-}
-
-.mobile-menu .mobile-cta:hover span {
-    transform: translateX(4px);
+    font-size: 20px;
 }
 
 
-/* =========================================================
+/* =====================================================
    TABLET
-   ========================================================= */
+   ===================================================== */
 
 @media (max-width: 1050px) {
 
-    .site-header .container {
-        width: calc(100% - 30px);
-    }
-
     .desktop-nav {
-        gap: 16px;
+        gap: 17px;
     }
 
     .desktop-nav > a,
@@ -845,73 +2146,41 @@
     }
 
     .header-cta {
-        min-width: 145px;
+        min-width: 150px;
         padding: 0 12px;
         font-size: 11px;
     }
 
     .mega-container {
-        gap: 30px;
+        gap: 35px;
     }
 
-    .mega-column > a {
-        font-size: 13px;
-    }
 }
 
 
-/* =========================================================
+/* =====================================================
    MOBILE
-   ========================================================= */
+   ===================================================== */
 
 @media (max-width: 760px) {
 
-    .site-header {
-        min-height: 70px;
-    }
-
     .site-header .container {
-        width: 100%;
-        min-height: 70px;
         padding-left: 18px;
         padding-right: 18px;
     }
 
-    .site-header .nav {
+    .nav {
         min-height: 70px;
         gap: 12px;
     }
 
-    .desktop-nav,
-    .header-cta {
-        display: none !important;
-    }
-
-    .nav-right {
-        margin-left: auto;
-        gap: 0;
-    }
-
-    .menu-button {
-        display: flex !important;
-    }
-
-    .mega-menu {
-        display: none !important;
-    }
-
-    .mobile-menu {
-        display: block;
-        top: 100%;
+    .brand-logo {
+        gap: 8px;
     }
 
     .logo-symbol {
         width: 36px;
         height: 36px;
-    }
-
-    .brand-logo {
-        gap: 8px;
     }
 
     .brand-name {
@@ -922,14 +2191,32 @@
         font-size: 7px;
         letter-spacing: 1.5px;
     }
+
+    .desktop-nav,
+    .header-cta {
+        display: none;
+    }
+
+    .nav-right {
+        margin-left: auto;
+    }
+
+    .menu-button {
+        display: flex;
+    }
+
+    .mega-menu {
+        display: none !important;
+    }
+
 }
 
 
-/* =========================================================
+/* =====================================================
    SMALL MOBILE
-   ========================================================= */
+   ===================================================== */
 
-@media (max-width: 420px) {
+@media (max-width: 400px) {
 
     .site-header .container {
         padding-left: 14px;
@@ -955,197 +2242,4 @@
         height: 39px;
     }
 
-    .mobile-menu {
-        padding-left: 15px;
-        padding-right: 15px;
-    }
-
-    .mobile-menu > a,
-    .mobile-approach-btn {
-        font-size: 14px;
-    }
-
-    .mobile-services a {
-        font-size: 13px;
-    }
-
-    .mobile-menu .mobile-cta {
-        font-size: 13px;
-        padding: 13px 15px !important;
-    }
-}
-
-
-/* =========================================================
-   HERO STAMP
-   ========================================================= */
-
-.hero-figure {
-    position: relative;
-}
-
-.hero-stamp {
-    position: absolute;
-    top: -32px;
-    right: -32px;
-
-    width: 135px;
-    height: 135px;
-
-    z-index: 10;
-    pointer-events: none;
-    opacity: 0;
-
-    animation: stampFadeUp 0.8s ease 0.6s both;
-
-    filter: drop-shadow(
-        0 12px 20px rgba(36, 31, 25, 0.12)
-    );
-}
-
-.hero-stamp svg {
-    display: block;
-    width: 100%;
-    height: 100%;
-    overflow: visible;
-
-    animation: stampRotate 28s linear infinite;
-}
-
-.hero-stamp text {
-    transform-origin: 64px 64px;
-}
-
-.hero-stamp circle:last-child {
-    transform-origin: 64px 64px;
-    animation: stampPulse 3s ease-in-out infinite;
-}
-
-@keyframes stampFadeUp {
-    from {
-        opacity: 0;
-        transform: translateY(18px) scale(0.82);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-    }
-}
-
-@keyframes stampRotate {
-    from {
-        transform: rotate(0deg);
-    }
-
-    to {
-        transform: rotate(360deg);
-    }
-}
-
-@keyframes stampPulse {
-    0%,
-    100% {
-        transform: scale(1);
-    }
-
-    50% {
-        transform: scale(1.10);
-    }
-}
-
-
-/* =========================================================
-   HERO STAMP TABLET
-   ========================================================= */
-
-@media (max-width: 900px) {
-
-    .hero-stamp {
-        top: -28px;
-        right: -28px;
-        width: 128px;
-        height: 128px;
-    }
-}
-
-
-/* =========================================================
-   HERO STAMP MOBILE
-   ========================================================= */
-
-@media (max-width: 700px) {
-
-    .hero-stamp {
-        top: -25px;
-        right: -20px;
-        width: 145px;
-        height: 145px;
-
-        filter: drop-shadow(
-            0 14px 24px rgba(36, 31, 25, 0.16)
-        );
-    }
-}
-
-
-/* =========================================================
-   HERO STAMP SMALL PHONES
-   ========================================================= */
-
-@media (max-width: 420px) {
-
-    .hero-stamp {
-        top: -20px;
-        right: -14px;
-        width: 135px;
-        height: 135px;
-    }
-}
-
-
-/* =========================================================
-   ACCESSIBILITY
-   ========================================================= */
-
-.site-header a:focus-visible,
-.site-header button:focus-visible {
-    outline: 2px solid var(--header-amber);
-    outline-offset: 3px;
-}
-
-
-/* =========================================================
-   REDUCED MOTION
-   ========================================================= */
-
-@media (prefers-reduced-motion: reduce) {
-
-    .site-header *,
-    .site-header *::before,
-    .site-header *::after {
-        transition: none !important;
-        animation: none !important;
-    }
-
-    .hero-stamp,
-    .hero-stamp svg,
-    .hero-stamp circle:last-child {
-        animation: none !important;
-    }
-}
-
-
-/* =========================================================
-   BODY OFFSET
-   Add this only if your header should remain visible
-   without covering the first section.
-   ========================================================= */
-
-body {
-    margin: 0;
-}
-
-.page-content {
-    padding-top: 0;
 }
