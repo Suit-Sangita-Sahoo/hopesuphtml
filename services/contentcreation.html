@@ -11,20 +11,12 @@
 
     <title>Content Creation — thehopesup</title>
 
-
-    <!-- =========================
-         STYLESHEETS
-         ========================= -->
-
+    <!-- STYLESHEETS -->
     <link rel="stylesheet" href="/Style/ServiceDetails.css">
     <link rel="stylesheet" href="/Style/common.css">
     <link rel="stylesheet" href="/Style/Footer.css">
 
-
-    <!-- =========================
-         GOOGLE FONTS
-         ========================= -->
-
+    <!-- GOOGLE FONTS -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
@@ -33,15 +25,11 @@
         rel="stylesheet">
 
 
-    <!-- =========================
-         PAGE-SPECIFIC CSS
-         ========================= -->
-
     <style>
 
         /* =====================================================
            THE HOPESUP — CONTENT CREATION PAGE
-           Editorial / Creative Studio Design
+           RESPONSIVE EDITORIAL DESIGN
            ===================================================== */
 
         :root {
@@ -56,19 +44,29 @@
             --page-line: rgba(36, 31, 25, 0.12);
         }
 
-
-        /* =====================================================
-           PAGE BACKGROUND
-           ===================================================== */
-
-        body {
-            background: var(--page-cream);
-            color: var(--page-ink);
+        * {
+            box-sizing: border-box;
         }
 
+        html {
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+
+        body {
+            margin: 0;
+            background: var(--page-cream);
+            color: var(--page-ink);
+            overflow-x: hidden;
+        }
 
         main {
             background: var(--page-cream);
+            overflow: hidden;
+        }
+
+        img {
+            max-width: 100%;
         }
 
 
@@ -77,8 +75,14 @@
            ===================================================== */
 
         .content-process {
-            padding: 95px 0 120px;
-            background: var(--page-cream);
+            padding: 100px 0 125px;
+            background:
+                radial-gradient(
+                    circle at 90% 15%,
+                    rgba(200, 121, 31, 0.06),
+                    transparent 30%
+                ),
+                var(--page-cream);
             overflow: hidden;
         }
 
@@ -89,57 +93,50 @@
 
         .process-heading {
             max-width: 900px;
-            margin: 0 auto 75px;
+            margin: 0 auto 78px;
             text-align: center;
         }
 
-
         .process-heading h1 {
-            margin: 0 0 24px;
-
+            margin: 0 0 25px;
             font-family: "Fraunces", Georgia, serif;
             font-size: clamp(42px, 5vw, 68px);
             font-weight: 600;
             line-height: 1.08;
             letter-spacing: -2px;
-
             color: var(--page-ink);
         }
-
 
         .process-heading p {
             max-width: 780px;
             margin: 0 auto;
-
             font-family: "Work Sans", sans-serif;
             font-size: 18px;
             line-height: 1.8;
-            letter-spacing: 0.1px;
-
             color: var(--page-text);
         }
 
 
         /* =====================================================
-           HORIZONTAL PROCESS LAYOUT
-           LEFT = TIMELINE
-           RIGHT = IMAGE
+           PROCESS LAYOUT
            ===================================================== */
 
         .process-layout {
             display: grid;
-            grid-template-columns: minmax(0, 1.15fr) minmax(350px, 0.85fr);
+            grid-template-columns:
+                minmax(0, 1.15fr)
+                minmax(350px, 0.85fr);
 
-            gap: 85px;
+            gap: 75px;
             align-items: center;
 
-            max-width: 1180px;
+            width: min(1180px, calc(100% - 40px));
             margin: 0 auto;
         }
 
 
         /* =====================================================
-           LEFT PROCESS TIMELINE
+           PROCESS TIMELINE
            ===================================================== */
 
         .process-timeline {
@@ -147,20 +144,22 @@
             padding-left: 92px;
         }
 
-
-        /* Vertical line */
-
         .process-timeline::before {
             content: "";
 
             position: absolute;
             left: 28px;
-            top: 30px;
-            bottom: 30px;
+            top: 28px;
+            bottom: 28px;
 
             width: 2px;
-
-            background: #e5ddd4;
+            background:
+                linear-gradient(
+                    to bottom,
+                    #e6c99f,
+                    #e5ddd4,
+                    #e6c99f
+                );
         }
 
 
@@ -170,28 +169,18 @@
 
         .process-item {
             position: relative;
-            margin-bottom: 48px;
+            margin-bottom: 52px;
         }
-
 
         .process-item:last-child {
             margin-bottom: 0;
         }
 
-
-        /* =====================================================
-           PROCESS ICON
-           FIX: vertically align icon center with the first
-           line of the heading text, instead of sitting flush
-           at the very top of the item.
-           ===================================================== */
-
         .process-icon {
             position: absolute;
 
             left: -92px;
-            top: 50%;
-            transform: translateY(-50%);
+            top: 3px;
 
             width: 58px;
             height: 58px;
@@ -201,15 +190,19 @@
             justify-content: center;
 
             border-radius: 50%;
-
-            background: var(--page-amber);
+            background:
+                linear-gradient(
+                    145deg,
+                    #d99138,
+                    var(--page-amber)
+                );
 
             z-index: 2;
 
             box-shadow:
-                0 8px 20px rgba(200, 121, 31, 0.16);
+                0 10px 24px rgba(200, 121, 31, 0.18),
+                0 0 0 7px var(--page-cream);
         }
-
 
         .process-icon::after {
             content: "";
@@ -221,7 +214,6 @@
             border-radius: 50%;
         }
 
-
         .process-icon svg {
             position: relative;
             z-index: 2;
@@ -232,27 +224,17 @@
             stroke: #ffffff;
         }
 
-
-        /* =====================================================
-           PROCESS TITLE
-           ===================================================== */
-
         .process-item h3 {
-            margin: 0 0 12px;
+            margin: 0 0 13px;
 
             font-family: "Fraunces", Georgia, serif;
             font-size: 25px;
             font-weight: 600;
-            line-height: 1.25;
+            line-height: 1.3;
             letter-spacing: -0.5px;
 
             color: var(--page-ink);
         }
-
-
-        /* =====================================================
-           PROCESS DESCRIPTION
-           ===================================================== */
 
         .process-item p {
             max-width: 590px;
@@ -267,7 +249,7 @@
 
 
         /* =====================================================
-           RIGHT-SIDE IMAGE
+           RIGHT IMAGE
            ===================================================== */
 
         .process-visual {
@@ -277,36 +259,35 @@
             align-items: center;
             justify-content: center;
 
+            min-height: 480px;
             width: 100%;
         }
-
-
-        /* =====================================================
-           FIX: the decorative circle behind the image was not
-           actually centered — position: absolute with no
-           top/left left it at its default static-flow spot.
-           Centering it explicitly with top/left + transform.
-           ===================================================== */
 
         .process-visual::before {
             content: "";
 
             position: absolute;
-
             top: 50%;
             left: 50%;
+
             transform: translate(-50%, -50%);
 
-            width: 85%;
-            height: 85%;
+            width: min(450px, 90%);
+            aspect-ratio: 1;
 
             border-radius: 50%;
 
-            background: #f1e8dc;
+            background:
+                radial-gradient(
+                    circle,
+                    #f1e8dc 0%,
+                    #f1e8dc 58%,
+                    rgba(241, 232, 220, 0.2) 59%,
+                    transparent 70%
+                );
 
             z-index: 0;
         }
-
 
         .process-visual img {
             position: relative;
@@ -320,10 +301,22 @@
 
             object-fit: contain;
 
-            border-radius: 4px;
+            border-radius: 8px;
 
-            box-shadow:
-                0 22px 55px rgba(36, 31, 25, 0.13);
+            filter: drop-shadow(
+                0 24px 35px rgba(36, 31, 25, 0.13)
+            );
+
+            transition:
+                transform 0.4s ease,
+                filter 0.4s ease;
+        }
+
+        .process-visual img:hover {
+            transform: translateY(-8px);
+            filter: drop-shadow(
+                0 30px 45px rgba(36, 31, 25, 0.17)
+            );
         }
 
 
@@ -332,17 +325,15 @@
            ===================================================== */
 
         .why-us {
-            padding: 110px 0;
+            padding: 115px 0;
             background: var(--page-white);
         }
 
-
         .why-us-head {
-            max-width: 720px;
-            margin: 0 auto 55px;
+            max-width: 760px;
+            margin: 0 auto 58px;
             text-align: center;
         }
-
 
         .why-us-head h2 {
             margin: 0;
@@ -356,42 +347,52 @@
             color: var(--page-ink);
         }
 
-
         .why-us-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 25px;
+
+            width: min(1180px, calc(100% - 40px));
+            margin: 0 auto;
         }
 
-
         .why-us-card {
-            padding: 38px 30px;
+            position: relative;
 
-            background: var(--page-cream);
+            padding: 42px 30px 38px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    #fffdf9,
+                    #faf6f0
+                );
+
             border: 1px solid #eee5dc;
-            border-radius: 5px;
+            border-radius: 10px;
 
             text-align: center;
 
             transition:
                 transform 0.3s ease,
-                box-shadow 0.3s ease;
+                box-shadow 0.3s ease,
+                border-color 0.3s ease;
         }
-
 
         .why-us-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-7px);
+
+            border-color: #e4c99f;
 
             box-shadow:
-                0 18px 40px rgba(36, 31, 25, 0.07);
+                0 20px 45px rgba(36, 31, 25, 0.08);
         }
 
-
         .why-us-icon {
-            width: 62px;
-            height: 62px;
+            width: 66px;
+            height: 66px;
 
-            margin: 0 auto 23px;
+            margin: 0 auto 24px;
 
             display: flex;
             align-items: center;
@@ -399,15 +400,21 @@
 
             border-radius: 50%;
 
-            background: var(--page-amber);
-        }
+            background:
+                linear-gradient(
+                    145deg,
+                    #d99138,
+                    var(--page-amber)
+                );
 
+            box-shadow:
+                0 8px 18px rgba(200, 121, 31, 0.15);
+        }
 
         .why-us-icon svg {
             width: 29px;
             height: 29px;
         }
-
 
         .why-us-card h3 {
             margin: 0 0 14px;
@@ -420,13 +427,12 @@
             color: var(--page-ink);
         }
 
-
         .why-us-card p {
             margin: 0;
 
             font-family: "Work Sans", sans-serif;
             font-size: 15px;
-            line-height: 1.7;
+            line-height: 1.75;
 
             color: var(--page-text);
         }
@@ -437,13 +443,17 @@
            ===================================================== */
 
         .related {
-            padding: 100px 0;
-            background: var(--page-soft);
+            padding: 105px 0;
+            background:
+                linear-gradient(
+                    180deg,
+                    var(--page-soft),
+                    #f9f4ee
+                );
         }
 
-
         .related-head {
-            margin-bottom: 42px;
+            margin: 0 0 45px;
 
             font-family: "Fraunces", Georgia, serif;
             font-size: clamp(34px, 4vw, 48px);
@@ -455,24 +465,30 @@
             color: var(--page-ink);
         }
 
-
         .related-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 22px;
+
+            width: min(1180px, calc(100% - 40px));
+            margin: 0 auto;
         }
 
-
         .related-card {
+            position: relative;
+
             display: block;
 
-            padding: 32px;
+            min-height: 150px;
+            padding: 34px 30px;
 
             background: var(--page-white);
             border: 1px solid #e9ded2;
-            border-radius: 5px;
+            border-radius: 10px;
 
             text-decoration: none;
+
+            overflow: hidden;
 
             transition:
                 transform 0.3s ease,
@@ -480,20 +496,41 @@
                 box-shadow 0.3s ease;
         }
 
+        .related-card::after {
+            content: "↗";
+
+            position: absolute;
+            right: 25px;
+            bottom: 20px;
+
+            font-size: 24px;
+            color: var(--page-amber);
+
+            opacity: 0;
+            transform: translate(-5px, 5px);
+
+            transition:
+                opacity 0.3s ease,
+                transform 0.3s ease;
+        }
 
         .related-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-6px);
 
             border-color: var(--page-amber);
 
             box-shadow:
-                0 15px 35px rgba(36, 31, 25, 0.07);
+                0 18px 38px rgba(36, 31, 25, 0.08);
         }
 
+        .related-card:hover::after {
+            opacity: 1;
+            transform: translate(0, 0);
+        }
 
         .related-card span {
             display: block;
-            margin-bottom: 13px;
+            margin-bottom: 14px;
 
             font-family: "Work Sans", sans-serif;
             font-size: 11px;
@@ -504,9 +541,9 @@
             color: var(--page-amber);
         }
 
-
         .related-card h4 {
             margin: 0;
+            padding-right: 25px;
 
             font-family: "Fraunces", Georgia, serif;
             font-size: 24px;
@@ -518,14 +555,20 @@
 
 
         /* =====================================================
-           TABLET
+           LARGE TABLET
            ===================================================== */
 
         @media (max-width: 1050px) {
 
+            .content-process {
+                padding: 85px 0 105px;
+            }
+
             .process-layout {
-                grid-template-columns: minmax(0, 1fr) minmax(300px, 0.8fr);
-                gap: 50px;
+                gap: 48px;
+                grid-template-columns:
+                    minmax(0, 1fr)
+                    minmax(300px, 0.8fr);
             }
 
             .process-heading {
@@ -544,117 +587,165 @@
                 font-size: 15px;
             }
 
+            .process-visual {
+                min-height: 400px;
+            }
+
             .process-visual img {
                 max-width: 430px;
+            }
+
+            .why-us,
+            .related {
+                padding: 90px 0;
             }
 
         }
 
 
         /* =====================================================
-           MOBILE / SMALL TABLET
+           TABLET / MOBILE
            ===================================================== */
 
         @media (max-width: 800px) {
 
             .content-process {
-                padding: 75px 0 85px;
+                padding: 70px 0 85px;
             }
 
             .process-heading {
+                width: min(100% - 36px, 650px);
                 margin-bottom: 50px;
             }
 
             .process-heading h1 {
-                font-size: 43px;
-                letter-spacing: -1.2px;
+                font-size: clamp(40px, 9vw, 52px);
+                letter-spacing: -1.3px;
             }
 
             .process-heading p {
                 font-size: 16px;
-                line-height: 1.7;
+                line-height: 1.75;
             }
-
-
-            /* Stack image and content */
 
             .process-layout {
                 grid-template-columns: 1fr;
-                gap: 65px;
+                gap: 50px;
+
+                width: min(100% - 36px, 650px);
             }
 
-
-            /* Image first on mobile */
-
+            /* Image appears before timeline */
             .process-visual {
                 order: -1;
+                min-height: auto;
+                padding: 10px 0 15px;
             }
 
+            .process-visual::before {
+                width: 80%;
+                max-width: 400px;
+            }
 
             .process-visual img {
-                width: 90%;
-                max-width: 480px;
+                width: min(88%, 430px);
+                max-width: 430px;
             }
-
 
             .process-timeline {
-                padding-left: 78px;
+                padding-left: 76px;
             }
-
 
             .process-timeline::before {
-                left: 24px;
+                left: 23px;
+                top: 25px;
+                bottom: 25px;
             }
-
 
             .process-icon {
-                left: -78px;
+                left: -76px;
+                top: 0;
 
-                width: 54px;
-                height: 54px;
+                width: 52px;
+                height: 52px;
+
+                box-shadow:
+                    0 8px 20px rgba(200, 121, 31, 0.16),
+                    0 0 0 6px var(--page-cream);
             }
-
 
             .process-icon svg {
-                width: 23px;
-                height: 23px;
+                width: 22px;
+                height: 22px;
             }
-
 
             .process-item {
                 margin-bottom: 42px;
             }
 
-
             .process-item h3 {
                 font-size: 23px;
+                line-height: 1.3;
             }
-
 
             .process-item p {
                 font-size: 16px;
+                line-height: 1.7;
             }
-
 
             .why-us {
                 padding: 80px 0;
             }
 
+            .why-us-head {
+                width: min(100% - 36px, 650px);
+                margin-bottom: 42px;
+            }
+
+            .why-us-head h2 {
+                font-size: clamp(34px, 8vw, 44px);
+            }
 
             .why-us-grid {
                 grid-template-columns: 1fr;
                 gap: 18px;
+
+                width: min(100% - 36px, 650px);
             }
 
+            .why-us-card {
+                padding: 34px 27px 32px;
+            }
+
+            .why-us-card p {
+                max-width: 480px;
+                margin: 0 auto;
+            }
 
             .related {
                 padding: 75px 0;
             }
 
+            .related-head {
+                width: min(100% - 36px, 650px);
+                margin: 0 auto 35px;
+                font-size: clamp(34px, 8vw, 44px);
+            }
 
             .related-grid {
                 grid-template-columns: 1fr;
-                gap: 16px;
+                gap: 15px;
+
+                width: min(100% - 36px, 650px);
+            }
+
+            .related-card {
+                min-height: 125px;
+                padding: 27px 25px;
+            }
+
+            .related-card h4 {
+                font-size: 23px;
             }
 
         }
@@ -667,88 +758,168 @@
         @media (max-width: 500px) {
 
             .content-process {
-                padding: 60px 0 70px;
+                padding: 55px 0 70px;
             }
 
-
             .process-heading {
+                width: calc(100% - 32px);
                 margin-bottom: 42px;
             }
 
-
             .process-heading h1 {
-                font-size: 36px;
-                letter-spacing: -0.8px;
+                margin-bottom: 18px;
+                font-size: 37px;
+                letter-spacing: -0.9px;
             }
-
 
             .process-heading p {
                 font-size: 15px;
+                line-height: 1.72;
             }
-
 
             .process-layout {
-                gap: 48px;
+                width: calc(100% - 32px);
+                gap: 42px;
             }
 
+            .process-visual {
+                padding: 0 0 8px;
+            }
+
+            .process-visual::before {
+                width: 90%;
+            }
 
             .process-visual img {
                 width: 100%;
+                max-width: 340px;
             }
-
 
             .process-timeline {
-                padding-left: 66px;
+                padding-left: 61px;
             }
-
 
             .process-timeline::before {
-                left: 20px;
+                left: 18px;
+                top: 23px;
+                bottom: 23px;
             }
-
 
             .process-icon {
-                left: -66px;
+                left: -61px;
+                top: 0;
 
-                width: 48px;
-                height: 48px;
+                width: 46px;
+                height: 46px;
+
+                box-shadow:
+                    0 7px 17px rgba(200, 121, 31, 0.15),
+                    0 0 0 5px var(--page-cream);
             }
-
 
             .process-icon::after {
                 inset: 6px;
             }
 
-
             .process-icon svg {
-                width: 20px;
-                height: 20px;
+                width: 19px;
+                height: 19px;
             }
-
 
             .process-item {
-                margin-bottom: 38px;
+                margin-bottom: 36px;
             }
 
-
             .process-item h3 {
+                margin-bottom: 10px;
+                font-size: 21px;
+                line-height: 1.3;
+            }
+
+            .process-item p {
+                font-size: 14.5px;
+                line-height: 1.72;
+            }
+
+            .why-us {
+                padding: 65px 0;
+            }
+
+            .why-us-head {
+                width: calc(100% - 32px);
+                margin-bottom: 34px;
+            }
+
+            .why-us-head h2 {
+                font-size: 32px;
+                line-height: 1.2;
+                letter-spacing: -0.7px;
+            }
+
+            .why-us-grid {
+                width: calc(100% - 32px);
+            }
+
+            .why-us-card {
+                padding: 30px 22px;
+                border-radius: 8px;
+            }
+
+            .why-us-icon {
+                width: 58px;
+                height: 58px;
+                margin-bottom: 20px;
+            }
+
+            .why-us-icon svg {
+                width: 26px;
+                height: 26px;
+            }
+
+            .why-us-card h3 {
                 font-size: 21px;
             }
 
-
-            .process-item p {
-                font-size: 15px;
+            .why-us-card p {
+                font-size: 14px;
                 line-height: 1.7;
             }
 
-
-            .why-us-head h2 {
-                font-size: 34px;
+            .related {
+                padding: 62px 0;
             }
 
-
             .related-head {
-                font-size: 34px;
+                width: calc(100% - 32px);
+                margin-bottom: 30px;
+                font-size: 32px;
+                line-height: 1.2;
+            }
+
+            .related-grid {
+                width: calc(100% - 32px);
+                gap: 13px;
+            }
+
+            .related-card {
+                min-height: 115px;
+                padding: 25px 22px;
+                border-radius: 8px;
+            }
+
+            .related-card span {
+                font-size: 10px;
+                margin-bottom: 10px;
+            }
+
+            .related-card h4 {
+                font-size: 21px;
+            }
+
+            .related-card::after {
+                right: 18px;
+                bottom: 15px;
+                font-size: 20px;
             }
 
         }
@@ -760,25 +931,13 @@
 
 <body>
 
-
-    <!-- =========================
-         HEADER
-         ========================= -->
-
+    <!-- HEADER -->
     <div id="header-placeholder"></div>
 
 
-    <!-- =========================
-         MAIN
-         ========================= -->
-
     <main>
 
-
-        <!-- =========================
-             BREADCRUMB
-             ========================= -->
-
+        <!-- BREADCRUMB -->
         <div class="container">
 
             <a href="/Service.html" class="crumb">
@@ -806,11 +965,7 @@
         </div>
 
 
-
-        <!-- =========================
-             HERO SECTION
-             ========================= -->
-
+        <!-- HERO SECTION -->
         <section class="detail-hero">
 
             <div class="container detail-hero-grid">
@@ -826,22 +981,17 @@
                     </h1>
 
                     <div class="detail-tags">
-
                         <span>Website</span>
                         <span>Social Media</span>
                         <span>Brand Content</span>
-
                     </div>
 
                 </div>
 
-
                 <div
                     class="detail-numeral"
                     aria-hidden="true">
-
                     01
-
                 </div>
 
             </div>
@@ -849,19 +999,10 @@
         </section>
 
 
-
-        <!-- =====================================================
-             CONTENT CREATION PROCESS
-             ===================================================== -->
-
+        <!-- CONTENT CREATION PROCESS -->
         <section class="content-process">
 
             <div class="container">
-
-
-                <!-- =========================
-                     SECTION HEADING
-                     ========================= -->
 
                 <div class="process-heading">
 
@@ -881,28 +1022,14 @@
                 </div>
 
 
-
-                <!-- =================================================
-                     HORIZONTAL CONTENT + IMAGE
-                     IMPORTANT: EVERYTHING IS INSIDE process-layout
-                     ================================================= -->
-
                 <div class="process-layout">
 
-
-                    <!-- =========================
-                         LEFT — PROCESS TIMELINE
-                         ========================= -->
-
+                    <!-- PROCESS TIMELINE -->
                     <div class="process-timeline">
-
-
-                        <!-- PROCESS 01 -->
 
                         <div class="process-item">
 
                             <div class="process-icon">
-
                                 <svg
                                     viewBox="0 0 24 24"
                                     fill="none"
@@ -910,18 +1037,13 @@
                                     stroke-width="2.5"
                                     stroke-linecap="round"
                                     stroke-linejoin="round">
-
                                     <path d="M5 12l4 4L19 6"></path>
-
                                 </svg>
-
                             </div>
-
 
                             <h3>
                                 Understanding Your Brand
                             </h3>
-
 
                             <p>
                                 Before we begin writing, we take time to
@@ -934,13 +1056,9 @@
                         </div>
 
 
-
-                        <!-- PROCESS 02 -->
-
                         <div class="process-item">
 
                             <div class="process-icon">
-
                                 <svg
                                     viewBox="0 0 24 24"
                                     fill="none"
@@ -948,18 +1066,13 @@
                                     stroke-width="2.5"
                                     stroke-linecap="round"
                                     stroke-linejoin="round">
-
                                     <path d="M5 12l4 4L19 6"></path>
-
                                 </svg>
-
                             </div>
-
 
                             <h3>
                                 Research & Finding the Right Angle
                             </h3>
-
 
                             <p>
                                 We follow a thread of thought, question ideas,
@@ -972,13 +1085,9 @@
                         </div>
 
 
-
-                        <!-- PROCESS 03 -->
-
                         <div class="process-item">
 
                             <div class="process-icon">
-
                                 <svg
                                     viewBox="0 0 24 24"
                                     fill="none"
@@ -986,18 +1095,13 @@
                                     stroke-width="2.5"
                                     stroke-linecap="round"
                                     stroke-linejoin="round">
-
                                     <path d="M5 12l4 4L19 6"></path>
-
                                 </svg>
-
                             </div>
-
 
                             <h3>
                                 Creating the Content
                             </h3>
-
 
                             <p>
                                 Writing isn't simply about turning ideas into
@@ -1010,13 +1114,9 @@
                         </div>
 
 
-
-                        <!-- PROCESS 04 -->
-
                         <div class="process-item">
 
                             <div class="process-icon">
-
                                 <svg
                                     viewBox="0 0 24 24"
                                     fill="none"
@@ -1024,18 +1124,13 @@
                                     stroke-width="2.5"
                                     stroke-linecap="round"
                                     stroke-linejoin="round">
-
                                     <path d="M5 12l4 4L19 6"></path>
-
                                 </svg>
-
                             </div>
-
 
                             <h3>
                                 Developing Your Brand Voice
                             </h3>
-
 
                             <p>
                                 We build on what makes your brand distinct,
@@ -1047,13 +1142,9 @@
                         </div>
 
 
-
-                        <!-- PROCESS 05 -->
-
                         <div class="process-item">
 
                             <div class="process-icon">
-
                                 <svg
                                     viewBox="0 0 24 24"
                                     fill="none"
@@ -1061,18 +1152,13 @@
                                     stroke-width="2.5"
                                     stroke-linecap="round"
                                     stroke-linejoin="round">
-
                                     <path d="M5 12l4 4L19 6"></path>
-
                                 </svg>
-
                             </div>
-
 
                             <h3>
                                 Building a Consistent Presence
                             </h3>
-
 
                             <p>
                                 From content structure and strategy to fresh
@@ -1083,23 +1169,18 @@
 
                         </div>
 
-
                     </div>
 
 
-
-                    <!-- =========================
-                         RIGHT — ONLY ONE IMAGE
-                         ========================= -->
-
+                    <!-- RIGHT IMAGE -->
                     <div class="process-visual">
 
                         <img
                             src="/Image/Content.png"
-                            alt="Content creation and writing process illustration">
+                            alt="Content creation and writing process illustration"
+                            loading="lazy">
 
                     </div>
-
 
                 </div>
 
@@ -1108,15 +1189,10 @@
         </section>
 
 
-
-        <!-- =========================
-             WHY CHOOSE US
-             ========================= -->
-
+        <!-- WHY CHOOSE US -->
         <section class="why-us">
 
             <div class="container">
-
 
                 <div class="why-us-head">
 
@@ -1128,9 +1204,6 @@
 
 
                 <div class="why-us-grid">
-
-
-                    <!-- CARD 1 -->
 
                     <div class="why-us-card">
 
@@ -1156,11 +1229,9 @@
 
                         </div>
 
-
                         <h3>
                             High-quality research
                         </h3>
-
 
                         <p>
                             Every piece starts with understanding your
@@ -1171,9 +1242,6 @@
 
                     </div>
 
-
-
-                    <!-- CARD 2 -->
 
                     <div class="why-us-card">
 
@@ -1194,11 +1262,9 @@
 
                         </div>
 
-
                         <h3>
                             Built to work for SEO
                         </h3>
-
 
                         <p>
                             We weave keywords in naturally, so your
@@ -1209,9 +1275,6 @@
 
                     </div>
 
-
-
-                    <!-- CARD 3 -->
 
                     <div class="why-us-card">
 
@@ -1241,11 +1304,9 @@
 
                         </div>
 
-
                         <h3>
                             Real value for your investment
                         </h3>
-
 
                         <p>
                             Original, credible, and distinctly yours —
@@ -1255,7 +1316,6 @@
 
                     </div>
 
-
                 </div>
 
             </div>
@@ -1263,28 +1323,19 @@
         </section>
 
 
-
-        <!-- =========================
-             RELATED SERVICES
-             ========================= -->
-
+        <!-- RELATED SERVICES -->
         <section class="related">
 
             <div class="container">
-
 
                 <div class="related-head">
                     Explore other services
                 </div>
 
-
                 <div class="related-grid">
 
-
-                    <!-- SERVICE 02 -->
-
-                    
-                       <a  href="ContentMarketing.html"
+                    <a
+                        href="ContentMarketing.html"
                         class="related-card">
 
                         <span>
@@ -1298,11 +1349,8 @@
                     </a>
 
 
-
-                    <!-- SERVICE 03 -->
-
-                    
-                        <a href="GraphicDesign.html"
+                    <a
+                        href="GraphicDesign.html"
                         class="related-card">
 
                         <span>
@@ -1316,11 +1364,8 @@
                     </a>
 
 
-
-                    <!-- SERVICE 04 -->
-
-                    
-                       <a  href="SEOContent.html"
+                    <a
+                        href="SEOContent.html"
                         class="related-card">
 
                         <span>
@@ -1333,34 +1378,23 @@
 
                     </a>
 
-
                 </div>
 
             </div>
 
         </section>
 
-
     </main>
 
 
-
-    <!-- =========================
-         FOOTER
-         ========================= -->
-
+    <!-- FOOTER -->
     <div id="footer-placeholder"></div>
 
 
-
-    <!-- =========================
-         HEADER LOADER
-         ========================= -->
-
+    <!-- HEADER LOADER -->
     <script>
 
         fetch("/Header.html")
-
             .then(function (response) {
 
                 if (!response.ok) {
@@ -1370,20 +1404,22 @@
                 return response.text();
 
             })
-
             .then(function (data) {
 
-                document
-                    .getElementById("header-placeholder")
-                    .innerHTML = data;
+                const headerPlaceholder =
+                    document.getElementById("header-placeholder");
 
+                if (!headerPlaceholder) {
+                    return;
+                }
+
+                headerPlaceholder.innerHTML = data;
 
                 const menuButton =
                     document.getElementById("menuButton");
 
                 const mobileMenu =
                     document.getElementById("mobileMenu");
-
 
                 if (menuButton && mobileMenu) {
 
@@ -1396,12 +1432,11 @@
 
                             menuButton.setAttribute(
                                 "aria-expanded",
-                                isOpen
+                                String(isOpen)
                             );
 
                         }
                     );
-
 
                     document
                         .querySelectorAll(".mobile-menu > a")
@@ -1425,13 +1460,11 @@
 
                 }
 
-
                 const mobileApproachButton =
                     document.getElementById("mobileApproachButton");
 
                 const mobileServices =
                     document.getElementById("mobileServices");
-
 
                 if (mobileApproachButton && mobileServices) {
 
@@ -1451,7 +1484,6 @@
                 }
 
             })
-
             .catch(function (error) {
 
                 console.error(
@@ -1464,15 +1496,10 @@
     </script>
 
 
-
-    <!-- =========================
-         FOOTER LOADER
-         ========================= -->
-
+    <!-- FOOTER LOADER -->
     <script>
 
         fetch("/Footer.html")
-
             .then(function (response) {
 
                 if (!response.ok) {
@@ -1482,15 +1509,18 @@
                 return response.text();
 
             })
-
             .then(function (data) {
 
-                document
-                    .getElementById("footer-placeholder")
-                    .innerHTML = data;
+                const footerPlaceholder =
+                    document.getElementById("footer-placeholder");
+
+                if (!footerPlaceholder) {
+                    return;
+                }
+
+                footerPlaceholder.innerHTML = data;
 
             })
-
             .catch(function (error) {
 
                 console.error(
@@ -1501,7 +1531,6 @@
             });
 
     </script>
-
 
 </body>
 
