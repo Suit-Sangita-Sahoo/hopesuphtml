@@ -13,10 +13,10 @@
 
     <!-- Google Fonts -->
     <link rel="preconnect"
-          href="suitsangitasahoo@gmail.com">
+          href="https://fonts.googleapis.com">
 
     <link rel="preconnect"
-          href="suitsangitasahoo76@gmail.com"
+          href="https://fonts.gstatic.com"
           crossorigin>
 
     <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Work+Sans:wght@400;500;600;700&display=swap"
@@ -339,7 +339,7 @@
                         </span>
 
                         <strong>
-                            hello@thehopesup.com
+                            support.thehopesup@gmail.com
                         </strong>
 
                     </div>
@@ -370,7 +370,7 @@
                         </span>
 
                         <strong>
-                            +91 00000 00000
+                            +91 86586 85065
                         </strong>
 
                     </div>
@@ -564,6 +564,18 @@
 
 
 
+                    <!-- HIDDEN: destination inbox for this submission.
+                         Your EmailJS template's "To Email" field must be
+                         set to {{to_email}} in the EmailJS dashboard for
+                         this to control where the email actually lands. -->
+
+                    <input
+                        type="hidden"
+                        name="to_email"
+                        value="support.thehopesup@gmail.com">
+
+
+
                     <!-- SUBMIT -->
 
                     <button
@@ -663,14 +675,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
     /* =====================================================
        EMAILJS INIT
-       Replace "YOUR_PUBLIC_KEY" with your actual EmailJS
-       public key from https://dashboard.emailjs.com
     ===================================================== */
 
     if (typeof emailjs !== "undefined") {
 
         emailjs.init({
-            publicKey: "zTvdJjFC9DinRPVd5"
+            publicKey: "cWtNyy0aoE5MSakGW"
         });
 
     }
@@ -914,15 +924,20 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 /* Collect all form field values into one object.
                    These variable names ({{firstName}}, {{lastName}},
-                   etc.) must match exactly what you set up inside
-                   your EmailJS email template. */
+                   {{email}}, {{subject}}, {{message}}, {{to_email}})
+                   must match exactly what your EmailJS template
+                   expects. The template's "To Email" field (in the
+                   EmailJS dashboard) should be set to {{to_email}}
+                   so submissions are delivered to the address below
+                   rather than whatever is hardcoded there now. */
 
                 const formData = {
                     firstName: contactForm.firstName.value,
                     lastName: contactForm.lastName.value,
                     email: contactForm.email.value,
                     subject: contactForm.subject.value,
-                    message: contactForm.message.value
+                    message: contactForm.message.value,
+                    to_email: contactForm.to_email.value
                 };
 
 
@@ -941,8 +956,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 /* =============================================
                    SEND VIA EMAILJS
-                   Replace "YOUR_SERVICE_ID" and "YOUR_TEMPLATE_ID"
-                   with the values from your EmailJS dashboard.
                 ============================================== */
 
                 if (typeof emailjs === "undefined") {
@@ -968,8 +981,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 emailjs
                     .send(
-                        "service_ifnmx3y",
-                        "template_wk7lkxu",
+                        "service_g0gxf99",
+                        "template_4bnutre",
                         formData
                     )
                     .then(function () {
