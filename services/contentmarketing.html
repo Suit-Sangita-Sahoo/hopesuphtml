@@ -1326,47 +1326,68 @@ main > .section {
          ========================= -->
 
     <script>
-document.addEventListener("DOMContentLoaded", function () {
 
-    fetch("/Header.html")
-        .then(function (response) {
-            if (!response.ok) {
-                throw new Error("Header.html could not be loaded");
-            }
+/* =========================================================
+   LOAD REUSABLE HEADER
+========================================================= */
 
-            return response.text();
-        })
-        .then(function (html) {
+fetch("/Header.html?v=" + Date.now(), {
+    cache: "no-store"
+})
 
-            const headerPlaceholder =
-                document.getElementById("header-placeholder");
+    .then(function (response) {
 
-            if (!headerPlaceholder) return;
+        if (!response.ok) {
+            throw new Error("Header.html could not be loaded.");
+        }
 
-            headerPlaceholder.innerHTML = html;
+        return response.text();
 
-            const menuButton =
-                document.getElementById("menuButton");
+    })
 
-            const mobileMenu =
-                document.getElementById("mobileMenu");
+    .then(function (data) {
 
-            const mobileApproachButton =
-                document.getElementById("mobileApproachButton");
+        const headerPlaceholder =
+            document.getElementById("header-placeholder");
 
-            const mobileServices =
-                document.getElementById("mobileServices");
+        if (!headerPlaceholder) {
+            console.error("Header placeholder not found.");
+            return;
+        }
+
+        headerPlaceholder.innerHTML = data;
 
 
-            /* =========================================
-               OPEN / CLOSE MAIN MOBILE MENU
-            ========================================= */
+        /* =================================================
+           ELEMENTS
+        ================================================= */
 
-            if (menuButton && mobileMenu) {
+        const menuButton =
+            document.getElementById("menuButton");
 
-                menuButton.addEventListener("click", function (event) {
+        const mobileMenu =
+            document.getElementById("mobileMenu");
 
-                    event.stopPropagation();
+        const mobileApproachButton =
+            document.getElementById(
+                "mobileApproachButton"
+            );
+
+        const mobileServices =
+            document.getElementById(
+                "mobileServices"
+            );
+
+
+        /* =================================================
+           MOBILE MENU
+        ================================================= */
+
+        if (menuButton && mobileMenu) {
+
+            menuButton.addEventListener(
+                "click",
+                function () {
 
                     const isOpen =
                         mobileMenu.classList.toggle("show");
@@ -1378,64 +1399,50 @@ document.addEventListener("DOMContentLoaded", function () {
 
                     menuButton.setAttribute(
                         "aria-label",
-                        isOpen ? "Close menu" : "Open menu"
+                        isOpen
+                            ? "Close menu"
+                            : "Open menu"
                     );
 
-                });
-
-            }
-
-
-            /* =========================================
-               OPEN / CLOSE MOBILE SERVICES
-            ========================================= */
-
-            if (mobileApproachButton && mobileServices) {
-
-                mobileApproachButton.addEventListener(
-                    "click",
-                    function (event) {
-
-                        event.stopPropagation();
-
-                        const isOpen =
-                            mobileServices.classList.toggle("show");
-
-                        mobileApproachButton.setAttribute(
-                            "aria-expanded",
-                            String(isOpen)
-                        );
-
-                    }
-                );
-
-            }
+                }
+            );
 
 
-            /* =========================================
-               CLOSE MENU AFTER CLICKING ANY LINK
-            ========================================= */
+            /* =============================================
+               CLOSE MENU AFTER LINK CLICK
+            ============================================== */
 
-            if (mobileMenu) {
+            mobileMenu
+                .querySelectorAll("a")
+                .forEach(function (link) {
 
-                mobileMenu.querySelectorAll("a").forEach(function (link) {
+                    link.addEventListener(
+                        "click",
+                        function () {
 
-                    link.addEventListener("click", function () {
+                            mobileMenu.classList.remove("show");
 
-                        mobileMenu.classList.remove("show");
 
-                        if (mobileServices) {
-                            mobileServices.classList.remove("show");
-                        }
+                            if (mobileServices) {
+                                mobileServices.classList.remove(
+                                    "show"
+                                );
+                            }
 
-                        if (mobileApproachButton) {
-                            mobileApproachButton.setAttribute(
-                                "aria-expanded",
-                                "false"
-                            );
-                        }
 
-                        if (menuButton) {
+                            if (mobileApproachButton) {
+
+                                mobileApproachButton.classList.remove(
+                                    "open"
+                                );
+
+                                mobileApproachButton.setAttribute(
+                                    "aria-expanded",
+                                    "false"
+                                );
+
+                            }
+
 
                             menuButton.setAttribute(
                                 "aria-expanded",
@@ -1448,122 +1455,100 @@ document.addEventListener("DOMContentLoaded", function () {
                             );
 
                         }
-
-                    });
+                    );
 
                 });
 
-            }
+        }
 
 
-            /* =========================================
-               CLOSE MENU WHEN CLICKING OUTSIDE
-            ========================================= */
+        /* =================================================
+           MOBILE SERVICES DROPDOWN
+        ================================================= */
 
-            document.addEventListener("click", function (event) {
+        if (
+            mobileApproachButton &&
+            mobileServices
+        ) {
 
-                if (
-                    mobileMenu &&
-                    menuButton &&
-                    !mobileMenu.contains(event.target) &&
-                    !menuButton.contains(event.target)
-                ) {
+            mobileApproachButton.addEventListener(
+                "click",
+                function () {
 
-                    mobileMenu.classList.remove("show");
+                    const isOpen =
+                        mobileServices.classList.toggle("show");
 
-                    if (mobileServices) {
-                        mobileServices.classList.remove("show");
-                    }
+                    mobileApproachButton.classList.toggle(
+                        "open",
+                        isOpen
+                    );
 
-                    menuButton.setAttribute(
+                    mobileApproachButton.setAttribute(
                         "aria-expanded",
-                        "false"
-                    );
-
-                    menuButton.setAttribute(
-                        "aria-label",
-                        "Open menu"
+                        String(isOpen)
                     );
 
                 }
+            );
 
-            });
+        }
 
-        })
-        .catch(function (error) {
-            console.error("Header loading error:", error);
-        });
+    })
 
 
-    /* =========================================
-       LOAD FOOTER
-    ========================================= */
+    .catch(function (error) {
 
-    fetch("/Footer.html")
-        .then(function (response) {
-            if (!response.ok) {
-                throw new Error("Footer.html could not be loaded");
-            }
+        console.error(
+            "Header loading error:",
+            error
+        );
 
-            return response.text();
-        })
-        .then(function (html) {
+    });
 
-            const footerPlaceholder =
-                document.getElementById("footer-placeholder");
 
-            if (footerPlaceholder) {
-                footerPlaceholder.innerHTML = html;
-            }
 
-        })
-        .catch(function (error) {
-            console.error("Footer loading error:", error);
-        });
+/* =========================================================
+   LOAD REUSABLE FOOTER
+========================================================= */
 
-});
+fetch("/Footer.html?v=" + Date.now(), {
+    cache: "no-store"
+})
+
+    .then(function (response) {
+
+        if (!response.ok) {
+            throw new Error("Footer.html could not be loaded.");
+        }
+
+        return response.text();
+
+    })
+
+    .then(function (data) {
+
+        const footerPlaceholder =
+            document.getElementById("footer-placeholder");
+
+        if (!footerPlaceholder) {
+            console.error("Footer placeholder not found.");
+            return;
+        }
+
+        footerPlaceholder.innerHTML = data;
+
+    })
+
+    .catch(function (error) {
+
+        console.error(
+            "Footer loading error:",
+            error
+        );
+
+    });
+
 </script>
-
-
-    <!-- =========================
-         FOOTER LOADER
-         ========================= -->
-
-    <script>
-
-        fetch("/Footer.html")
-
-            .then(function (response) {
-
-                if (!response.ok) {
-                    throw new Error(
-                        "Footer.html could not be loaded."
-                    );
-                }
-
-                return response.text();
-
-            })
-
-            .then(function (data) {
-
-                document
-                    .getElementById("footer-placeholder")
-                    .innerHTML = data;
-
-            })
-
-            .catch(function (error) {
-
-                console.error(
-                    "Footer loading error:",
-                    error
-                );
-
-            });
-
-    </script>
-
 </body>
 
 </html>
