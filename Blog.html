@@ -1291,288 +1291,198 @@
 
 <script>
 
-document.addEventListener("DOMContentLoaded", function () {
-
-
-    /* =====================================================
-       LOAD HEADER
-    ===================================================== */
-
-    fetch("/Header.html")
-
-        .then(function (response) {
-
-            if (!response.ok) {
-                throw new Error(
-                    "Header.html could not be loaded."
-                );
-            }
-
-            return response.text();
-
-        })
-
-        .then(function (data) {
-
-            const headerPlaceholder =
-                document.getElementById(
-                    "header-placeholder"
-                );
-
-
-            if (!headerPlaceholder) {
-                return;
-            }
-
-
-            headerPlaceholder.innerHTML = data;
-
-
-
-            /* =================================================
-               LUCIDE ICONS
-            ================================================= */
-
-            if (
-                typeof lucide !== "undefined" &&
-                typeof lucide.createIcons === "function"
-            ) {
-
-                lucide.createIcons();
-
-            }
-
-
-
-            /* =================================================
-               MOBILE MENU
-            ================================================= */
-
-            const menuButton =
-                document.getElementById(
-                    "menuButton"
-                );
-
-            const mobileMenu =
-                document.getElementById(
-                    "mobileMenu"
-                );
-
-
-            if (menuButton && mobileMenu) {
-
-
-                menuButton.setAttribute(
-                    "aria-expanded",
-                    "false"
-                );
-
-
-                menuButton.addEventListener(
-                    "click",
-                    function () {
-
-
-                        const isOpen =
-                            mobileMenu.classList.toggle(
-                                "show"
-                            );
-
-
-                        menuButton.setAttribute(
-                            "aria-expanded",
-                            String(isOpen)
-                        );
-
-
-                        document.body.classList.toggle(
-                            "menu-open",
-                            isOpen
-                        );
-
-                    }
-                );
-
-
-
-                /* CLOSE MOBILE MENU AFTER LINK CLICK */
-
-                const mobileLinks =
-                    mobileMenu.querySelectorAll(
-                        "a"
-                    );
-
-
-                mobileLinks.forEach(
-                    function (link) {
-
-                        link.addEventListener(
-                            "click",
-                            function () {
-
-                                mobileMenu.classList.remove(
-                                    "show"
-                                );
-
-
-                                menuButton.setAttribute(
-                                    "aria-expanded",
-                                    "false"
-                                );
-
-
-                                document.body.classList.remove(
-                                    "menu-open"
-                                );
-
-                            }
-                        );
-
-                    }
-                );
-
-            }
-
-
-
-            /* =================================================
-               MOBILE APPROACH / SERVICES
-            ================================================= */
-
-            const mobileApproachButton =
-                document.getElementById(
-                    "mobileApproachButton"
-                );
-
-            const mobileServices =
-                document.getElementById(
-                    "mobileServices"
-                );
-
-
-            if (
-                mobileApproachButton &&
-                mobileServices
-            ) {
-
-                mobileApproachButton.addEventListener(
-                    "click",
-                    function () {
-
-                        mobileServices.classList.toggle(
-                            "show"
-                        );
-
-
-                        mobileApproachButton.classList.toggle(
-                            "open"
-                        );
-
-                    }
-                );
-
-            }
-
-        })
-
-        .catch(function (error) {
-
-            console.error(
-                "Header loading error:",
-                error
-            );
-
-        });
-
-
-
-    /* =====================================================
-       NEWSLETTER
-    ===================================================== */
-
-    const newsletterForm =
-        document.getElementById(
-            "newsletterForm"
-        );
-
-
-    if (newsletterForm) {
-
-        newsletterForm.addEventListener(
-            "submit",
-            function (event) {
-
-                event.preventDefault();
-
-
-                const emailInput =
-                    document.getElementById(
-                        "email"
-                    );
-
-
-                if (!emailInput) {
-                    return;
-                }
-
-
-                const email =
-                    emailInput.value.trim();
-
-
-                if (email) {
-
-                    alert(
-                        "Thank you for subscribing to The HopeSup!"
-                    );
-
-
-                    newsletterForm.reset();
-
-                }
-
-            }
-        );
-
-    }
-
-
-
-    /* =====================================================
-       INITIAL LUCIDE ICONS
-    ===================================================== */
-
-    if (
-        typeof lucide !== "undefined" &&
-        typeof lucide.createIcons === "function"
-    ) {
-
-        lucide.createIcons();
-
-    }
-
-});
-
-</script>
-
-
-
-<!-- =====================================================
-     LOAD FOOTER
-====================================================== -->
-
-<script>
-
-fetch("/Footer.html")
+/* =========================================================
+   LOAD REUSABLE HEADER
+========================================================= */
+
+fetch("/Header.html?v=" + Date.now(), {
+    cache: "no-store"
+})
 
     .then(function (response) {
 
         if (!response.ok) {
+            throw new Error("Header.html could not be loaded.");
+        }
 
-            throw new Error(
-                "Footer.html could not be loaded."
+        return response.text();
+
+    })
+
+    .then(function (data) {
+
+        const headerPlaceholder =
+            document.getElementById("header-placeholder");
+
+        if (!headerPlaceholder) {
+            console.error("Header placeholder not found.");
+            return;
+        }
+
+        headerPlaceholder.innerHTML = data;
+
+
+        /* =================================================
+           ELEMENTS
+        ================================================= */
+
+        const menuButton =
+            document.getElementById("menuButton");
+
+        const mobileMenu =
+            document.getElementById("mobileMenu");
+
+        const mobileApproachButton =
+            document.getElementById(
+                "mobileApproachButton"
             );
 
+        const mobileServices =
+            document.getElementById(
+                "mobileServices"
+            );
+
+
+        /* =================================================
+           MOBILE MENU
+        ================================================= */
+
+        if (menuButton && mobileMenu) {
+
+            menuButton.addEventListener(
+                "click",
+                function () {
+
+                    const isOpen =
+                        mobileMenu.classList.toggle("show");
+
+                    menuButton.setAttribute(
+                        "aria-expanded",
+                        String(isOpen)
+                    );
+
+                    menuButton.setAttribute(
+                        "aria-label",
+                        isOpen
+                            ? "Close menu"
+                            : "Open menu"
+                    );
+
+                }
+            );
+
+
+            /* =============================================
+               CLOSE MENU AFTER LINK CLICK
+            ============================================== */
+
+            mobileMenu
+                .querySelectorAll("a")
+                .forEach(function (link) {
+
+                    link.addEventListener(
+                        "click",
+                        function () {
+
+                            mobileMenu.classList.remove("show");
+
+
+                            if (mobileServices) {
+                                mobileServices.classList.remove(
+                                    "show"
+                                );
+                            }
+
+
+                            if (mobileApproachButton) {
+
+                                mobileApproachButton.classList.remove(
+                                    "open"
+                                );
+
+                                mobileApproachButton.setAttribute(
+                                    "aria-expanded",
+                                    "false"
+                                );
+
+                            }
+
+
+                            menuButton.setAttribute(
+                                "aria-expanded",
+                                "false"
+                            );
+
+                            menuButton.setAttribute(
+                                "aria-label",
+                                "Open menu"
+                            );
+
+                        }
+                    );
+
+                });
+
+        }
+
+
+        /* =================================================
+           MOBILE SERVICES DROPDOWN
+        ================================================= */
+
+        if (
+            mobileApproachButton &&
+            mobileServices
+        ) {
+
+            mobileApproachButton.addEventListener(
+                "click",
+                function () {
+
+                    const isOpen =
+                        mobileServices.classList.toggle("show");
+
+                    mobileApproachButton.classList.toggle(
+                        "open",
+                        isOpen
+                    );
+
+                    mobileApproachButton.setAttribute(
+                        "aria-expanded",
+                        String(isOpen)
+                    );
+
+                }
+            );
+
+        }
+
+    })
+
+
+    .catch(function (error) {
+
+        console.error(
+            "Header loading error:",
+            error
+        );
+
+    });
+
+
+
+/* =========================================================
+   LOAD REUSABLE FOOTER
+========================================================= */
+
+fetch("/Footer.html?v=" + Date.now(), {
+    cache: "no-store"
+})
+
+    .then(function (response) {
+
+        if (!response.ok) {
+            throw new Error("Footer.html could not be loaded.");
         }
 
         return response.text();
@@ -1582,16 +1492,14 @@ fetch("/Footer.html")
     .then(function (data) {
 
         const footerPlaceholder =
-            document.getElementById(
-                "footer-placeholder"
-            );
+            document.getElementById("footer-placeholder");
 
-
-        if (footerPlaceholder) {
-
-            footerPlaceholder.innerHTML = data;
-
+        if (!footerPlaceholder) {
+            console.error("Footer placeholder not found.");
+            return;
         }
+
+        footerPlaceholder.innerHTML = data;
 
     })
 
@@ -1605,7 +1513,6 @@ fetch("/Footer.html")
     });
 
 </script>
-
 
 </body>
 </html>

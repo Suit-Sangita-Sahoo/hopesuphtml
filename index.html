@@ -1022,17 +1022,22 @@
        LOAD REUSABLE HEADER
     ========================================================== */
 
-    fetch("Header.html")
+    /* =========================================================
+   LOAD REUSABLE HEADER
+========================================================== */
 
-        .then(function (response) {
+fetch("Header.html?v=" + Date.now(), {
+    cache: "no-store"
+})
+    .then(function (response) {
 
-            if (!response.ok) {
-                throw new Error("Header.html could not be loaded.");
-            }
+        if (!response.ok) {
+            throw new Error("Header.html could not be loaded.");
+        }
 
-            return response.text();
+        return response.text();
 
-        })
+    })
 
 
         .then(function (data) {

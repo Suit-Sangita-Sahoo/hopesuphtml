@@ -667,411 +667,20 @@
 <!-- =====================================================
      JAVASCRIPT
 ====================================================== -->
-
 <script>
 
-document.addEventListener("DOMContentLoaded", function () {
-
-
-    /* =====================================================
-       EMAILJS INIT
-    ===================================================== */
-
-    if (typeof emailjs !== "undefined") {
-
-        emailjs.init({
-            publicKey: "cWtNyy0aoE5MSakGW"
-        });
-
-    }
-
-
-
-    /* =====================================================
-       LOAD SHARED HEADER
-    ===================================================== */
-
-    fetch("/Header.html")
-
-        .then(function (response) {
-
-            if (!response.ok) {
-
-                throw new Error(
-                    "Header.html could not be loaded."
-                );
-
-            }
-
-            return response.text();
-
-        })
-
-        .then(function (html) {
-
-
-            const headerPlaceholder =
-                document.getElementById(
-                    "header-placeholder"
-                );
-
-
-            if (!headerPlaceholder) {
-                return;
-            }
-
-
-            headerPlaceholder.innerHTML = html;
-
-
-
-            /* =================================================
-               LUCIDE ICONS
-            ================================================= */
-
-            if (
-                typeof lucide !== "undefined" &&
-                typeof lucide.createIcons === "function"
-            ) {
-
-                lucide.createIcons();
-
-            }
-
-
-
-            /* =================================================
-               MOBILE MENU
-            ================================================= */
-
-            const menuButton =
-                document.getElementById(
-                    "menuButton"
-                );
-
-
-            const mobileMenu =
-                document.getElementById(
-                    "mobileMenu"
-                );
-
-
-            if (menuButton && mobileMenu) {
-
-
-                menuButton.setAttribute(
-                    "aria-expanded",
-                    "false"
-                );
-
-
-                menuButton.addEventListener(
-                    "click",
-                    function () {
-
-
-                        const isOpen =
-                            mobileMenu.classList.toggle(
-                                "show"
-                            );
-
-
-                        menuButton.setAttribute(
-                            "aria-expanded",
-                            String(isOpen)
-                        );
-
-
-                        document.body.classList.toggle(
-                            "menu-open",
-                            isOpen
-                        );
-
-
-                    }
-                );
-
-
-
-                /* CLOSE MENU AFTER LINK CLICK */
-
-                mobileMenu
-                    .querySelectorAll("a")
-                    .forEach(function (link) {
-
-                        link.addEventListener(
-                            "click",
-                            function () {
-
-                                mobileMenu.classList.remove(
-                                    "show"
-                                );
-
-
-                                menuButton.setAttribute(
-                                    "aria-expanded",
-                                    "false"
-                                );
-
-
-                                document.body.classList.remove(
-                                    "menu-open"
-                                );
-
-                            }
-                        );
-
-                    });
-
-            }
-
-
-
-            /* =================================================
-               MOBILE SERVICES
-            ================================================= */
-
-            const mobileApproachButton =
-                document.getElementById(
-                    "mobileApproachButton"
-                );
-
-
-            const mobileServices =
-                document.getElementById(
-                    "mobileServices"
-                );
-
-
-            if (
-                mobileApproachButton &&
-                mobileServices
-            ) {
-
-
-                mobileApproachButton.addEventListener(
-                    "click",
-                    function () {
-
-
-                        mobileServices.classList.toggle(
-                            "show"
-                        );
-
-
-                        mobileApproachButton.classList.toggle(
-                            "open"
-                        );
-
-
-                    }
-                );
-
-            }
-
-
-        })
-
-
-        .catch(function (error) {
-
-            console.error(
-                "Header loading error:",
-                error
-            );
-
-        });
-
-
-
-    /* =====================================================
-       CONTACT FORM — SENDS ALL FIELDS IN ONE EMAIL
-       via EmailJS (no backend server required)
-    ===================================================== */
-
-    const contactForm =
-        document.getElementById(
-            "contact-form"
-        );
-
-
-    if (contactForm) {
-
-
-        contactForm.addEventListener(
-            "submit",
-            function (event) {
-
-
-                event.preventDefault();
-
-
-                const status =
-                    document.getElementById(
-                        "form-status"
-                    );
-
-                const submitButton =
-                    contactForm.querySelector(
-                        ".submit-button"
-                    );
-
-                const submitButtonText =
-                    contactForm.querySelector(
-                        ".submit-button-text"
-                    );
-
-
-                /* Collect all form field values into one object.
-                   These variable names ({{firstName}}, {{lastName}},
-                   {{email}}, {{subject}}, {{message}}, {{to_email}})
-                   must match exactly what your EmailJS template
-                   expects. The template's "To Email" field (in the
-                   EmailJS dashboard) should be set to {{to_email}}
-                   so submissions are delivered to the address below
-                   rather than whatever is hardcoded there now. */
-
-                const formData = {
-                    firstName: contactForm.firstName.value,
-                    lastName: contactForm.lastName.value,
-                    email: contactForm.email.value,
-                    subject: contactForm.subject.value,
-                    message: contactForm.message.value,
-                    to_email: contactForm.to_email.value
-                };
-
-
-                if (submitButton) {
-                    submitButton.disabled = true;
-                }
-
-                if (submitButtonText) {
-                    submitButtonText.textContent = "Sending...";
-                }
-
-                if (status) {
-                    status.classList.remove("show", "error");
-                }
-
-
-                /* =============================================
-                   SEND VIA EMAILJS
-                ============================================== */
-
-                if (typeof emailjs === "undefined") {
-
-                    if (status) {
-                        status.textContent =
-                            "Something went wrong. Please email us directly instead.";
-                        status.classList.add("show", "error");
-                    }
-
-                    if (submitButton) {
-                        submitButton.disabled = false;
-                    }
-
-                    if (submitButtonText) {
-                        submitButtonText.textContent = "Send message";
-                    }
-
-                    return;
-
-                }
-
-
-                emailjs
-                    .send(
-                        "service_g0gxf99",
-                        "template_4bnutre",
-                        formData
-                    )
-                    .then(function () {
-
-                        if (status) {
-
-                            status.textContent =
-                                "Thank you! Your message has been received.";
-
-                            status.classList.remove("error");
-                            status.classList.add("show");
-
-                        }
-
-                        contactForm.reset();
-
-                    })
-                    .catch(function (error) {
-
-                        console.error(
-                            "EmailJS send error:",
-                            error
-                        );
-
-                        if (status) {
-
-                            status.textContent =
-                                "Sorry, something went wrong. Please try again or email us directly.";
-
-                            status.classList.add("show", "error");
-
-                        }
-
-                    })
-                    .finally(function () {
-
-                        if (submitButton) {
-                            submitButton.disabled = false;
-                        }
-
-                        if (submitButtonText) {
-                            submitButtonText.textContent = "Send message";
-                        }
-
-                    });
-
-
-            }
-        );
-
-    }
-
-
-
-    /* =====================================================
-       INITIAL LUCIDE ICONS
-    ===================================================== */
-
-    if (
-        typeof lucide !== "undefined" &&
-        typeof lucide.createIcons === "function"
-    ) {
-
-        lucide.createIcons();
-
-    }
-
-});
-
-</script>
-
-
-
-<!-- =====================================================
-     LOAD FOOTER
-====================================================== -->
-
-<script>
-
-fetch("/Footer.html")
+/* =========================================================
+   LOAD REUSABLE HEADER
+========================================================= */
+
+fetch("/Header.html?v=" + Date.now(), {
+    cache: "no-store"
+})
 
     .then(function (response) {
 
         if (!response.ok) {
-
-            throw new Error(
-                "Footer.html could not be loaded."
-            );
-
+            throw new Error("Header.html could not be loaded.");
         }
 
         return response.text();
@@ -1080,18 +689,195 @@ fetch("/Footer.html")
 
     .then(function (data) {
 
+        const headerPlaceholder =
+            document.getElementById("header-placeholder");
 
-        const footerPlaceholder =
+        if (!headerPlaceholder) {
+            console.error("Header placeholder not found.");
+            return;
+        }
+
+        headerPlaceholder.innerHTML = data;
+
+
+        /* =================================================
+           ELEMENTS
+        ================================================= */
+
+        const menuButton =
+            document.getElementById("menuButton");
+
+        const mobileMenu =
+            document.getElementById("mobileMenu");
+
+        const mobileApproachButton =
             document.getElementById(
-                "footer-placeholder"
+                "mobileApproachButton"
+            );
+
+        const mobileServices =
+            document.getElementById(
+                "mobileServices"
             );
 
 
-        if (footerPlaceholder) {
+        /* =================================================
+           MOBILE MENU
+        ================================================= */
 
-            footerPlaceholder.innerHTML = data;
+        if (menuButton && mobileMenu) {
+
+            menuButton.addEventListener(
+                "click",
+                function () {
+
+                    const isOpen =
+                        mobileMenu.classList.toggle("show");
+
+                    menuButton.setAttribute(
+                        "aria-expanded",
+                        String(isOpen)
+                    );
+
+                    menuButton.setAttribute(
+                        "aria-label",
+                        isOpen
+                            ? "Close menu"
+                            : "Open menu"
+                    );
+
+                }
+            );
+
+
+            /* =============================================
+               CLOSE MENU AFTER LINK CLICK
+            ============================================== */
+
+            mobileMenu
+                .querySelectorAll("a")
+                .forEach(function (link) {
+
+                    link.addEventListener(
+                        "click",
+                        function () {
+
+                            mobileMenu.classList.remove("show");
+
+
+                            if (mobileServices) {
+                                mobileServices.classList.remove(
+                                    "show"
+                                );
+                            }
+
+
+                            if (mobileApproachButton) {
+
+                                mobileApproachButton.classList.remove(
+                                    "open"
+                                );
+
+                                mobileApproachButton.setAttribute(
+                                    "aria-expanded",
+                                    "false"
+                                );
+
+                            }
+
+
+                            menuButton.setAttribute(
+                                "aria-expanded",
+                                "false"
+                            );
+
+                            menuButton.setAttribute(
+                                "aria-label",
+                                "Open menu"
+                            );
+
+                        }
+                    );
+
+                });
 
         }
+
+
+        /* =================================================
+           MOBILE SERVICES DROPDOWN
+        ================================================= */
+
+        if (
+            mobileApproachButton &&
+            mobileServices
+        ) {
+
+            mobileApproachButton.addEventListener(
+                "click",
+                function () {
+
+                    const isOpen =
+                        mobileServices.classList.toggle("show");
+
+                    mobileApproachButton.classList.toggle(
+                        "open",
+                        isOpen
+                    );
+
+                    mobileApproachButton.setAttribute(
+                        "aria-expanded",
+                        String(isOpen)
+                    );
+
+                }
+            );
+
+        }
+
+    })
+
+
+    .catch(function (error) {
+
+        console.error(
+            "Header loading error:",
+            error
+        );
+
+    });
+
+
+
+/* =========================================================
+   LOAD REUSABLE FOOTER
+========================================================= */
+
+fetch("/Footer.html?v=" + Date.now(), {
+    cache: "no-store"
+})
+
+    .then(function (response) {
+
+        if (!response.ok) {
+            throw new Error("Footer.html could not be loaded.");
+        }
+
+        return response.text();
+
+    })
+
+    .then(function (data) {
+
+        const footerPlaceholder =
+            document.getElementById("footer-placeholder");
+
+        if (!footerPlaceholder) {
+            console.error("Footer placeholder not found.");
+            return;
+        }
+
+        footerPlaceholder.innerHTML = data;
 
     })
 
@@ -1105,6 +891,7 @@ fetch("/Footer.html")
     });
 
 </script>
+
 
 
 </body>

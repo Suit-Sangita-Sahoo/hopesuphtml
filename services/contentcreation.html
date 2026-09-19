@@ -1393,176 +1393,228 @@
 
     <!-- HEADER LOADER -->
     <script>
-    fetch("/Header.html")
-        .then(function (response) {
 
-            if (!response.ok) {
-                throw new Error("Header.html could not be loaded.");
+/* =========================================================
+   LOAD REUSABLE HEADER
+========================================================= */
 
-            }
+fetch("/Header.html?v=" + Date.now(), {
+    cache: "no-store"
+})
 
-            return response.text();
+    .then(function (response) {
 
-        })
-        .then(function (data) {
+        if (!response.ok) {
+            throw new Error("Header.html could not be loaded.");
+        }
 
-            const headerPlaceholder =
-                document.getElementById("header-placeholder");
+        return response.text();
 
-            if (!headerPlaceholder) {
-                return;
-            }
+    })
 
-            headerPlaceholder.innerHTML = data;
+    .then(function (data) {
 
+        const headerPlaceholder =
+            document.getElementById("header-placeholder");
 
-            const menuButton =
-                document.getElementById("menuButton");
+        if (!headerPlaceholder) {
+            console.error("Header placeholder not found.");
+            return;
+        }
 
-            const mobileMenu =
-                document.getElementById("mobileMenu");
-
-
-            /* MOBILE MAIN MENU */
-            if (menuButton && mobileMenu) {
-
-                menuButton.addEventListener(
-                    "click",
-                    function () {
-
-                        const isOpen =
-                            mobileMenu.classList.toggle("show");
-
-                        menuButton.setAttribute(
-                            "aria-expanded",
-                            String(isOpen)
-                        );
-
-                        menuButton.setAttribute(
-                            "aria-label",
-                            isOpen
-                                ? "Close menu"
-                                : "Open menu"
-                        );
-
-                    }
-                );
+        headerPlaceholder.innerHTML = data;
 
 
-                /* CLOSE MENU AFTER CLICKING A LINK */
-                mobileMenu
-                    .querySelectorAll("a")
-                    .forEach(function (link) {
+        /* =================================================
+           ELEMENTS
+        ================================================= */
 
-                        link.addEventListener(
-                            "click",
-                            function () {
+        const menuButton =
+            document.getElementById("menuButton");
 
-                                mobileMenu.classList.remove("show");
+        const mobileMenu =
+            document.getElementById("mobileMenu");
 
-                                menuButton.setAttribute(
+        const mobileApproachButton =
+            document.getElementById(
+                "mobileApproachButton"
+            );
+
+        const mobileServices =
+            document.getElementById(
+                "mobileServices"
+            );
+
+
+        /* =================================================
+           MOBILE MENU
+        ================================================= */
+
+        if (menuButton && mobileMenu) {
+
+            menuButton.addEventListener(
+                "click",
+                function () {
+
+                    const isOpen =
+                        mobileMenu.classList.toggle("show");
+
+                    menuButton.setAttribute(
+                        "aria-expanded",
+                        String(isOpen)
+                    );
+
+                    menuButton.setAttribute(
+                        "aria-label",
+                        isOpen
+                            ? "Close menu"
+                            : "Open menu"
+                    );
+
+                }
+            );
+
+
+            /* =============================================
+               CLOSE MENU AFTER LINK CLICK
+            ============================================== */
+
+            mobileMenu
+                .querySelectorAll("a")
+                .forEach(function (link) {
+
+                    link.addEventListener(
+                        "click",
+                        function () {
+
+                            mobileMenu.classList.remove("show");
+
+
+                            if (mobileServices) {
+                                mobileServices.classList.remove(
+                                    "show"
+                                );
+                            }
+
+
+                            if (mobileApproachButton) {
+
+                                mobileApproachButton.classList.remove(
+                                    "open"
+                                );
+
+                                mobileApproachButton.setAttribute(
                                     "aria-expanded",
                                     "false"
                                 );
 
-                                menuButton.setAttribute(
-                                    "aria-label",
-                                    "Open menu"
-                                );
-
                             }
-                        );
-
-                    });
-
-            }
 
 
-            /* MOBILE APPROACH DROPDOWN */
-            const mobileApproachButton =
-                document.getElementById("mobileApproachButton");
+                            menuButton.setAttribute(
+                                "aria-expanded",
+                                "false"
+                            );
 
-            const mobileServices =
-                document.getElementById("mobileServices");
+                            menuButton.setAttribute(
+                                "aria-label",
+                                "Open menu"
+                            );
 
-            const mobileApproach =
-                document.querySelector(".mobile-approach");
+                        }
+                    );
+
+                });
+
+        }
 
 
-            if (
-                mobileApproachButton &&
-                mobileServices &&
-                mobileApproach
-            ) {
+        /* =================================================
+           MOBILE SERVICES DROPDOWN
+        ================================================= */
 
-                mobileApproachButton.addEventListener(
-                    "click",
-                    function () {
+        if (
+            mobileApproachButton &&
+            mobileServices
+        ) {
 
-                        const isOpen =
-                            mobileServices.classList.toggle("show");
+            mobileApproachButton.addEventListener(
+                "click",
+                function () {
 
-                        mobileApproach.classList.toggle(
-                            "open",
-                            isOpen
-                        );
+                    const isOpen =
+                        mobileServices.classList.toggle("show");
 
-                        mobileApproachButton.setAttribute(
-                            "aria-expanded",
-                            String(isOpen)
-                        );
+                    mobileApproachButton.classList.toggle(
+                        "open",
+                        isOpen
+                    );
 
-                    }
-                );
+                    mobileApproachButton.setAttribute(
+                        "aria-expanded",
+                        String(isOpen)
+                    );
 
-            }
-
-        })
-        .catch(function (error) {
-
-            console.error(
-                "Header loading error:",
-                error
+                }
             );
 
-        });
+        }
+
+    })
+
+
+    .catch(function (error) {
+
+        console.error(
+            "Header loading error:",
+            error
+        );
+
+    });
+
+
+
+/* =========================================================
+   LOAD REUSABLE FOOTER
+========================================================= */
+
+fetch("/Footer.html?v=" + Date.now(), {
+    cache: "no-store"
+})
+
+    .then(function (response) {
+
+        if (!response.ok) {
+            throw new Error("Footer.html could not be loaded.");
+        }
+
+        return response.text();
+
+    })
+
+    .then(function (data) {
+
+        const footerPlaceholder =
+            document.getElementById("footer-placeholder");
+
+        if (!footerPlaceholder) {
+            console.error("Footer placeholder not found.");
+            return;
+        }
+
+        footerPlaceholder.innerHTML = data;
+
+    })
+
+    .catch(function (error) {
+
+        console.error(
+            "Footer loading error:",
+            error
+        );
+
+    });
+
 </script>
-    <!-- FOOTER LOADER -->
-    <script>
-
-        fetch("/Footer.html")
-            .then(function (response) {
-
-                if (!response.ok) {
-                    throw new Error("Footer.html could not be loaded.");
-                }
-
-                return response.text();
-
-            })
-            .then(function (data) {
-
-                const footerPlaceholder =
-                    document.getElementById("footer-placeholder");
-
-                if (!footerPlaceholder) {
-                    return;
-                }
-
-                footerPlaceholder.innerHTML = data;
-
-            })
-            .catch(function (error) {
-
-                console.error(
-                    "Footer loading error:",
-                    error
-                );
-
-            });
-
-    </script>
-
 </body>
-
 </html>

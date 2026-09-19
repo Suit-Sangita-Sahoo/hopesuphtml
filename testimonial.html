@@ -663,141 +663,899 @@
          HEADER LOADER
          ========================= -->
 
-    <script>
+    <!DOCTYPE html>
+<html lang="en">
 
-        fetch("/Header.html")
+<head>
 
-            .then(function (response) {
+    <meta charset="UTF-8">
 
-                if (!response.ok) {
-                    throw new Error("Header.html could not be loaded.");
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Contact — The HopeSup</title>
+
+
+    <!-- Google Fonts -->
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Work+Sans:wght@400;500;600;700&display=swap"
+          rel="stylesheet">
+
+
+    <!-- Common CSS -->
+    <link rel="stylesheet"
+          href="/Style/common.css">
+
+
+    <!-- Contact CSS -->
+    <link rel="stylesheet"
+          href="/Style/Contact.css">
+
+
+    <!-- Footer CSS -->
+    <link rel="stylesheet"
+          href="/Style/Footer.css">
+
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+
+    <!-- EmailJS -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     SHARED HEADER
+====================================================== -->
+
+<div id="header-placeholder"></div>
+
+
+
+<!-- =====================================================
+     MAIN
+====================================================== -->
+
+<main>
+
+
+<!-- =====================================================
+     HERO
+====================================================== -->
+
+<section class="contact-hero">
+
+    <div class="container">
+
+        <div class="contact-hero-grid">
+
+
+            <!-- LEFT HERO CONTENT -->
+
+            <div class="hero-content">
+
+                <p class="small-label">
+                    Contact The HopeSup
+                </p>
+
+
+                <h1>
+
+                    Let's start a
+
+                    <span>
+                        meaningful
+                        conversation.
+                    </span>
+
+                </h1>
+
+
+                <p class="hero-description">
+
+                    Have a question, an idea,
+                    a collaboration opportunity
+                    or simply want to say hello?
+
+                    We'd love to hear from you.
+
+                </p>
+
+
+                <div class="hero-buttons">
+
+
+                    <a href="#contact-form-section"
+                       class="btn btn-dark">
+
+                        Send a message
+
+                        <i data-lucide="arrow-down"
+                           width="17">
+                        </i>
+
+                    </a>
+
+
+                    <a href="mailto:hello@thehopesup.com"
+                       class="btn btn-outline">
+
+                        Email us
+
+                        <i data-lucide="arrow-up-right"
+                           width="17">
+                        </i>
+
+                    </a>
+
+
+                </div>
+
+            </div>
+
+
+
+            <!-- RIGHT ANIMATED IMAGE -->
+
+            <div class="contact-visual">
+
+
+                <div class="visual-glow"></div>
+
+
+                <div class="orbit orbit-one"></div>
+
+                <div class="orbit orbit-two"></div>
+
+
+                <div class="visual-image">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1000&q=85"
+                        alt="Creative workspace">
+
+                </div>
+
+
+
+                <!-- FLOATING CARD 1 -->
+
+                <div class="floating-card card-top">
+
+
+                    <div class="floating-icon">
+
+                        <i data-lucide="sparkles"
+                           width="18">
+                        </i>
+
+                    </div>
+
+
+                    <div>
+
+                        <strong>
+                            Better ideas
+                        </strong>
+
+                        <span>
+                            Start with a conversation
+                        </span>
+
+                    </div>
+
+
+                </div>
+
+
+
+                <!-- FLOATING CARD 2 -->
+
+                <div class="floating-card card-bottom">
+
+
+                    <div class="status-dot"></div>
+
+
+                    <div>
+
+                        <strong>
+                            Let's connect
+                        </strong>
+
+                        <span>
+                            One step at a time
+                        </span>
+
+                    </div>
+
+
+                </div>
+
+
+
+                <!-- ROTATING BADGE -->
+
+                <div class="visual-badge">
+
+                    <svg viewBox="0 0 160 160">
+
+
+                        <defs>
+
+                            <path
+                                id="badgeCircle"
+                                d="M80,80
+                                   m-57,0
+                                   a57,57 0 1,1 114,0
+                                   a57,57 0 1,1 -114,0">
+                            </path>
+
+                        </defs>
+
+
+                        <text>
+
+                            <textPath href="#badgeCircle">
+
+                                CONNECT • CREATE • GROW • CONNECT • CREATE • GROW •
+
+                            </textPath>
+
+                        </text>
+
+
+                        <circle
+                            cx="80"
+                            cy="80"
+                            r="8">
+                        </circle>
+
+
+                    </svg>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     CONTACT SECTION
+====================================================== -->
+
+<section class="contact-section"
+         id="contact-form-section">
+
+    <div class="container">
+
+        <div class="contact-layout">
+
+
+            <!-- LEFT SIDE -->
+
+            <div class="contact-information">
+
+
+                <p class="small-label">
+                    Get in touch
+                </p>
+
+
+                <h2>
+
+                    We are here
+
+                    <span>
+                        to listen.
+                    </span>
+
+                </h2>
+
+
+                <p class="information-text">
+
+                    Tell us what is on your mind.
+                    Whether you have an idea,
+                    question or opportunity,
+                    we'd love to hear from you.
+
+                </p>
+
+
+
+                <!-- EMAIL -->
+
+                <div class="contact-detail">
+
+
+                    <div class="contact-icon">
+
+                        <i data-lucide="mail"
+                           width="19">
+                        </i>
+
+                    </div>
+
+
+                    <div>
+
+                        <span>
+                            Email
+                        </span>
+
+                        <strong>
+                            support.thehopesup@gmail.com
+                        </strong>
+
+                    </div>
+
+
+                </div>
+
+
+
+                <!-- PHONE -->
+
+                <div class="contact-detail">
+
+
+                    <div class="contact-icon">
+
+                        <i data-lucide="phone"
+                           width="19">
+                        </i>
+
+                    </div>
+
+
+                    <div>
+
+                        <span>
+                            Phone
+                        </span>
+
+                        <strong>
+                            +91 86586 85065
+                        </strong>
+
+                    </div>
+
+
+                </div>
+
+
+
+                <!-- LOCATION -->
+
+                <div class="contact-detail">
+
+
+                    <div class="contact-icon">
+
+                        <i data-lucide="map-pin"
+                           width="19">
+                        </i>
+
+                    </div>
+
+
+                    <div>
+
+                        <span>
+                            Location
+                        </span>
+
+                        <strong>
+                            India
+                        </strong>
+
+                    </div>
+
+
+                </div>
+
+
+
+                <!-- SMALL QUOTE -->
+
+                <div class="contact-note">
+
+                    <span>
+                        ✦
+                    </span>
+
+                    Every meaningful idea
+                    starts with a conversation.
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- RIGHT FORM -->
+
+            <div class="contact-form">
+
+
+                <p class="small-label">
+                    Send a message
+                </p>
+
+
+                <h2>
+                    Tell us what's
+                    on your mind.
+                </h2>
+
+
+                <div id="form-status"
+                     class="form-status">
+                </div>
+
+
+
+                <form id="contact-form">
+
+
+                    <!-- FIRST + LAST NAME -->
+
+                    <div class="form-grid">
+
+
+                        <div class="form-group">
+
+                            <label for="firstName">
+                                First name
+                            </label>
+
+
+                            <input
+                                id="firstName"
+                                name="firstName"
+                                type="text"
+                                placeholder="Your first name"
+                                required>
+
+                        </div>
+
+
+
+                        <div class="form-group">
+
+                            <label for="lastName">
+                                Last name
+                            </label>
+
+
+                            <input
+                                id="lastName"
+                                name="lastName"
+                                type="text"
+                                placeholder="Your last name"
+                                required>
+
+                        </div>
+
+
+                    </div>
+
+
+
+                    <!-- EMAIL -->
+
+                    <div class="form-group">
+
+
+                        <label for="email">
+                            Email
+                        </label>
+
+
+                        <input
+                            id="email"
+                            name="email"
+                            type="email"
+                            placeholder="you@example.com"
+                            required>
+
+
+                    </div>
+
+
+
+                    <!-- SUBJECT -->
+
+                    <div class="form-group">
+
+
+                        <label for="subject">
+                            Subject
+                        </label>
+
+
+                        <input
+                            id="subject"
+                            name="subject"
+                            type="text"
+                            placeholder="What would you like to discuss?"
+                            required>
+
+
+                    </div>
+
+
+
+                    <!-- MESSAGE -->
+
+                    <div class="form-group">
+
+
+                        <label for="message">
+                            Message
+                        </label>
+
+
+                        <textarea
+                            id="message"
+                            name="message"
+                            rows="6"
+                            placeholder="Write your message..."
+                            required></textarea>
+
+
+                    </div>
+
+
+
+                    <!-- HIDDEN: destination inbox for this submission.
+                         Your EmailJS template's "To Email" field must be
+                         set to {{to_email}} in the EmailJS dashboard for
+                         this to control where the email actually lands. -->
+
+                    <input
+                        type="hidden"
+                        name="to_email"
+                        value="support.thehopesup@gmail.com">
+
+
+
+                    <!-- SUBMIT -->
+
+                    <button
+                        class="btn btn-dark submit-button"
+                        type="submit">
+
+                        <span class="submit-button-text">
+                            Send message
+                        </span>
+
+                        <i data-lucide="send"
+                           width="18">
+                        </i>
+
+                    </button>
+
+
+                </form>
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     BOTTOM CONTACT
+====================================================== -->
+
+<section class="bottom-contact">
+
+    <div class="container">
+
+        <div class="bottom-contact-inner">
+
+
+            <div>
+
+                <p class="small-label">
+                    Prefer email?
+                </p>
+
+
+                <h2>
+                    hello@thehopesup.com
+                </h2>
+
+            </div>
+
+
+
+            
+                <a class="btn btn-dark"
+                href="mailto:hello@thehopesup.com">
+
+                Email us
+
+                <i data-lucide="arrow-up-right"
+                   width="18">
+                </i>
+
+            </a>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+</main>
+
+
+
+<!-- =====================================================
+     FOOTER
+====================================================== -->
+
+<div id="footer-placeholder"></div>
+
+
+
+<!-- =====================================================
+     JAVASCRIPT
+====================================================== -->
+<script>
+
+/* =========================================================
+   LOAD REUSABLE HEADER
+========================================================= */
+
+fetch("/Header.html?v=" + Date.now(), {
+    cache: "no-store"
+})
+
+    .then(function (response) {
+
+        if (!response.ok) {
+            throw new Error("Header.html could not be loaded.");
+        }
+
+        return response.text();
+
+    })
+
+    .then(function (data) {
+
+        const headerPlaceholder =
+            document.getElementById("header-placeholder");
+
+        if (!headerPlaceholder) {
+            console.error("Header placeholder not found.");
+            return;
+        }
+
+        headerPlaceholder.innerHTML = data;
+
+
+        /* =================================================
+           ELEMENTS
+        ================================================= */
+
+        const menuButton =
+            document.getElementById("menuButton");
+
+        const mobileMenu =
+            document.getElementById("mobileMenu");
+
+        const mobileApproachButton =
+            document.getElementById(
+                "mobileApproachButton"
+            );
+
+        const mobileServices =
+            document.getElementById(
+                "mobileServices"
+            );
+
+
+        /* =================================================
+           MOBILE MENU
+        ================================================= */
+
+        if (menuButton && mobileMenu) {
+
+            menuButton.addEventListener(
+                "click",
+                function () {
+
+                    const isOpen =
+                        mobileMenu.classList.toggle("show");
+
+                    menuButton.setAttribute(
+                        "aria-expanded",
+                        String(isOpen)
+                    );
+
+                    menuButton.setAttribute(
+                        "aria-label",
+                        isOpen
+                            ? "Close menu"
+                            : "Open menu"
+                    );
+
                 }
-
-                return response.text();
-
-            })
-
-            .then(function (data) {
-
-                document.getElementById("header-placeholder").innerHTML = data;
+            );
 
 
-                const menuButton =
-                    document.getElementById("menuButton");
+            /* =============================================
+               CLOSE MENU AFTER LINK CLICK
+            ============================================== */
 
-                const mobileMenu =
-                    document.getElementById("mobileMenu");
+            mobileMenu
+                .querySelectorAll("a")
+                .forEach(function (link) {
 
-
-                if (menuButton && mobileMenu) {
-
-                    menuButton.addEventListener(
+                    link.addEventListener(
                         "click",
                         function () {
 
-                            const isOpen =
-                                mobileMenu.classList.toggle("show");
+                            mobileMenu.classList.remove("show");
+
+
+                            if (mobileServices) {
+                                mobileServices.classList.remove(
+                                    "show"
+                                );
+                            }
+
+
+                            if (mobileApproachButton) {
+
+                                mobileApproachButton.classList.remove(
+                                    "open"
+                                );
+
+                                mobileApproachButton.setAttribute(
+                                    "aria-expanded",
+                                    "false"
+                                );
+
+                            }
+
 
                             menuButton.setAttribute(
                                 "aria-expanded",
-                                isOpen
+                                "false"
+                            );
+
+                            menuButton.setAttribute(
+                                "aria-label",
+                                "Open menu"
                             );
 
                         }
                     );
 
+                });
 
-                    document
-                        .querySelectorAll(".mobile-menu > a")
-                        .forEach(function (link) {
-
-                            link.addEventListener(
-                                "click",
-                                function () {
-
-                                    mobileMenu.classList.remove("show");
-
-                                    menuButton.setAttribute(
-                                        "aria-expanded",
-                                        "false"
-                                    );
-
-                                }
-                            );
-
-                        });
-
-                }
+        }
 
 
-                const mobileApproachButton =
-                    document.getElementById("mobileApproachButton");
+        /* =================================================
+           MOBILE SERVICES DROPDOWN
+        ================================================= */
 
-                const mobileServices =
-                    document.getElementById("mobileServices");
+        if (
+            mobileApproachButton &&
+            mobileServices
+        ) {
 
+            mobileApproachButton.addEventListener(
+                "click",
+                function () {
 
-                if (mobileApproachButton && mobileServices) {
+                    const isOpen =
+                        mobileServices.classList.toggle("show");
 
-                    mobileApproachButton.addEventListener(
-                        "click",
-                        function () {
+                    mobileApproachButton.classList.toggle(
+                        "open",
+                        isOpen
+                    );
 
-                            mobileServices.classList.toggle("show");
-
-                            mobileApproachButton.classList.toggle("open");
-
-                        }
+                    mobileApproachButton.setAttribute(
+                        "aria-expanded",
+                        String(isOpen)
                     );
 
                 }
+            );
 
-            })
+        }
 
-            .catch(function (error) {
-
-                console.error(
-                    "Header loading error:",
-                    error
-                );
-
-            });
-
-    </script>
+    })
 
 
-    <!-- =========================
-         FOOTER LOADER
-         ========================= -->
+    .catch(function (error) {
 
-    <script>
+        console.error(
+            "Header loading error:",
+            error
+        );
 
-        fetch("/Footer.html")
+    });
 
-            .then(function (response) {
 
-                if (!response.ok) {
-                    throw new Error("Footer.html could not be loaded.");
-                }
 
-                return response.text();
+/* =========================================================
+   LOAD REUSABLE FOOTER
+========================================================= */
 
-            })
+fetch("/Footer.html?v=" + Date.now(), {
+    cache: "no-store"
+})
 
-            .then(function (data) {
+    .then(function (response) {
 
-                document.getElementById("footer-placeholder").innerHTML = data;
+        if (!response.ok) {
+            throw new Error("Footer.html could not be loaded.");
+        }
 
-            })
+        return response.text();
 
-            .catch(function (error) {
+    })
 
-                console.error("Footer loading error:", error);
+    .then(function (data) {
 
-            });
+        const footerPlaceholder =
+            document.getElementById("footer-placeholder");
 
-    </script>
+        if (!footerPlaceholder) {
+            console.error("Footer placeholder not found.");
+            return;
+        }
 
+        footerPlaceholder.innerHTML = data;
+
+    })
+
+    .catch(function (error) {
+
+        console.error(
+            "Footer loading error:",
+            error
+        );
+
+    });
+
+</script>
 
 </body>
 
