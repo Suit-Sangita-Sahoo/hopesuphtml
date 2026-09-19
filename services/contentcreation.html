@@ -1393,228 +1393,176 @@
 
     <!-- HEADER LOADER -->
     <script>
+    fetch("/Header.html")
+        .then(function (response) {
 
-/* =========================================================
-   LOAD REUSABLE HEADER
-========================================================= */
+            if (!response.ok) {
+                throw new Error("Header.html could not be loaded.");
 
-fetch("/Header.html?v=" + Date.now(), {
-    cache: "no-store"
-})
+            }
 
-    .then(function (response) {
+            return response.text();
 
-        if (!response.ok) {
-            throw new Error("Header.html could not be loaded.");
-        }
+        })
+        .then(function (data) {
 
-        return response.text();
+            const headerPlaceholder =
+                document.getElementById("header-placeholder");
 
-    })
+            if (!headerPlaceholder) {
+                return;
+            }
 
-    .then(function (data) {
-
-        const headerPlaceholder =
-            document.getElementById("header-placeholder");
-
-        if (!headerPlaceholder) {
-            console.error("Header placeholder not found.");
-            return;
-        }
-
-        headerPlaceholder.innerHTML = data;
+            headerPlaceholder.innerHTML = data;
 
 
-        /* =================================================
-           ELEMENTS
-        ================================================= */
+            const menuButton =
+                document.getElementById("menuButton");
 
-        const menuButton =
-            document.getElementById("menuButton");
-
-        const mobileMenu =
-            document.getElementById("mobileMenu");
-
-        const mobileApproachButton =
-            document.getElementById(
-                "mobileApproachButton"
-            );
-
-        const mobileServices =
-            document.getElementById(
-                "mobileServices"
-            );
+            const mobileMenu =
+                document.getElementById("mobileMenu");
 
 
-        /* =================================================
-           MOBILE MENU
-        ================================================= */
+            /* MOBILE MAIN MENU */
+            if (menuButton && mobileMenu) {
 
-        if (menuButton && mobileMenu) {
+                menuButton.addEventListener(
+                    "click",
+                    function () {
 
-            menuButton.addEventListener(
-                "click",
-                function () {
+                        const isOpen =
+                            mobileMenu.classList.toggle("show");
 
-                    const isOpen =
-                        mobileMenu.classList.toggle("show");
+                        menuButton.setAttribute(
+                            "aria-expanded",
+                            String(isOpen)
+                        );
 
-                    menuButton.setAttribute(
-                        "aria-expanded",
-                        String(isOpen)
-                    );
+                        menuButton.setAttribute(
+                            "aria-label",
+                            isOpen
+                                ? "Close menu"
+                                : "Open menu"
+                        );
 
-                    menuButton.setAttribute(
-                        "aria-label",
-                        isOpen
-                            ? "Close menu"
-                            : "Open menu"
-                    );
-
-                }
-            );
+                    }
+                );
 
 
-            /* =============================================
-               CLOSE MENU AFTER LINK CLICK
-            ============================================== */
+                /* CLOSE MENU AFTER CLICKING A LINK */
+                mobileMenu
+                    .querySelectorAll("a")
+                    .forEach(function (link) {
 
-            mobileMenu
-                .querySelectorAll("a")
-                .forEach(function (link) {
+                        link.addEventListener(
+                            "click",
+                            function () {
 
-                    link.addEventListener(
-                        "click",
-                        function () {
+                                mobileMenu.classList.remove("show");
 
-                            mobileMenu.classList.remove("show");
-
-
-                            if (mobileServices) {
-                                mobileServices.classList.remove(
-                                    "show"
-                                );
-                            }
-
-
-                            if (mobileApproachButton) {
-
-                                mobileApproachButton.classList.remove(
-                                    "open"
-                                );
-
-                                mobileApproachButton.setAttribute(
+                                menuButton.setAttribute(
                                     "aria-expanded",
                                     "false"
                                 );
 
+                                menuButton.setAttribute(
+                                    "aria-label",
+                                    "Open menu"
+                                );
+
                             }
+                        );
+
+                    });
+
+            }
 
 
-                            menuButton.setAttribute(
-                                "aria-expanded",
-                                "false"
-                            );
+            /* MOBILE APPROACH DROPDOWN */
+            const mobileApproachButton =
+                document.getElementById("mobileApproachButton");
 
-                            menuButton.setAttribute(
-                                "aria-label",
-                                "Open menu"
-                            );
+            const mobileServices =
+                document.getElementById("mobileServices");
 
-                        }
-                    );
-
-                });
-
-        }
+            const mobileApproach =
+                document.querySelector(".mobile-approach");
 
 
-        /* =================================================
-           MOBILE SERVICES DROPDOWN
-        ================================================= */
+            if (
+                mobileApproachButton &&
+                mobileServices &&
+                mobileApproach
+            ) {
 
-        if (
-            mobileApproachButton &&
-            mobileServices
-        ) {
+                mobileApproachButton.addEventListener(
+                    "click",
+                    function () {
 
-            mobileApproachButton.addEventListener(
-                "click",
-                function () {
+                        const isOpen =
+                            mobileServices.classList.toggle("show");
 
-                    const isOpen =
-                        mobileServices.classList.toggle("show");
+                        mobileApproach.classList.toggle(
+                            "open",
+                            isOpen
+                        );
 
-                    mobileApproachButton.classList.toggle(
-                        "open",
-                        isOpen
-                    );
+                        mobileApproachButton.setAttribute(
+                            "aria-expanded",
+                            String(isOpen)
+                        );
 
-                    mobileApproachButton.setAttribute(
-                        "aria-expanded",
-                        String(isOpen)
-                    );
+                    }
+                );
 
-                }
+            }
+
+        })
+        .catch(function (error) {
+
+            console.error(
+                "Header loading error:",
+                error
             );
 
-        }
-
-    })
-
-
-    .catch(function (error) {
-
-        console.error(
-            "Header loading error:",
-            error
-        );
-
-    });
-
-
-
-/* =========================================================
-   LOAD REUSABLE FOOTER
-========================================================= */
-
-fetch("/Footer.html?v=" + Date.now(), {
-    cache: "no-store"
-})
-
-    .then(function (response) {
-
-        if (!response.ok) {
-            throw new Error("Footer.html could not be loaded.");
-        }
-
-        return response.text();
-
-    })
-
-    .then(function (data) {
-
-        const footerPlaceholder =
-            document.getElementById("footer-placeholder");
-
-        if (!footerPlaceholder) {
-            console.error("Footer placeholder not found.");
-            return;
-        }
-
-        footerPlaceholder.innerHTML = data;
-
-    })
-
-    .catch(function (error) {
-
-        console.error(
-            "Footer loading error:",
-            error
-        );
-
-    });
-
+        });
 </script>
+    <!-- FOOTER LOADER -->
+    <script>
+
+        fetch("/Footer.html")
+            .then(function (response) {
+
+                if (!response.ok) {
+                    throw new Error("Footer.html could not be loaded.");
+                }
+
+                return response.text();
+
+            })
+            .then(function (data) {
+
+                const footerPlaceholder =
+                    document.getElementById("footer-placeholder");
+
+                if (!footerPlaceholder) {
+                    return;
+                }
+
+                footerPlaceholder.innerHTML = data;
+
+            })
+            .catch(function (error) {
+
+                console.error(
+                    "Footer loading error:",
+                    error
+                );
+
+            });
+
+    </script>
+
 </body>
+
 </html>
