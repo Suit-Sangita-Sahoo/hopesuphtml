@@ -18,9 +18,9 @@
     <title>Graphic Design — thehopesup</title>
 
 
-    <!-- =====================================================
+    <!-- =========================
          CSS
-    ====================================================== -->
+         ========================= -->
 
     <link
         rel="stylesheet"
@@ -38,9 +38,9 @@
     >
 
 
-    <!-- =====================================================
+    <!-- =========================
          GOOGLE FONTS
-    ====================================================== -->
+         ========================= -->
 
     <link
         rel="preconnect"
@@ -59,26 +59,28 @@
     >
 
 
-    <!-- =====================================================
-         PAGE CSS
-    ====================================================== -->
-
     <style>
+
+        /* =====================================================
+           THE HOPESUP — GRAPHIC DESIGN PAGE
+           ===================================================== */
 
         :root {
             --page-cream: #faf8f3;
             --page-soft: #f6f1eb;
             --page-white: #fffdf9;
-
             --page-ink: #241f19;
             --page-text: #4d463f;
             --page-muted: #8b8178;
-
             --page-amber: #c8791f;
             --page-orange: #e45b35;
-
             --page-line: rgba(36, 31, 25, 0.12);
         }
+
+
+        /* =====================================================
+           GLOBAL
+           ===================================================== */
 
         * {
             box-sizing: border-box;
@@ -104,8 +106,868 @@
             margin: 0 auto;
         }
 
-        /* Your existing Graphic Design CSS
-           goes here */
+
+        /* =====================================================
+           BREADCRUMB
+           ===================================================== */
+
+        main > .container:first-child {
+            padding-top: 92px;
+            padding-bottom: 22px;
+        }
+
+        .crumb {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--page-muted);
+            font-family: "Work Sans", sans-serif;
+            font-size: 13px;
+            font-weight: 500;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .crumb svg {
+            width: 17px;
+            height: 17px;
+            flex-shrink: 0;
+        }
+
+        .crumb:hover {
+            color: var(--page-amber);
+        }
+
+
+        /* =====================================================
+           HERO
+           ===================================================== */
+
+        .detail-hero {
+            padding: 35px 0 70px;
+            background: var(--page-cream);
+        }
+
+        .detail-hero-grid {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            align-items: end;
+            gap: 40px;
+        }
+
+        .detail-label {
+            margin-bottom: 18px;
+            color: var(--page-amber);
+            font-family: "Work Sans", sans-serif;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .detail-hero h1 {
+            max-width: 850px;
+            margin: 0;
+            color: var(--page-ink);
+            font-family: "Fraunces", Georgia, serif;
+            font-size: clamp(45px, 6vw, 78px);
+            font-weight: 600;
+            line-height: 1.04;
+            letter-spacing: -2.5px;
+        }
+
+        .detail-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 27px;
+        }
+
+        .detail-tags span {
+            display: inline-flex;
+            align-items: center;
+            padding: 7px 12px;
+            border: 1px solid #e5d9cc;
+            border-radius: 30px;
+            color: var(--page-text);
+            font-family: "Work Sans", sans-serif;
+            font-size: 11px;
+            font-weight: 500;
+        }
+
+        .detail-numeral {
+            color: #e9dfd4;
+            font-family: "Fraunces", Georgia, serif;
+            font-size: clamp(90px, 13vw, 170px);
+            font-weight: 600;
+            line-height: 0.8;
+            letter-spacing: -8px;
+            user-select: none;
+        }
+
+
+        /* =====================================================
+           MAIN DETAIL CONTENT
+           ===================================================== */
+
+        .section {
+            padding: 70px 0;
+        }
+
+        .detail-layout {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) 310px;
+            gap: 90px;
+            align-items: start;
+            padding-bottom: 100px;
+        }
+
+        .detail-layout article {
+            max-width: 720px;
+        }
+
+        .detail-lead {
+            margin: 0 0 28px;
+            color: var(--page-ink);
+            font-family: "Fraunces", Georgia, serif;
+            font-size: clamp(27px, 3vw, 39px);
+            font-weight: 500;
+            line-height: 1.25;
+            letter-spacing: -0.8px;
+        }
+
+        .detail-body {
+            color: var(--page-text);
+            font-family: "Work Sans", sans-serif;
+            font-size: 16px;
+            line-height: 1.85;
+        }
+
+        .detail-body p {
+            margin: 0 0 20px;
+        }
+
+        .detail-pull {
+            margin: 42px 0 30px;
+            padding-left: 24px;
+            border-left: 3px solid var(--page-amber);
+            color: var(--page-ink);
+            font-family: "Fraunces", Georgia, serif;
+            font-size: 25px;
+            font-style: italic;
+            line-height: 1.45;
+        }
+
+
+        /* =====================================================
+           SIDEBAR
+           ===================================================== */
+
+        .detail-sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+
+        .side-card {
+            padding: 27px 25px;
+            background: var(--page-white);
+            border: 1px solid #eee3d8;
+            border-radius: 6px;
+        }
+
+        .side-card h4 {
+            margin: 0 0 18px;
+            color: var(--page-ink);
+            font-family: "Fraunces", Georgia, serif;
+            font-size: 21px;
+            font-weight: 600;
+        }
+
+        .side-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 7px;
+        }
+
+        .side-tags span {
+            padding: 6px 9px;
+            background: #f5eee7;
+            border-radius: 4px;
+            color: var(--page-text);
+            font-family: "Work Sans", sans-serif;
+            font-size: 10px;
+        }
+
+        .side-card.dark {
+            background: var(--page-ink);
+            border-color: var(--page-ink);
+        }
+
+        .side-card.dark h4 {
+            color: #fffdf9;
+        }
+
+        .side-card.dark p {
+            margin: 0 0 22px;
+            color: #c9c0b8;
+            font-family: "Work Sans", sans-serif;
+            font-size: 13px;
+            line-height: 1.7;
+        }
+
+        .btn-light {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 16px;
+            background: #fffdf9;
+            color: var(--page-ink);
+            border-radius: 5px;
+            font-family: "Work Sans", sans-serif;
+            font-size: 11px;
+            font-weight: 600;
+            text-decoration: none;
+            transition:
+                background 0.2s ease,
+                transform 0.2s ease;
+        }
+
+        .btn-light:hover {
+            background: var(--page-amber);
+            color: #ffffff;
+            transform: translateY(-2px);
+        }
+
+
+        /* =====================================================
+           GRAPHIC DESIGN PROCESS
+           ===================================================== */
+
+        /* =====================================================
+   SEO CONTENT PROCESS SECTION
+   ===================================================== */
+
+.content-process {
+    padding: 25px 0 120px;
+    background: var(--page-cream);
+    overflow: hidden;
+}
+
+
+/* Remove excessive gap after article section */
+
+main > .section {
+    padding-bottom: 25px !important;
+}
+
+
+/* =====================================================
+   SECTION HEADING
+   ===================================================== */
+
+.process-heading {
+    max-width: 900px;
+    margin: 0 auto 75px;
+    text-align: center;
+}
+
+.process-heading h1 {
+    margin: 0 0 24px;
+
+    font-family: "Fraunces", Georgia, serif;
+    font-size: clamp(42px, 5vw, 68px);
+    font-weight: 600;
+    line-height: 1.08;
+    letter-spacing: -2px;
+
+    color: var(--page-ink);
+}
+
+.process-heading p {
+    max-width: 780px;
+    margin: 0 auto;
+
+    font-family: "Work Sans", sans-serif;
+    font-size: 18px;
+    line-height: 1.8;
+    letter-spacing: 0.1px;
+
+    color: var(--page-text);
+}
+
+        .process-heading {
+            max-width: 760px;
+            margin: 0 auto 58px;
+            text-align: center;
+        }
+
+        .process-heading h1 {
+            margin: 0 0 18px;
+            color: var(--page-ink);
+            font-family: "Fraunces", Georgia, serif;
+            font-size: clamp(38px, 5vw, 58px);
+            font-weight: 600;
+            line-height: 1.08;
+            letter-spacing: -1.8px;
+        }
+
+        .process-heading p {
+            max-width: 680px;
+            margin: 0 auto;
+            color: var(--page-text);
+            font-family: "Work Sans", sans-serif;
+            font-size: 15px;
+            line-height: 1.7;
+        }
+
+
+        /* =====================================================
+           HORIZONTAL PROCESS LAYOUT
+           ===================================================== */
+
+        .process-layout {
+            display: grid;
+            grid-template-columns: minmax(0, 1.15fr) minmax(300px, 0.85fr);
+            gap: 55px;
+            align-items: center;
+            max-width: 1120px;
+            margin: 0 auto;
+        }
+
+
+        /* =====================================================
+           PROCESS TIMELINE
+           ===================================================== */
+
+        .process-timeline {
+            position: relative;
+            padding-left: 72px;
+        }
+
+        .process-timeline::before {
+            content: "";
+            position: absolute;
+            left: 22px;
+            top: 27px;
+            bottom: 27px;
+            width: 1px;
+            background: #e4dbd2;
+        }
+
+        .process-item {
+            position: relative;
+            margin-bottom: 27px;
+        }
+
+        .process-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .process-icon {
+            position: absolute;
+            left: -72px;
+            top: 3px;
+            width: 45px;
+            height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: var(--page-amber);
+            z-index: 2;
+            box-shadow:
+                0 6px 16px rgba(200, 121, 31, 0.15);
+        }
+
+        .process-icon::after {
+            content: "";
+            position: absolute;
+            inset: 6px;
+            border: 1px solid rgba(255, 255, 255, 0.7);
+            border-radius: 50%;
+        }
+
+        .process-icon svg {
+            position: relative;
+            z-index: 2;
+            width: 19px;
+            height: 19px;
+            stroke: #ffffff;
+        }
+
+        .process-item h3 {
+            margin: 0 0 6px;
+            color: var(--page-ink);
+            font-family: "Fraunces", Georgia, serif;
+            font-size: 20px;
+            font-weight: 600;
+            line-height: 1.25;
+            letter-spacing: -0.35px;
+        }
+
+        .process-item p {
+            max-width: 540px;
+            margin: 0;
+            color: var(--page-text);
+            font-family: "Work Sans", sans-serif;
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+
+        /* =====================================================
+           PROCESS IMAGE
+           ===================================================== */
+
+        .process-visual {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            min-width: 0;
+        }
+
+        .process-visual::before {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 88%;
+            height: 88%;
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+            background: #f1e8dc;
+            z-index: 0;
+        }
+
+        .process-visual img {
+            position: relative;
+            z-index: 1;
+            display: block;
+            width: 100%;
+            max-width: 430px;
+            height: auto;
+            object-fit: contain;
+            border-radius: 4px;
+            box-shadow:
+                0 18px 45px rgba(36, 31, 25, 0.12);
+        }
+
+
+        /* =====================================================
+           WHY CHOOSE US
+           ===================================================== */
+
+        .why-us {
+            padding: 90px 0;
+            background: var(--page-white);
+        }
+
+        .why-us-head {
+            max-width: 680px;
+            margin: 0 auto 45px;
+            text-align: center;
+        }
+
+        .why-us-head h2 {
+            margin: 0;
+            color: var(--page-ink);
+            font-family: "Fraunces", Georgia, serif;
+            font-size: clamp(32px, 4vw, 46px);
+            font-weight: 600;
+            line-height: 1.15;
+            letter-spacing: -1px;
+        }
+
+        .why-us-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .why-us-card {
+            padding: 30px 25px;
+            background: var(--page-cream);
+            border: 1px solid #eee5dc;
+            border-radius: 5px;
+            text-align: center;
+            transition:
+                transform 0.3s ease,
+                box-shadow 0.3s ease;
+        }
+
+        .why-us-card:hover {
+            transform: translateY(-5px);
+            box-shadow:
+                0 18px 40px rgba(36, 31, 25, 0.07);
+        }
+
+        .why-us-icon {
+            width: 55px;
+            height: 55px;
+            margin: 0 auto 19px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: var(--page-amber);
+        }
+
+        .why-us-icon svg {
+            width: 25px;
+            height: 25px;
+        }
+
+        .why-us-card h3 {
+            margin: 0 0 10px;
+            color: var(--page-ink);
+            font-family: "Fraunces", Georgia, serif;
+            font-size: 20px;
+            font-weight: 600;
+            line-height: 1.3;
+        }
+
+        .why-us-card p {
+            margin: 0;
+            color: var(--page-text);
+            font-family: "Work Sans", sans-serif;
+            font-size: 13px;
+            line-height: 1.65;
+        }
+
+
+        /* =====================================================
+           RELATED SERVICES
+           ===================================================== */
+
+        .related {
+            padding: 85px 0;
+            background: var(--page-soft);
+        }
+
+        .related-head {
+            margin-bottom: 35px;
+            color: var(--page-ink);
+            font-family: "Fraunces", Georgia, serif;
+            font-size: clamp(32px, 4vw, 46px);
+            font-weight: 600;
+            line-height: 1.2;
+            letter-spacing: -1px;
+            text-align: center;
+        }
+
+        .related-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+        }
+
+        .related-card {
+            display: block;
+            padding: 27px;
+            background: var(--page-white);
+            border: 1px solid #e9ded2;
+            border-radius: 5px;
+            text-decoration: none;
+            transition:
+                transform 0.3s ease,
+                border-color 0.3s ease,
+                box-shadow 0.3s ease;
+        }
+
+        .related-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--page-amber);
+            box-shadow:
+                0 15px 35px rgba(36, 31, 25, 0.07);
+        }
+
+        .related-card span {
+            display: block;
+            margin-bottom: 10px;
+            color: var(--page-amber);
+            font-family: "Work Sans", sans-serif;
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 1.4px;
+            text-transform: uppercase;
+        }
+
+        .related-card h4 {
+            margin: 0;
+            color: var(--page-ink);
+            font-family: "Fraunces", Georgia, serif;
+            font-size: 21px;
+            font-weight: 600;
+            line-height: 1.25;
+        }
+
+
+        /* =====================================================
+           TABLET
+           ===================================================== */
+
+        @media (max-width: 1050px) {
+
+            .container {
+                width: min(100% - 36px, 960px);
+            }
+
+            .detail-layout {
+                gap: 50px;
+            }
+
+            .process-layout {
+                grid-template-columns:
+                    minmax(0, 1fr)
+                    minmax(280px, 0.8fr);
+                gap: 38px;
+            }
+
+            .process-item h3 {
+                font-size: 19px;
+            }
+
+            .process-item p {
+                font-size: 12.5px;
+            }
+
+            .process-visual img {
+                max-width: 380px;
+            }
+
+        }
+
+
+        /* =====================================================
+           MOBILE / SMALL TABLET
+           ===================================================== */
+
+        @media (max-width: 800px) {
+
+            .container {
+                width: calc(100% - 32px);
+            }
+
+            main > .container:first-child {
+                padding-top: 82px;
+                padding-bottom: 18px;
+            }
+
+            .detail-hero {
+                padding: 25px 0 55px;
+            }
+
+            .detail-hero-grid {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+
+            .detail-numeral {
+                display: none;
+            }
+
+            .detail-hero h1 {
+                font-size: clamp(40px, 9vw, 60px);
+                letter-spacing: -1.5px;
+            }
+
+            .detail-layout {
+                grid-template-columns: 1fr;
+                gap: 45px;
+                padding-bottom: 70px;
+            }
+
+            .detail-sidebar {
+                max-width: 500px;
+            }
+
+            .content-process {
+                padding: 70px 0 80px;
+            }
+
+            .process-heading {
+                margin-bottom: 45px;
+            }
+
+            .process-heading h1 {
+                font-size: 42px;
+            }
+
+            .process-heading p {
+                font-size: 14px;
+            }
+
+            .process-layout {
+                grid-template-columns: 1fr;
+                gap: 50px;
+            }
+
+            .process-visual {
+                order: -1;
+            }
+
+            .process-visual img {
+                width: 90%;
+                max-width: 430px;
+            }
+
+            .process-timeline {
+                padding-left: 64px;
+            }
+
+            .process-timeline::before {
+                left: 20px;
+            }
+
+            .process-icon {
+                left: -64px;
+                width: 43px;
+                height: 43px;
+            }
+
+            .process-item {
+                margin-bottom: 28px;
+            }
+
+            .process-item h3 {
+                font-size: 20px;
+            }
+
+            .process-item p {
+                font-size: 13px;
+            }
+
+            .why-us {
+                padding: 75px 0;
+            }
+
+            .why-us-grid {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+
+            .related {
+                padding: 70px 0;
+            }
+
+            .related-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+
+        }
+
+
+        /* =====================================================
+           SMALL MOBILE
+           ===================================================== */
+
+        @media (max-width: 500px) {
+
+            .container {
+                width: calc(100% - 26px);
+            }
+
+            .detail-hero {
+                padding-bottom: 45px;
+            }
+
+            .detail-hero h1 {
+                font-size: 38px;
+            }
+
+            .detail-tags {
+                gap: 6px;
+            }
+
+            .detail-tags span {
+                padding: 6px 9px;
+                font-size: 10px;
+            }
+
+            .detail-lead {
+                font-size: 28px;
+            }
+
+            .detail-body {
+                font-size: 14px;
+                line-height: 1.75;
+            }
+
+            .detail-pull {
+                margin: 35px 0 25px;
+                padding-left: 18px;
+                font-size: 22px;
+            }
+
+            .content-process {
+                padding: 60px 0 70px;
+            }
+
+            .process-heading h1 {
+                font-size: 36px;
+            }
+
+            .process-heading p {
+                font-size: 13px;
+            }
+
+            .process-layout {
+                gap: 40px;
+            }
+
+            .process-visual img {
+                width: 100%;
+            }
+
+            .process-timeline {
+                padding-left: 58px;
+            }
+
+            .process-timeline::before {
+                left: 18px;
+            }
+
+            .process-icon {
+                left: -58px;
+                width: 40px;
+                height: 40px;
+            }
+
+            .process-icon::after {
+                inset: 5px;
+            }
+
+            .process-icon svg {
+                width: 17px;
+                height: 17px;
+            }
+
+            .process-item {
+                margin-bottom: 25px;
+            }
+
+            .process-item h3 {
+                font-size: 18px;
+            }
+
+            .process-item p {
+                font-size: 12.5px;
+                line-height: 1.6;
+            }
+
+            .why-us-head h2 {
+                font-size: 32px;
+            }
+
+            .related-head {
+                font-size: 32px;
+            }
+
+        }
 
     </style>
 
@@ -115,388 +977,908 @@
 <body>
 
 
-    <!-- =====================================================
+    <!-- =========================
          HEADER
-    ====================================================== -->
+         ========================= -->
 
     <div id="header-placeholder"></div>
 
 
-    <!-- =====================================================
+    <!-- =========================
          MAIN
-    ====================================================== -->
+         ========================= -->
 
     <main>
 
-        <!-- Your Graphic Design page content -->
+
+        <!-- =========================
+             BREADCRUMB
+             ========================= -->
+
+        <div class="container">
+
+            <a
+                href="/Service.html"
+                class="crumb"
+                aria-label="Back to all services"
+            >
+
+                <svg
+                    viewBox="0 0 20 20"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    aria-hidden="true"
+                >
+
+                    <path
+                        d="M12 4L6 10L12 16"
+                        stroke="currentColor"
+                        stroke-width="1.6"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                    ></path>
+
+                </svg>
+
+                All services
+
+            </a>
+
+        </div>
+
+
+        <!-- =========================
+             HERO
+             ========================= -->
+
+        <section class="detail-hero">
+
+            <div class="container detail-hero-grid">
+
+
+                <div>
+
+                    <div class="detail-label">
+                        Service 03
+                    </div>
+
+
+                    <h1>
+                        Graphic Design
+                    </h1>
+
+
+                    <div class="detail-tags">
+
+                        <span>
+                            Branding
+                        </span>
+
+                        <span>
+                            Social Graphics
+                        </span>
+
+                        <span>
+                            Marketing
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div
+                    class="detail-numeral"
+                    aria-hidden="true"
+                >
+                    03
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             MAIN CONTENT
+             ========================= -->
+
+        <section
+            class="section"
+            style="padding-top: 0;"
+        >
+
+            <div class="container detail-layout">
+
+
+                <!-- =========================
+                     ARTICLE
+                     ========================= -->
+
+                <article>
+
+
+                    <p class="detail-lead">
+                        Humans are visual creatures.
+                    </p>
+
+
+                    <div class="detail-body">
+
+                        <p>
+                            Visuals can spark emotion, communicate ideas,
+                            and make information easier to understand,
+                            all in an instant. Great design helps people
+                            understand, feel, and remember — and because
+                            visual communication can transcend language
+                            and cultural barriers, it can make your
+                            message more universal.
+                        </p>
+
+                    </div>
+
+
+                    <p class="detail-pull">
+                        Meaning, made visual.
+                    </p>
+
+
+                    <div class="detail-body">
+
+                        <p>
+                            We create thoughtful, purposeful graphics
+                            that bring your brand and content to life.
+                            From social media creatives and infographics
+                            to presentations and digital assets, we
+                            combine strong visual storytelling with a
+                            deep understanding of your brand.
+                        </p>
+
+
+                        <p>
+                            We use visual cues to create strong
+                            impressions and communicate what words
+                            alone sometimes can't.
+                        </p>
+
+                    </div>
+
+
+                </article>
+
+
+                <!-- =========================
+                     SIDEBAR
+                     ========================= -->
+
+                <aside class="detail-sidebar">
+
+
+                    <!-- WHAT THIS INCLUDES -->
+
+                    <div class="side-card">
+
+                        <h4>
+                            What this includes
+                        </h4>
+
+
+                        <div class="side-tags">
+
+                            <span>
+                                Branding
+                            </span>
+
+                            <span>
+                                Social Graphics
+                            </span>
+
+                            <span>
+                                Marketing
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- READY TO START -->
+
+                    <div class="side-card dark">
+
+                        <h4>
+                            Ready to start?
+                        </h4>
+
+
+                        <p>
+                            Tell us about your business and where
+                            graphic design could take it.
+                        </p>
+
+
+                        <a
+                            href="/Contact.html"
+                            class="btn-light"
+                        >
+                            Start a conversation
+                        </a>
+
+                    </div>
+
+
+                </aside>
+
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
+             GRAPHIC DESIGN PROCESS
+             ===================================================== -->
+
+        <section class="content-process">
+
+            <div class="container">
+
+
+                <!-- SECTION HEADING -->
+
+                <div class="process-heading">
+
+                    <h1>
+                        Our Process
+                    </h1>
+
+
+                    <p>
+                        Great design is more than making things look good.
+                        We combine strategy, creativity, and consistency
+                        to create visuals that communicate clearly and
+                        make your brand memorable.
+                    </p>
+
+                </div>
+
+
+                <!-- HORIZONTAL CONTENT + IMAGE -->
+
+                <div class="process-layout">
+
+
+                    <!-- LEFT — PROCESS TIMELINE -->
+
+                    <div class="process-timeline">
+
+
+                        <!-- PROCESS 01 -->
+
+                        <div class="process-item">
+
+                            <div class="process-icon">
+
+                                <svg
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    stroke-width="2.5"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                >
+
+                                    <path d="M5 12l4 4L19 6"></path>
+
+                                </svg>
+
+                            </div>
+
+
+                            <h3>
+                                Understanding Your Brand
+                            </h3>
+
+
+                            <p>
+                                We begin by understanding your brand,
+                                audience, goals, and visual identity
+                                so every design has a clear purpose.
+                            </p>
+
+                        </div>
+
+
+                        <!-- PROCESS 02 -->
+
+                        <div class="process-item">
+
+                            <div class="process-icon">
+
+                                <svg
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    stroke-width="2.5"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                >
+
+                                    <path d="M5 12l4 4L19 6"></path>
+
+                                </svg>
+
+                            </div>
+
+
+                            <h3>
+                                Concept &amp; Creative Direction
+                            </h3>
+
+
+                            <p>
+                                We develop visual concepts and creative
+                                directions that align with your message,
+                                positioning, and overall brand personality.
+                            </p>
+
+                        </div>
+
+
+                        <!-- PROCESS 03 -->
+
+                        <div class="process-item">
+
+                            <div class="process-icon">
+
+                                <svg
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    stroke-width="2.5"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                >
+
+                                    <path d="M5 12l4 4L19 6"></path>
+
+                                </svg>
+
+                            </div>
+
+
+                            <h3>
+                                Designing With Purpose
+                            </h3>
+
+
+                            <p>
+                                We create polished graphics that balance
+                                visual appeal with clarity, ensuring the
+                                design communicates the right message.
+                            </p>
+
+                        </div>
+
+
+                        <!-- PROCESS 04 -->
+
+                        <div class="process-item">
+
+                            <div class="process-icon">
+
+                                <svg
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    stroke-width="2.5"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                >
+
+                                    <path d="M5 12l4 4L19 6"></path>
+
+                                </svg>
+
+                            </div>
+
+
+                            <h3>
+                                Refinement &amp; Consistency
+                            </h3>
+
+
+                            <p>
+                                Every detail is refined to maintain
+                                consistency across layouts, colours,
+                                typography, and visual elements.
+                            </p>
+
+                        </div>
+
+
+                        <!-- PROCESS 05 -->
+
+                        <div class="process-item">
+
+                            <div class="process-icon">
+
+                                <svg
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    stroke-width="2.5"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                >
+
+                                    <path d="M5 12l4 4L19 6"></path>
+
+                                </svg>
+
+                            </div>
+
+
+                            <h3>
+                                Delivery Across Platforms
+                            </h3>
+
+
+                            <p>
+                                We prepare final assets for the platforms
+                                and formats you need, from social media
+                                and marketing materials to presentations
+                                and digital campaigns.
+                            </p>
+
+                        </div>
+
+
+                    </div>
+
+
+                    <!-- RIGHT — IMAGE -->
+
+                    <div class="process-visual">
+
+                        <img
+                            src="/Image/GraphicDesign.png"
+                            alt="Graphic design creative process illustration"
+                        >
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             WHY CHOOSE US
+             ========================= -->
+
+        <section class="why-us">
+
+            <div class="container">
+
+
+                <div class="why-us-head">
+
+                    <h2>
+                        Why choose thehopesup for graphic design
+                    </h2>
+
+                </div>
+
+
+                <div class="why-us-grid">
+
+
+                    <!-- CARD 1 -->
+
+                    <div class="why-us-card">
+
+                        <div class="why-us-icon">
+
+                            <svg
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="#ffffff"
+                                stroke-width="1.8"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                            >
+
+                                <path d="M12 3L4 7v5c0 5 3.5 8 8 9 4.5-1 8-4 8-9V7l-8-4Z"></path>
+
+                                <path d="M9 12l2 2 4-4"></path>
+
+                            </svg>
+
+                        </div>
+
+
+                        <h3>
+                            Design with intention
+                        </h3>
+
+
+                        <p>
+                            Every visual is created with a clear
+                            purpose, helping your audience understand
+                            and connect with your message.
+                        </p>
+
+                    </div>
+
+
+                    <!-- CARD 2 -->
+
+                    <div class="why-us-card">
+
+                        <div class="why-us-icon">
+
+                            <svg
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="#ffffff"
+                                stroke-width="1.8"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                            >
+
+                                <circle
+                                    cx="12"
+                                    cy="12"
+                                    r="9"
+                                />
+
+                                <path d="M12 8v4l3 2"></path>
+
+                            </svg>
+
+                        </div>
+
+
+                        <h3>
+                            Consistent brand identity
+                        </h3>
+
+
+                        <p>
+                            We create cohesive visuals that help your
+                            brand look recognisable and consistent
+                            across every platform.
+                        </p>
+
+                    </div>
+
+
+                    <!-- CARD 3 -->
+
+                    <div class="why-us-card">
+
+                        <div class="why-us-icon">
+
+                            <svg
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="#ffffff"
+                                stroke-width="1.8"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                            >
+
+                                <path d="M4 19V5"></path>
+
+                                <path d="M4 5h16l-3 4 3 4H4"></path>
+
+                            </svg>
+
+                        </div>
+
+
+                        <h3>
+                            Visuals that stand out
+                        </h3>
+
+
+                        <p>
+                            We combine creativity and strategy to make
+                            your content more engaging, memorable,
+                            and effective.
+                        </p>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             RELATED SERVICES
+             ========================= -->
+
+        <section class="related">
+
+            <div class="container">
+
+
+                <div class="related-head">
+                    Explore other services
+                </div>
+
+
+                <div class="related-grid">
+
+
+                    <a
+                        href="ContentCreation.html"
+                        class="related-card"
+                    >
+
+                        <span>
+                            Service 01
+                        </span>
+
+
+                        <h4>
+                            Content Creation
+                        </h4>
+
+                    </a>
+
+
+                    <a
+                        href="ContentMarketing.html"
+                        class="related-card"
+                    >
+
+                        <span>
+                            Service 02
+                        </span>
+
+
+                        <h4>
+                            Content Marketing
+                        </h4>
+
+                    </a>
+
+
+                    <a
+                        href="SEOContent.html"
+                        class="related-card"
+                    >
+
+                        <span>
+                            Service 04
+                        </span>
+
+
+                        <h4>
+                            SEO Content
+                        </h4>
+
+                    </a>
+
+
+                </div>
+
+            </div>
+
+        </section>
+
 
     </main>
 
 
-    <!-- =====================================================
+    <!-- =========================
          FOOTER
-    ====================================================== -->
+         ========================= -->
 
     <div id="footer-placeholder"></div>
 
 
-    <!-- =====================================================
-         HEADER + FOOTER LOADER
-    ====================================================== -->
+    <!-- =========================
+         HEADER LOADER
+         ========================= -->
 
     <script>
 
-        document.addEventListener(
-            "DOMContentLoaded",
-            function () {
+        fetch("/Header.html")
 
+            .then(function (response) {
 
-                /* =================================================
-                   LOAD HEADER
-                ================================================= */
+                if (!response.ok) {
 
-                fetch(
-                    "/Header.html?v=" + Date.now(),
-                    {
-                        cache: "no-store"
-                    }
-                )
+                    throw new Error(
+                        "Header.html could not be loaded."
+                    );
 
-                .then(function (response) {
+                }
 
-                    if (!response.ok) {
+                return response.text();
 
-                        throw new Error(
-                            "Header.html could not be loaded. Status: " +
-                            response.status
-                        );
+            })
 
-                    }
 
-                    return response.text();
+            .then(function (data) {
 
-                })
+                document
+                    .getElementById("header-placeholder")
+                    .innerHTML = data;
 
-                .then(function (data) {
 
-                    const headerPlaceholder =
-                        document.getElementById(
-                            "header-placeholder"
-                        );
+                /* =========================
+                   MOBILE MENU
+                   ========================= */
 
+                const menuButton =
+                    document.getElementById("menuButton");
 
-                    if (!headerPlaceholder) {
+                const mobileMenu =
+                    document.getElementById("mobileMenu");
 
-                        console.error(
-                            "Header placeholder not found."
-                        );
 
-                        return;
+                if (
+                    menuButton &&
+                    mobileMenu
+                ) {
 
-                    }
-
-
-                    headerPlaceholder.innerHTML = data;
-
-
-                    /* =================================================
-                       MOBILE MENU
-                    ================================================= */
-
-                    const menuButton =
-                        document.getElementById(
-                            "menuButton"
-                        );
-
-                    const mobileMenu =
-                        document.getElementById(
-                            "mobileMenu"
-                        );
-
-                    const mobileApproachButton =
-                        document.getElementById(
-                            "mobileApproachButton"
-                        );
-
-                    const mobileServices =
-                        document.getElementById(
-                            "mobileServices"
-                        );
-
-
-                    if (
-                        menuButton &&
-                        mobileMenu
-                    ) {
-
-                        menuButton.addEventListener(
-                            "click",
-                            function (event) {
-
-                                event.stopPropagation();
-
-
-                                const isOpen =
-                                    mobileMenu.classList.toggle(
-                                        "show"
-                                    );
-
-
-                                menuButton.setAttribute(
-                                    "aria-expanded",
-                                    String(isOpen)
-                                );
-
-
-                                menuButton.setAttribute(
-                                    "aria-label",
-                                    isOpen
-                                        ? "Close menu"
-                                        : "Open menu"
-                                );
-
-                            }
-                        );
-
-
-                        /* =============================================
-                           CLOSE AFTER LINK CLICK
-                        ============================================== */
-
-                        mobileMenu
-                            .querySelectorAll("a")
-                            .forEach(function (link) {
-
-                                link.addEventListener(
-                                    "click",
-                                    function () {
-
-                                        mobileMenu.classList.remove(
-                                            "show"
-                                        );
-
-
-                                        if (mobileServices) {
-
-                                            mobileServices.classList.remove(
-                                                "show"
-                                            );
-
-                                        }
-
-
-                                        if (
-                                            mobileApproachButton
-                                        ) {
-
-                                            mobileApproachButton.classList.remove(
-                                                "open"
-                                            );
-
-                                            mobileApproachButton.setAttribute(
-                                                "aria-expanded",
-                                                "false"
-                                            );
-
-                                        }
-
-
-                                        menuButton.setAttribute(
-                                            "aria-expanded",
-                                            "false"
-                                        );
-
-
-                                        menuButton.setAttribute(
-                                            "aria-label",
-                                            "Open menu"
-                                        );
-
-                                    }
-                                );
-
-                            });
-
-                    }
-
-
-                    /* =================================================
-                       MOBILE SERVICES
-                    ================================================= */
-
-                    if (
-                        mobileApproachButton &&
-                        mobileServices
-                    ) {
-
-                        mobileApproachButton.addEventListener(
-                            "click",
-                            function (event) {
-
-                                event.stopPropagation();
-
-
-                                const isOpen =
-                                    mobileServices.classList.toggle(
-                                        "show"
-                                    );
-
-
-                                mobileApproachButton.classList.toggle(
-                                    "open",
-                                    isOpen
-                                );
-
-
-                                mobileApproachButton.setAttribute(
-                                    "aria-expanded",
-                                    String(isOpen)
-                                );
-
-                            }
-                        );
-
-                    }
-
-
-                    /* =================================================
-                       CLOSE WHEN CLICKING OUTSIDE
-                    ================================================= */
-
-                    document.addEventListener(
+                    menuButton.addEventListener(
                         "click",
-                        function (event) {
+                        function () {
 
-                            if (
-                                mobileMenu &&
-                                menuButton &&
-                                !mobileMenu.contains(
-                                    event.target
-                                ) &&
-                                !menuButton.contains(
-                                    event.target
-                                )
-                            ) {
-
-                                mobileMenu.classList.remove(
+                            const isOpen =
+                                mobileMenu.classList.toggle(
                                     "show"
                                 );
 
 
-                                if (mobileServices) {
+                            menuButton.setAttribute(
+                                "aria-expanded",
+                                String(isOpen)
+                            );
 
-                                    mobileServices.classList.remove(
+                        }
+                    );
+
+
+                    document
+                        .querySelectorAll(
+                            "#mobileMenu > a"
+                        )
+                        .forEach(function (link) {
+
+                            link.addEventListener(
+                                "click",
+                                function () {
+
+                                    mobileMenu.classList.remove(
                                         "show"
                                     );
 
-                                }
 
-
-                                if (
-                                    mobileApproachButton
-                                ) {
-
-                                    mobileApproachButton.classList.remove(
-                                        "open"
-                                    );
-
-                                    mobileApproachButton.setAttribute(
+                                    menuButton.setAttribute(
                                         "aria-expanded",
                                         "false"
                                     );
 
                                 }
+                            );
+
+                        });
+
+                }
 
 
-                                menuButton.setAttribute(
-                                    "aria-expanded",
-                                    "false"
+                /* =========================
+                   MOBILE SERVICES
+                   ========================= */
+
+                const mobileApproachButton =
+                    document.getElementById(
+                        "mobileApproachButton"
+                    );
+
+                const mobileServices =
+                    document.getElementById(
+                        "mobileServices"
+                    );
+
+
+                if (
+                    mobileApproachButton &&
+                    mobileServices
+                ) {
+
+                    mobileApproachButton.addEventListener(
+                        "click",
+                        function () {
+
+                            const isOpen =
+                                mobileServices.classList.toggle(
+                                    "show"
                                 );
 
-                                menuButton.setAttribute(
-                                    "aria-label",
-                                    "Open menu"
-                                );
 
-                            }
+                            mobileApproachButton.classList.toggle(
+                                "open",
+                                isOpen
+                            );
 
                         }
                     );
 
-                })
+                }
 
-                .catch(function (error) {
-
-                    console.error(
-                        "Header loading error:",
-                        error
-                    );
-
-                });
+            })
 
 
-                /* =================================================
-                   LOAD FOOTER
-                ================================================= */
+            .catch(function (error) {
 
-                fetch(
-                    "/Footer.html?v=" + Date.now(),
-                    {
-                        cache: "no-store"
-                    }
-                )
+                console.error(
+                    "Header loading error:",
+                    error
+                );
 
-                .then(function (response) {
-
-                    if (!response.ok) {
-
-                        throw new Error(
-                            "Footer.html could not be loaded. Status: " +
-                            response.status
-                        );
-
-                    }
-
-                    return response.text();
-
-                })
-
-                .then(function (data) {
-
-                    const footerPlaceholder =
-                        document.getElementById(
-                            "footer-placeholder"
-                        );
-
-
-                    if (!footerPlaceholder) {
-
-                        console.error(
-                            "Footer placeholder not found."
-                        );
-
-                        return;
-
-                    }
-
-
-                    footerPlaceholder.innerHTML = data;
-
-                })
-
-                .catch(function (error) {
-
-                    console.error(
-                        "Footer loading error:",
-                        error
-                    );
-
-                });
-
-            }
-        );
+            });
 
     </script>
+
+
+    <!-- =========================
+         FOOTER LOADER
+         ========================= -->
+
+    <script>
+
+        fetch("/Footer.html")
+
+            .then(function (response) {
+
+                if (!response.ok) {
+
+                    throw new Error(
+                        "Footer.html could not be loaded."
+                    );
+
+                }
+
+                return response.text();
+
+            })
+
+
+            .then(function (data) {
+
+                document
+                    .getElementById("footer-placeholder")
+                    .innerHTML = data;
+
+            })
+
+
+            .catch(function (error) {
+
+                console.error(
+                    "Footer loading error:",
+                    error
+                );
+
+            });
+
+    </script>
+
 
 </body>
 
